@@ -6,7 +6,7 @@ export const authGuard = () => {
   let router: Router = inject(Router)
   let authService: AuthService = inject(AuthService)
 
-  if (authService.userLoggedIn()) {
+  if (authService.loggedIn.value) {
     return true;
   }
   return router.parseUrl("/login");

@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {LocalStorageService} from "./local-storage.service";
+import {Router} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
 
 export interface JwtToken {
   token: string
@@ -12,15 +14,16 @@ export interface AuthRequest {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedIn = false
+  public loggedIn = new BehaviorSubject(false);
 
   private RESOURCE = "auth/"
 
   constructor(private backend: ApiService,
-              private localStorageService: LocalStorageService) {
+              private localStorageService: LocalStorageService,
+              private router: Router) {
   }
 
   authenticate(username: string, password: string): void {
@@ -31,19 +34,17 @@ export class AuthService {
 
     this.backend.post<AuthRequest>(this.RESOURCE + "authenticate", authRequest).subscribe((data: JwtToken) => {
       this.localStorageService.set("auth-token", data.token)
-      this.isLoggedIn = true
+      this.loggedIn.next(true);
+      this.router.navigate(['/dashboard']);
     }, (error) => {
       console.log("Exception when logging on:", error)
-      this.isLoggedIn = false
+      this.loggedIn.next(false);
     })
   }
 
   logout(): void {
-    this.localStorageService.remove("auth-token")
-    this.isLoggedIn = false;
+    localStorage.clear()
+    this.loggedIn.next(false);
   }
 
-  userLoggedIn(): boolean {
-    return this.isLoggedIn;
-  }
 }
