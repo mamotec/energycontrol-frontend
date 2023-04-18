@@ -19,12 +19,14 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {MatMenuModule} from "@angular/material/menu";
+import {ConfigComponent} from "./dashboard/config/config.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    ConfigComponent,
     AuthLayoutComponent,
     DashboardLayoutComponent
   ],

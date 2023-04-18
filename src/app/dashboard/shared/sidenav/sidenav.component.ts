@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavigationStart, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
@@ -7,13 +7,42 @@ import {NavigationStart, Router} from "@angular/router";
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  private childRoutes: any[] = [];
 
   constructor(private router: Router) {
     this.router.events.subscribe((val: any) => {
-      console.log(val.url)
+      if (val.url != null) {
+        if (val.url.includes("dashboard")) {
+          this.childRoutes = []
+          this.childRoutes = this.dashboardRoutes;
+        } else if (val.url.includes("config")) {
+          this.childRoutes = []
+          this.childRoutes = this.configurationRoutes;
+        }
+      }
+
     })
-    console.log(this.router.url)
   }
 
+  get getChildRoutes() {
+    return this.childRoutes;
+  }
+
+  get dashboardRoutes() {
+    return [{
+      description: "Momentanwerte",
+      route: "/dashboard"
+    }
+    ]
+  }
+
+  get configurationRoutes() {
+    return [
+      {
+        description: "Geräte",
+        route: "/device"
+      }
+    ]
+  }
 
 }

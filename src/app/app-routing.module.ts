@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {authGuard} from "./guard/auth.guard";
 import {DashboardLayoutComponent} from "./layouts/dashboard-layout/dashboard-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
+import {ConfigComponent} from "./dashboard/config/config.component";
 
 const routes: Routes = [
   // App routes
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule)
+      },
+      {
+        path: 'config',
+        component: ConfigComponent
       }
     ]
   },

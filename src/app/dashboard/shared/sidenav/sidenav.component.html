@@ -4,15 +4,10 @@
   </div>
   <mat-divider></mat-divider>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="text-align: left">
-    Dashboard
-  </a>
+  <div *ngFor="let item of getChildRoutes">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="{{item.route}}" style="text-align: left">
+      {{item.description}}
+    </a>
+  </div>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="text-align: left">
-    Konfiguration
-  </a>
-
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="text-align: left">
-    Geräte
-  </a>
 </mat-nav-list>
