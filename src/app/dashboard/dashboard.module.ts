@@ -9,12 +9,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {SidenavComponent} from './shared/sidenav/sidenav.component';
 import {MatListModule} from "@angular/material/list";
+import { InterfaceComponent } from './interface/interface.component';
+import {ToastModule} from "primeng/toast";
+import {StepsModule} from "primeng/steps";
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidenavComponent,
+    InterfaceComponent,
   ],
   exports: [
     HeaderComponent,
@@ -27,7 +31,9 @@ import {MatListModule} from "@angular/material/list";
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    ToastModule,
+    StepsModule
   ]
 })
 export class DashboardModule { }

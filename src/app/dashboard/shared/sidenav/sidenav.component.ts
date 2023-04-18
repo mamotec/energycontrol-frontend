@@ -40,7 +40,7 @@ export class SidenavComponent {
     return [
       {
         description: "Geräte",
-        route: "/device"
+        route: "config/interface"
       }
     ]
   }

@@ -4,6 +4,7 @@ import {authGuard} from "./guard/auth.guard";
 import {DashboardLayoutComponent} from "./layouts/dashboard-layout/dashboard-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 import {ConfigComponent} from "./dashboard/config/config.component";
+import {InterfaceComponent} from "./dashboard/interface/interface.component";
 
 const routes: Routes = [
   // App routes
@@ -23,7 +24,13 @@ const routes: Routes = [
       },
       {
         path: 'config',
-        component: ConfigComponent
+        component: ConfigComponent,
+        children: [
+          {
+            path: 'interface',
+            component: InterfaceComponent
+          }
+        ]
       }
     ]
   },
