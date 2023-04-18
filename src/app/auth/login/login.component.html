@@ -1,4 +1,4 @@
-<div class="flex flex-wrap align-items-center justify-content-center">
+<div class="flex flex-wrap align-items-center justify-content-center pt-8">
   <div class="p-4 w-full lg:w-3">
     <div class="text-center mb-5">
       <div class="text-900 text-3xl font-medium mb-3">Willkommen</div>
@@ -7,12 +7,19 @@
     <div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <label for="username" class="block text-900 font-medium mb-2">Benutzername</label>
-        <input id="username" type="text" placeholder="Benutzername" pInputText class="w-full mb-3" formControlName="username" >
-
+        <div class="w-full mt-0 p-error"
+             *ngIf="loginForm.controls['username'].touched && loginForm.controls['username'].errors?.['required']">
+          Bitte geben Sie Ihren Benutzername ein.
+        </div>
+        <input id="username" type="text" placeholder="Benutzername" pInputText class="w-full mb-3" formControlName="username"
+               [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
         <label for="password" class="block text-900 font-medium mb-2">Password</label>
-        <input id="password" type="password" placeholder="Password" pInputText class="w-full mb-3" formControlName="password">
+        <div class="p-error" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['required']">
+          Bitte geben Sie Ihr Passwort ein.
+        </div>
+        <input id="password" type="password" placeholder="Password" pInputText class="w-full mb-3" formControlName="password" required>
 
-        <button pButton pRipple type="submit" label="Anmelden" icon="pi pi-user" class="w-full"></button>
+        <button pButton type="submit" label="Anmelden" icon="pi pi-user" class="w-full" [disabled]="loginForm.invalid"></button>
       </form>
     </div>
   </div>

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {LocalStorageService} from "./local-storage.service";
 import {Router} from "@angular/router";
+import jwtDecode from "jwt-decode";
 
 export interface JwtToken {
   token: string
@@ -38,12 +39,32 @@ export class AuthService {
     })
   }
 
-  logout(): void {
+  public logout(): void {
     localStorage.clear()
+    window.location.reload();
   }
 
   isLoggedIn(): boolean {
-    return this.localStorageService.get("auth-token") != null;
+    let token = this.localStorageService.get("auth-token")
+
+    if (token == null) {
+      return false;
+    }
+
+    return this.validateJwtToken(token);
+  }
+
+  validateJwtToken(token: string): boolean {
+    const decodedToken: any = jwtDecode(token);
+    const tokenExpire = new Date(decodedToken.exp * 1000);
+    const now = new Date();
+
+    if (tokenExpire < now) {
+      this.logout()
+      return false
+    }
+
+    return true
   }
 
 }

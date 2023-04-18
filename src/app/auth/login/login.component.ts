@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -11,16 +11,27 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
+  submitted = false;
+
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
-      username: '',
-      password: ''
-    });
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    })
   }
 
   onSubmit() {
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.submitted = true;
+
     this.authService.authenticate(this.loginForm.get("username")?.value, this.loginForm.get("password")?.value)
   }
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
+  }
 }

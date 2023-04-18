@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {DashboardModule} from "./dashboard/dashboard.module";
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatSidenavModule,
-    DashboardModule
+    DashboardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
