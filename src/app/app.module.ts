@@ -12,14 +12,12 @@ import {ButtonModule} from "primeng/button";
 import {CheckboxModule} from "primeng/checkbox";
 import {RippleModule} from "primeng/ripple";
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
-import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
 import {MegaMenuModule} from "primeng/megamenu";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {MatMenuModule} from "@angular/material/menu";
-import {ConfigComponent} from "./dashboard/config/config.component";
 import {AppLayoutModule} from "./layout/app.layout.module";
 
 @NgModule({
@@ -27,9 +25,7 @@ import {AppLayoutModule} from "./layout/app.layout.module";
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    ConfigComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent,
   ],
   imports: [
     BrowserModule,

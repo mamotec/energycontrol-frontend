@@ -8,7 +8,8 @@ import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 const routes: Routes = [
   // App routes
   {
-    path: 'app',
+    path: '',
+    pathMatch: "full",
     component: AppLayoutComponent,
     canActivate: [authGuard],
     children: [

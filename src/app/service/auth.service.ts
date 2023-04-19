@@ -33,7 +33,7 @@ export class AuthService {
 
     this.backend.post<AuthRequest>(this.RESOURCE + "authenticate", authRequest).subscribe((data: JwtToken) => {
       this.localStorageService.set("auth-token", data.token)
-      this.router.navigate(['/app']);
+      this.router.navigate(['']);
     }, (error) => {
       console.log("Exception when logging on:", error)
     })

@@ -10,24 +10,28 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+    constructor() { }
 
     ngOnInit() {
         this.model = [
             {
-                label: 'Home',
+                label: 'Ertragsdaten',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/app'] }
+                    { label: 'Momentanwerte', icon: 'pi pi-fw pi-home', routerLink: ['/app'], items: [
+                        { label: 'Aktuelle Leistung', routerLink: ['/app'] },
+                        { label: 'Tageswerte', routerLink: ['/app'] },
+                        { label: 'Wochenwerte', routerLink: ['/app'] },
+
+                      ] },
                 ]
             },
             {
                 label: 'Konfiguration',
                 items: [
-                    { label: 'Geräte', icon: 'pi pi-fw pi-id-card', items: [
-                        { label: 'Definition', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
-                        { label: 'Erkennung', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
-                        { label: 'Konfiguration', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
-
+                    { label: 'Geräte', icon: 'pi pi-fw pi-bolt', items: [
+                        { label: 'Definition', routerLink: ['/app'] },
+                        { label: 'Erkennung', routerLink: ['/app'] },
+                        { label: 'Konfiguration', routerLink: ['/app'] },
                       ] },
                 ]
             },
