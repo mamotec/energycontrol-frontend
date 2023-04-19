@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppLayoutComponent} from "./layout/app.layout.component";
-import {DashboardComponent} from "./dashboard/dashboard/dashboard.component";
+import {DashboardComponent} from "./yield-data/dashboard/dashboard.component";
 import {authGuard} from "./guard/auth.guard";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 

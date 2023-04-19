@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {DashboardRoutingModule} from './dashboard-routing.module';
+import {YieldDataRoutingModule} from './yield-data-routing.module';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -18,7 +18,7 @@ import {StepsModule} from "primeng/steps";
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    YieldDataRoutingModule,
     MatMenuModule,
     MatIconModule,
     MatToolbarModule,
@@ -28,4 +28,4 @@ import {StepsModule} from "primeng/steps";
     StepsModule
   ]
 })
-export class DashboardModule { }
+export class YieldDataModule { }

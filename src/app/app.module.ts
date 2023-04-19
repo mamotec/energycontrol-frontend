@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from './auth/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {DashboardComponent} from './dashboard/dashboard/dashboard.component';
+import {DashboardComponent} from './yield-data/dashboard/dashboard.component';
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {CheckboxModule} from "primeng/checkbox";
@@ -16,7 +16,7 @@ import {MegaMenuModule} from "primeng/megamenu";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {DashboardModule} from "./dashboard/dashboard.module";
+import {YieldDataModule} from "./yield-data/yield-data.module";
 import {MatMenuModule} from "@angular/material/menu";
 import {AppLayoutModule} from "./layout/app.layout.module";
 
@@ -41,7 +41,7 @@ import {AppLayoutModule} from "./layout/app.layout.module";
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatSidenavModule,
-    DashboardModule,
+    YieldDataModule,
     MatMenuModule,
     AppLayoutModule
   ],
