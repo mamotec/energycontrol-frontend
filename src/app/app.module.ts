@@ -11,8 +11,8 @@ import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {CheckboxModule} from "primeng/checkbox";
 import {RippleModule} from "primeng/ripple";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
 import {MegaMenuModule} from "primeng/megamenu";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -20,6 +20,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {MatMenuModule} from "@angular/material/menu";
 import {ConfigComponent} from "./dashboard/config/config.component";
+import {AppLayoutModule} from "./layout/app.layout.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {ConfigComponent} from "./dashboard/config/config.component";
     DashboardComponent,
     ConfigComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,8 @@ import {ConfigComponent} from "./dashboard/config/config.component";
     MatSlideToggleModule,
     MatSidenavModule,
     DashboardModule,
-    MatMenuModule
+    MatMenuModule,
+    AppLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

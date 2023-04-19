@@ -1,39 +1,24 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AppLayoutComponent} from "./layout/app.layout.component";
+import {DashboardComponent} from "./dashboard/dashboard/dashboard.component";
 import {authGuard} from "./guard/auth.guard";
-import {DashboardLayoutComponent} from "./layouts/dashboard-layout/dashboard-layout.component";
-import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
-import {ConfigComponent} from "./dashboard/config/config.component";
-import {InterfaceComponent} from "./dashboard/interface/interface.component";
+import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 
 const routes: Routes = [
   // App routes
   {
-    path: '',
+    path: 'app',
+    component: AppLayoutComponent,
     canActivate: [authGuard],
-    component: DashboardLayoutComponent,
     children: [
       {
         path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule)
-      },
-      {
-        path: 'config',
-        component: ConfigComponent,
-        children: [
-          {
-            path: 'interface',
-            component: InterfaceComponent
-          }
-        ]
+        component: DashboardComponent,
       }
     ]
   },
+
 
   // Auth routes
   {
@@ -51,8 +36,6 @@ const routes: Routes = [
       }
     ]
   },
-
-
 ];
 
 @NgModule({
