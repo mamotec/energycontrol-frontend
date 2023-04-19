@@ -1,40 +1,45 @@
-import { OnInit } from '@angular/core';
-import { Component } from '@angular/core';
-import { LayoutService } from './service/app.layout.service';
+import {OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {LayoutService} from './service/app.layout.service';
 
 @Component({
-    selector: 'app-menu',
-    templateUrl: './app.menu.component.html'
+  selector: 'app-menu',
+  templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit {
 
-    model: any[] = [];
+  model: any[] = [];
 
-    constructor() { }
+  constructor() {
+  }
 
-    ngOnInit() {
-        this.model = [
-            {
-                label: 'Ertragsdaten',
-                items: [
-                    { label: 'Momentanwerte', icon: 'pi pi-fw pi-home', routerLink: ['/app'], items: [
-                        { label: 'Aktuelle Leistung', routerLink: ['/app'] },
-                        { label: 'Tageswerte', routerLink: ['/app'] },
-                        { label: 'Wochenwerte', routerLink: ['/app'] },
+  ngOnInit() {
+    this.model = [
+      {
+        label: 'Ertragsdaten',
+        items: [
+          {
+            label: 'Momentanwerte', icon: 'pi pi-fw pi-home', items: [
+              {label: 'Aktuelle Leistung', routerLink: ['/current-power']},
+              {label: 'Tageswerte', routerLink: ['/day-data']},
+              {label: 'Wochenwerte', routerLink: ['/week-data']},
 
-                      ] },
-                ]
-            },
-            {
-                label: 'Konfiguration',
-                items: [
-                    { label: 'Geräte', icon: 'pi pi-fw pi-bolt', items: [
-                        { label: 'Definition', routerLink: ['/app'] },
-                        { label: 'Erkennung', routerLink: ['/app'] },
-                        { label: 'Konfiguration', routerLink: ['/app'] },
-                      ] },
-                ]
-            },
-        ];
-    }
+            ]
+          },
+        ]
+      },
+      {
+        label: 'Konfiguration',
+        items: [
+          {
+            label: 'Geräte', icon: 'pi pi-fw pi-bolt', items: [
+              {label: 'Definition', routerLink: ['/interface']},
+              {label: 'Erkennung', routerLink: ['/identification']},
+              {label: 'Konfiguration', routerLink: ['/device-config']},
+            ]
+          },
+        ]
+      },
+    ];
+  }
 }
