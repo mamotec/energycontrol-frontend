@@ -24,6 +24,10 @@ import { WeekDataComponent } from './components/yield-data/week-data/week-data.c
 import { InterfaceComponent } from './components/config/device/interface/interface.component';
 import { IdentificationComponent } from './components/config/identification/identification.component';
 import { DeviceConfigComponent } from './components/config/device-config/device-config.component';
+import {TableModule} from "primeng/table";
+import { AddButtonComponent } from './components/utils/add-button/add-button.component';
+import {MatIconModule} from "@angular/material/icon";
+import { CreateInterfaceComponent } from './components/config/device/interface/create-interface/create-interface.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,8 @@ import { DeviceConfigComponent } from './components/config/device-config/device-
     InterfaceComponent,
     IdentificationComponent,
     DeviceConfigComponent,
+    AddButtonComponent,
+    CreateInterfaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,9 @@ import { DeviceConfigComponent } from './components/config/device-config/device-
     MatSlideToggleModule,
     MatSidenavModule,
     MatMenuModule,
-    AppLayoutModule
+    AppLayoutModule,
+    TableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
