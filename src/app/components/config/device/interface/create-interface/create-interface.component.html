@@ -1,1 +1,15 @@
-Ich bin ein Modal
+<form [formGroup]="interfaceForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="deviceClass" class="block text-900 font-medium mb-2">Geräteklasse</label>
+    <p-dropdown id="deviceClass" [options]="devicesClasses | keyvalue" optionLabel="value"
+                formControlName="deviceClass"></p-dropdown>
+    <div class="p-error"
+         *ngIf="interfaceForm.controls['deviceClass'].touched && interfaceForm.controls['deviceClass'].errors?.['required']">
+      Bitte wählen Sie eine Geräteklasse aus.
+    </div>
+  </div>
+  <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">
+    <button pButton type="submit" label="Speichern" icon="pi pi-user" class="w-full" [disabled]="interfaceForm.invalid"></button>
+  </div>
+
+</form>

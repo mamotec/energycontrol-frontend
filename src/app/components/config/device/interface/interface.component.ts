@@ -18,7 +18,8 @@ export class InterfaceComponent {
   createInterface() {
     const createDialog = this.dialogRef.open(CreateInterfaceComponent, {
       header: 'Schnittstelle definieren',
-      width: '50%',
+      width: '30%',
+      height: '30%',
       maximizable: true
     })
     console.log("Echt gut")
