@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {AuthService} from "./auth.service";
+import {AuthService} from "../service/auth.service";
 import {Observable} from "rxjs";
-import {LocalStorageService} from "./local-storage.service";
+import {LocalStorageService} from "../service/local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,6 @@ export class TokenInterceptorService implements HttpInterceptor {
           Authorization: `Bearer $(token)`
         }
       })
-    } else {
-      this.authService.logout();
     }
 
     return next.handle(req)

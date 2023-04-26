@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -29,7 +29,10 @@ import {AddButtonComponent} from './components/utils/add-button/add-button.compo
 import {MatIconModule} from "@angular/material/icon";
 import {CreateInterfaceComponent} from './components/config/device/interface/create-interface/create-interface.component';
 import {DropdownModule} from "primeng/dropdown";
-import {TokenInterceptorService} from "./service/token-interceptor.service";
+import {TokenInterceptorService} from "./interceptor/token-interceptor.service";
+import {ToastModule} from "primeng/toast";
+import {ToastErrorHandler} from "./handler/toast-error-handler";
+import {MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -64,10 +67,15 @@ import {TokenInterceptorService} from "./service/token-interceptor.service";
     AppLayoutModule,
     TableModule,
     MatIconModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
+    {provide: ErrorHandler, useClass: ToastErrorHandler},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},
+    MessageService,
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
