@@ -9,7 +9,7 @@ import {CreateInterfaceComponent} from "./create-interface/create-interface.comp
   providers: [DialogService]
 })
 export class InterfaceComponent {
-  products: any[] = [];
+  items: any[] = [];
 
 
   constructor(private dialogRef: DialogService) {
@@ -22,6 +22,5 @@ export class InterfaceComponent {
       height: '30%',
       maximizable: true
     })
-    console.log("Echt gut")
   }
 }
