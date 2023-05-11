@@ -9,21 +9,6 @@ pipeline {
 
     stages {
 
-
-        stage('User Input') {
-            steps {
-                script {
-                    def userInput = input(
-                        message: 'Bitte Docker Image Tag eingeben',
-                        parameters: [
-                            string(defaultValue: '', description: 'Der eingegebene String', name: 'userString')
-                        ]
-                    )
-                    echo "Der eingegebene String ist: ${userInput.userString}"
-                }
-            }
-        }
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -44,7 +29,7 @@ pipeline {
 
         stage('Docker: Build') {
             steps {
-              sh "docker build -f ./docker/Dockerfile -t ${DOCKER_IMAGE_NAME}:${userInput.userString} --no-cache ."
+              sh "docker build -f ./docker/Dockerfile -t ${DOCKER_IMAGE_NAME}:${docker-tag} --no-cache ."
             }
         }
 
@@ -52,13 +37,13 @@ pipeline {
               steps {
                 sh "docker login -u mamotec -p MaMoTec00001!"
 
-                sh "docker push ${DOCKER_IMAGE_NAME}:${userInput.userString}"
+                sh "docker push ${DOCKER_IMAGE_NAME}:${docker-tag}"
               }
           }
 
        stage('Docker: Delete Image') {
               steps {
-                sh "docker image rm ${DOCKER_IMAGE_NAME}:${userInput.userString}"
+                sh "docker image rm ${DOCKER_IMAGE_NAME}:${docker-tag}"
               }
        }
     }
