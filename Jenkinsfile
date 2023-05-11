@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools {nodejs "npm"}
+
     environment {
           DOCKER_IMAGE_NAME = 'mamotec/energycontrol-frontend'
     }
