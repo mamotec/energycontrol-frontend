@@ -33,9 +33,6 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                echo "Hallo"
-                echo "Building configuration: ${params.dockerTag}"
-                echo "Building configuration: " + params.dockerTag
                 sh 'npm install'
             }
         }
@@ -49,7 +46,7 @@ pipeline {
 
         stage('Docker: Build') {
             steps {
-              sh "docker build -f ./docker/Dockerfile -t ${DOCKER_IMAGE_NAME}:${docker-tag} --no-cache ."
+              sh "docker build -f ./docker/Dockerfile -t ${DOCKER_IMAGE_NAME}:${params.dockerTag} --no-cache ."
             }
         }
 
@@ -57,13 +54,13 @@ pipeline {
               steps {
                 sh "docker login -u mamotec -p MaMoTec00001!"
 
-                sh "docker push ${DOCKER_IMAGE_NAME}:${docker-tag}"
+                sh "docker push ${DOCKER_IMAGE_NAME}:${params.dockerTag}"
               }
           }
 
        stage('Docker: Delete Image') {
               steps {
-                sh "docker image rm ${DOCKER_IMAGE_NAME}:${docker-tag}"
+                sh "docker image rm ${DOCKER_IMAGE_NAME}:${params.dockerTag}"
               }
        }
     }
