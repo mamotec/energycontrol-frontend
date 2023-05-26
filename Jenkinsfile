@@ -9,6 +9,22 @@ pipeline {
 
     stages {
 
+        stage('Setup parameters') {
+            steps {
+                script {
+                    properties([
+                        parameters([
+                            string(
+                                defaultValue: 'scriptcrunch',
+                                name: 'docker-tag',
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -18,7 +34,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo ${docker-tag}
+                echo "${docker-tag}"
 
                 sh 'npm install'
             }
