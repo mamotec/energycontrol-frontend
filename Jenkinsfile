@@ -16,7 +16,7 @@ pipeline {
                         parameters([
                             string(
                                 defaultValue: 'scriptcrunch',
-                                name: 'DOCKER-TAG',
+                                name: 'FCN-TAG',
                                 trim: true
                             )
                         ])
@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "$params.DOCKER-TAG"
+                echo "$params.FCN-TAG"
 
                 sh 'npm install'
             }
@@ -45,6 +45,7 @@ pipeline {
                 sh 'npm run build'
             }
         }
+
 
         stage('Docker: Build') {
             steps {
