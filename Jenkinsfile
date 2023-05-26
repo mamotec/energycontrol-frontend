@@ -29,6 +29,7 @@ pipeline {
 
         stage('Docker: Build') {
             steps {
+              echo "${docker-tag}"
               sh "docker build -f ./docker/Dockerfile -t ${DOCKER_IMAGE_NAME}:${docker-tag} --no-cache ."
             }
         }
