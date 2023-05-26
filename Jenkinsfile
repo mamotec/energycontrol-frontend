@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "$params.FCN-TAG"
+                echo "${params.FCN-TAG}"
 
                 sh 'npm install'
             }
