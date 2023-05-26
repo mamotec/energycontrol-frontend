@@ -15,8 +15,8 @@ pipeline {
                     properties([
                         parameters([
                             string(
-                                defaultValue: 'scriptcrunch',
-                                name: 'BuildConfiguration',
+                                defaultValue: 'latest',
+                                name: 'dockerTag',
                                 trim: true
                             )
                         ])
@@ -34,8 +34,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "Building configuration: ${params.BuildConfiguration}"
-                echo "Building configuration: " + params.BuildConfiguration
+                echo "Building configuration: ${params.dockerTag}"
+                echo "Building configuration: " + params.dockerTag
                 sh 'npm install'
             }
         }
