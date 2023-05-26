@@ -16,7 +16,7 @@ pipeline {
                         parameters([
                             string(
                                 defaultValue: 'scriptcrunch',
-                                name: 'FCN-TAG',
+                                name: 'BuildConfiguration',
                                 trim: true
                             )
                         ])
@@ -34,8 +34,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "${params.FCN-TAG}"
-
+                echo "Building configuration: ${params.BuildConfiguration}"
+                echo "Building configuration: " + params.BuildConfiguration
                 sh 'npm install'
             }
         }
