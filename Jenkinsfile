@@ -16,7 +16,7 @@ pipeline {
                         parameters([
                             string(
                                 defaultValue: 'scriptcrunch',
-                                name: 'docker-tag',
+                                name: 'DOCKER-TAG',
                                 trim: true
                             )
                         ])
@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "$params.docker-tag"
+                echo "$params.DOCKER-TAG"
 
                 sh 'npm install'
             }
