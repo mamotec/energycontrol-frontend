@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Hallo"
-                echo "${docker-tag}"
+                echo "${param.docker-tag}"
 
                 sh 'npm install'
             }
