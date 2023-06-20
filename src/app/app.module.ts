@@ -33,6 +33,8 @@ import {TokenInterceptorService} from "./interceptor/token-interceptor.service";
 import {ToastModule} from "primeng/toast";
 import {ToastErrorHandler} from "./handler/toast-error-handler";
 import {MessageService} from "primeng/api";
+import {ApiModule, BASE_PATH} from "./api";
+import {environment} from "../environment";
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import {MessageService} from "primeng/api";
     CreateInterfaceComponent,
   ],
   imports: [
+    ApiModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -71,6 +74,7 @@ import {MessageService} from "primeng/api";
     ToastModule
   ],
   providers: [
+    {provide: BASE_PATH, useValue: environment.apiEndpoint},
     {provide: ErrorHandler, useClass: ToastErrorHandler},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},
     MessageService,
