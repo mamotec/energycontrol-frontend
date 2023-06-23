@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DeviceClassEnum} from "../../DeviceClass.enum";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {DeviceService} from "../../../../../service/device.service";
+import {DeviceControllerService} from "../../../../../api";
 
 @Component({
   selector: 'app-create-interface',
@@ -14,7 +14,7 @@ export class CreateInterfaceComponent {
   interfaceForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private deviceService: DeviceService) {
+              private deviceService: DeviceControllerService) {
     this.interfaceForm = this.formBuilder.group({
       deviceClass: new FormControl(DeviceClassEnum.INVERTER)
     })
@@ -25,9 +25,11 @@ export class CreateInterfaceComponent {
       return;
     }
 
-    console.log("Moin meister")
-
-    this.deviceService.createInterface(this.interfaceForm.get("deviceClass")?.value);
+    this.deviceService.createInterface(this.interfaceForm.get("deviceClass")?.value).subscribe({
+      next: () => {
+        console.log("Erfolgreich");
+      }
+    })
 
 
   }

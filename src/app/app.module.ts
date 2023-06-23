@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from './auth/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -29,12 +29,12 @@ import {AddButtonComponent} from './components/utils/add-button/add-button.compo
 import {MatIconModule} from "@angular/material/icon";
 import {CreateInterfaceComponent} from './components/config/device/interface/create-interface/create-interface.component';
 import {DropdownModule} from "primeng/dropdown";
-import {TokenInterceptorService} from "./interceptor/token-interceptor.service";
 import {ToastModule} from "primeng/toast";
 import {ToastErrorHandler} from "./handler/toast-error-handler";
 import {MessageService} from "primeng/api";
-import {ApiModule, BASE_PATH} from "./api";
-import {environment} from "../environment";
+import {ApiModule, Configuration} from "./api";
+import {ApiService} from "./service/api.service";
+
 
 @NgModule({
   declarations: [
@@ -52,7 +52,10 @@ import {environment} from "../environment";
     CreateInterfaceComponent,
   ],
   imports: [
-    ApiModule,
+    ApiModule.forRoot(() => {
+      // @ts-ignore
+      return new Configuration({accessToken: "Moin diggi"});
+    }),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -74,9 +77,17 @@ import {environment} from "../environment";
     ToastModule
   ],
   providers: [
-    {provide: BASE_PATH, useValue: environment.apiEndpoint},
+    {
+      provide: Configuration,
+      useFactory: (authService: ApiService) => new Configuration(
+        {
+          accessToken: authService.GetAccessToken.bind(authService)
+        }
+      ),
+      deps: [ApiService],
+      multi: false
+    },
     {provide: ErrorHandler, useClass: ToastErrorHandler},
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},
     MessageService,
   ],
 

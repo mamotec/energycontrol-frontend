@@ -12,7 +12,7 @@ export class DeviceService {
 
   private RESOURCE = "device/"
 
-  constructor(private backend: ApiService,) {
+  constructor(private backend: ApiService, ) {
   }
 
   createInterface(deviceClass: string): void {

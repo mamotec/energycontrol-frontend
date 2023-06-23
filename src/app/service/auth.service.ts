@@ -1,12 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ApiService} from "./api.service";
 import {LocalStorageService} from "./local-storage.service";
 import {Router} from "@angular/router";
 import jwtDecode from "jwt-decode";
-
-export interface JwtToken {
-  token: string
-}
+import {AuthenticationControllerService, AuthenticationResponse} from "../api";
 
 export interface AuthRequest {
   username: string,
@@ -18,9 +14,7 @@ export interface AuthRequest {
 })
 export class AuthService {
 
-  private RESOURCE = "auth/"
-
-  constructor(private backend: ApiService,
+  constructor(private authControllerService: AuthenticationControllerService,
               private localStorageService: LocalStorageService,
               private router: Router) {
   }
@@ -31,11 +25,19 @@ export class AuthService {
       password: password
     }
 
-    this.backend.post<AuthRequest>(this.RESOURCE + "authenticate", authRequest).subscribe((data: JwtToken) => {
-      this.localStorageService.set("auth-token", data.token)
-      this.router.navigate(['']);
-    }, (error) => {
-      console.log("Exception when logging on:", error)
+    this.authControllerService.authenticate(authRequest).subscribe({
+      next: (token: AuthenticationResponse) => {
+
+        if (token.token != undefined) {
+          this.localStorageService.set("auth-token", token.token)
+          this.router.navigate(['']);
+        } else {
+          this.logout()
+        }
+      },
+      error: (error) => {
+        console.log("Exception when logging on:", error)
+      }
     })
   }
 
@@ -52,6 +54,15 @@ export class AuthService {
     }
 
     return this.validateJwtToken(token);
+  }
+
+  getToken(): string {
+    if (this.isLoggedIn()) {
+      // @ts-ignore
+      return this.localStorageService.get("auth-token")
+    }
+    return ""
+
   }
 
   validateJwtToken(token: string): boolean {

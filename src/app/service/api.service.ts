@@ -1,7 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {environment} from "../../environment";
+import {LocalStorageService} from "./local-storage.service";
+import jwtDecode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,47 @@ export class ApiService {
 
   private API_URL = environment.apiEndpoint;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService,
+  ) {
   }
+
+  isLoggedIn(): boolean {
+    let token = this.localStorageService.get("auth-token")
+
+    if (token == null) {
+      return false;
+    }
+
+    return this.validateJwtToken(token);
+  }
+
+  public GetAccessToken(): string {
+    if (this.isLoggedIn()) {
+      // @ts-ignore
+      return this.localStorageService.get("auth-token")
+    }
+    return "";
+
+  }
+
+  validateJwtToken(token: string): boolean {
+    const decodedToken: any = jwtDecode(token);
+    const tokenExpire = new Date(decodedToken.exp * 1000);
+    const now = new Date();
+
+    if (tokenExpire < now) {
+      this.logout()
+      return false
+    }
+
+    return true
+  }
+
+  public logout(): void {
+    localStorage.clear()
+    window.location.reload();
+  }
+
 
   post<T>(resource: string, item: T): Observable<any> {
     return this.http.post<T>(this.API_URL + resource, item);
