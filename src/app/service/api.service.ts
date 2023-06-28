@@ -1,16 +1,16 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {EMPTY, Observable} from 'rxjs';
-import {environment} from "../../environment";
+import {Observable} from 'rxjs';
 import {LocalStorageService} from "./local-storage.service";
 import jwtDecode from "jwt-decode";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
 
-  private API_URL = environment.apiEndpoint;
+  private API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService,
   ) {

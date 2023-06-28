@@ -34,7 +34,7 @@ import {ToastErrorHandler} from "./handler/toast-error-handler";
 import {MessageService} from "primeng/api";
 import {ApiModule, Configuration} from "./api";
 import {ApiService} from "./service/api.service";
-
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -52,10 +52,7 @@ import {ApiService} from "./service/api.service";
     CreateInterfaceComponent,
   ],
   imports: [
-    ApiModule.forRoot(() => {
-      // @ts-ignore
-      return new Configuration({accessToken: "Moin diggi"});
-    }),
+    ApiModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -81,6 +78,7 @@ import {ApiService} from "./service/api.service";
       provide: Configuration,
       useFactory: (authService: ApiService) => new Configuration(
         {
+          basePath: environment.apiUrl,
           accessToken: authService.GetAccessToken.bind(authService)
         }
       ),
