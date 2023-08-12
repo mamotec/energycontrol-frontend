@@ -11,11 +11,19 @@
  */
 
 
-export interface RegisterRequest { 
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    username?: string;
-    password?: string;
+export interface InterfaceConnection { 
+    baudRate?: number;
+    parity?: InterfaceConnection.ParityEnum;
+    dataBits?: number;
+    stopBits?: number;
+    host?: string;
+    port?: number;
 }
+export namespace InterfaceConnection {
+    export type ParityEnum = 'EVEN';
+    export const ParityEnum = {
+        Even: 'EVEN' as ParityEnum
+    };
+}
+
 

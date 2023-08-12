@@ -9,13 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InterfaceConnection } from './interfaceConnection';
+import { InterfaceMapping } from './interfaceMapping';
+import { MetaData } from './metaData';
 
 
-export interface RegisterRequest { 
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    username?: string;
-    password?: string;
+export interface Interface { 
+    version?: number;
+    metaData?: MetaData;
+    connection?: InterfaceConnection;
+    mapping?: InterfaceMapping;
 }
 
