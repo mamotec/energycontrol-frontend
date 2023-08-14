@@ -3,7 +3,6 @@ import {DialogService} from "primeng/dynamicdialog";
 import {CreateInterfaceConfigComponent} from "./create-interface/create-interface-config.component";
 import {MessageService} from "primeng/api";
 import {InterfaceConfigDao, InterfaceControllerService} from "../../../../api";
-import {InterfaceConfig} from "../../../../api/model/interfaceConfig";
 
 @Component({
   selector: 'app-interface',
@@ -44,6 +43,16 @@ export class InterfaceComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Erfolgreich'});
       this.loadInterfaces();
     })
+
+  }
+
+  onRowDelete(interfaceToDelete: InterfaceConfigDao) {
+    this.interfaceConfigService.deleteInterfaceConfig(interfaceToDelete.id as number).subscribe({
+      next: () => {
+        this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
+        this.loadInterfaces();
+      }
+    });
 
   }
 

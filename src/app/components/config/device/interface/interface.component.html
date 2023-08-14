@@ -1,17 +1,22 @@
 <div class="card">
   <app-add-button (add)="createInterfaceConfig()"></app-add-button>
 
-  <p-table [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }" editMode="row">
+  <p-table [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Protokoll</th>
         <th>Typ</th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>
       <tr>
         <td>{{ item.protocolName }}</td>
         <td>{{ item.type }}</td>
+        <td>
+          <button pButton type="button" icon="pi pi-trash" (click)="onRowDelete(item)"
+                  class="p-button-rounded p-button-text p-button-danger mr-2"></button>
+        </td>
       </tr>
     </ng-template>
 

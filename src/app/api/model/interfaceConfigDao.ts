@@ -12,6 +12,7 @@
 
 
 export interface InterfaceConfigDao { 
+    id?: number;
     protocolId?: number;
     protocolName?: string;
     /**

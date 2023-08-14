@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InterfaceConfig } from './interfaceConfig';
 
 
 export interface DeviceCreateRequest { 
     unitId?: number;
+    interfaceConfig?: InterfaceConfig;
 }
 
