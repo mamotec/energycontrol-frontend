@@ -23,7 +23,6 @@ import {DayDataComponent} from './components/yield-data/day-data/day-data.compon
 import {WeekDataComponent} from './components/yield-data/week-data/week-data.component';
 import {InterfaceComponent} from './components/config/device/interface/interface.component';
 import {IdentificationComponent} from './components/config/identification/identification.component';
-import {DeviceConfigComponent} from './components/config/device-config/device-config.component';
 import {TableModule} from "primeng/table";
 import {AddButtonComponent} from './components/utils/add-button/add-button.component';
 import {MatIconModule} from "@angular/material/icon";
@@ -36,6 +35,7 @@ import {ApiModule, Configuration} from "./api";
 import {ApiService} from "./service/api.service";
 import {environment} from "../environments/environment";
 import {AutoCompleteModule} from "primeng/autocomplete";
+import { DeviceListComponent } from './components/config/device/device-list/device-list.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +48,9 @@ import {AutoCompleteModule} from "primeng/autocomplete";
     WeekDataComponent,
     InterfaceComponent,
     IdentificationComponent,
-    DeviceConfigComponent,
     AddButtonComponent,
     CreateInterfaceConfigComponent,
+    DeviceListComponent,
   ],
   imports: [
     ApiModule,

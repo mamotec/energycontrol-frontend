@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {DeviceControllerService} from "../../../api";
+import {DeviceListComponent} from "../device/device-list/device-list.component";
 
 @Component({
   selector: 'app-identification',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./identification.component.scss']
 })
 export class IdentificationComponent {
+  // @ts-ignore
+  @ViewChild(DeviceListComponent) private deviceListComponent: DeviceListComponent;
+
+  constructor(private deviceService: DeviceControllerService) {
+  }
+
+  startScan() {
+    this.deviceService.deviceScan().subscribe(() => {
+      if (this.deviceListComponent){
+        this.deviceListComponent.loadDevices();
+      }
+    });
+  }
 
 }

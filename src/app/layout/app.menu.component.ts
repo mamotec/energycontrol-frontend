@@ -1,6 +1,4 @@
-import {OnInit} from '@angular/core';
-import {Component} from '@angular/core';
-import {LayoutService} from './service/app.layout.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -34,8 +32,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Geräte', icon: 'pi pi-fw pi-bolt', items: [
               {label: 'Definition', routerLink: ['/interface']},
-              {label: 'Erkennung', routerLink: ['/identification']},
-              {label: 'Konfiguration', routerLink: ['/device-config']},
+              {label: 'Erkennung', routerLink: ['/identification']}
             ]
           },
         ]
