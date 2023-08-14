@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -17,7 +16,7 @@ model/deviceCreateRequest.ts
 model/deviceCreateResponse.ts
 model/group.ts
 model/interface.ts
-model/interfaceConfig.ts
+model/interfaceConfigDao.ts
 model/interfaceConnection.ts
 model/interfaceMapping.ts
 model/metaData.ts

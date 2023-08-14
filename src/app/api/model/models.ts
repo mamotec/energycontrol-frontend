@@ -4,7 +4,7 @@ export * from './deviceCreateRequest';
 export * from './deviceCreateResponse';
 export * from './group';
 export * from './interface';
-export * from './interfaceConfig';
+export * from './interfaceConfigDao';
 export * from './interfaceConnection';
 export * from './interfaceMapping';
 export * from './metaData';

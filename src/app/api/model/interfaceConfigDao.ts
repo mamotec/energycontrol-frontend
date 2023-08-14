@@ -11,20 +11,19 @@
  */
 
 
-export interface Group { 
-    id?: number;
-    createdAt?: string;
-    updatedAt?: string;
-    name?: string;
+export interface InterfaceConfigDao { 
+    protocolId?: number;
     /**
-     * Die Gruppen Typen
+     * Die Schnittstellen Typen
      */
-    type?: Group.TypeEnum;
+    type?: InterfaceConfigDao.TypeEnum;
+    port?: string;
 }
-export namespace Group {
-    export type TypeEnum = 'PV_PLANT';
+export namespace InterfaceConfigDao {
+    export type TypeEnum = 'RS485' | 'TCP';
     export const TypeEnum = {
-        PvPlant: 'PV_PLANT' as TypeEnum
+        Rs485: 'RS485' as TypeEnum,
+        Tcp: 'TCP' as TypeEnum
     };
 }
 

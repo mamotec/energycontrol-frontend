@@ -21,7 +21,7 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { Interface } from '../model/interface';
 // @ts-ignore
-import { InterfaceConfig } from '../model/interfaceConfig';
+import { InterfaceConfigDao } from '../model/interfaceConfigDao';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -95,16 +95,16 @@ export class InterfaceControllerService {
 
     /**
      * Erstelle eine neue Schnittstellen konfiguration für die angegebene Schnittstelle
-     * @param interfaceConfig 
+     * @param interfaceConfigDao 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<InterfaceConfig>;
-    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<InterfaceConfig>>;
-    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<InterfaceConfig>>;
-    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (interfaceConfig === null || interfaceConfig === undefined) {
-            throw new Error('Required parameter interfaceConfig was null or undefined when calling createInterfaceConfig.');
+    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<InterfaceConfigDao>;
+    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<InterfaceConfigDao>>;
+    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<InterfaceConfigDao>>;
+    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (interfaceConfigDao === null || interfaceConfigDao === undefined) {
+            throw new Error('Required parameter interfaceConfigDao was null or undefined when calling createInterfaceConfig.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -155,10 +155,10 @@ export class InterfaceControllerService {
         }
 
         let localVarPath = `/interface/config`;
-        return this.httpClient.request<InterfaceConfig>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<InterfaceConfigDao>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: interfaceConfig,
+                body: interfaceConfigDao,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
