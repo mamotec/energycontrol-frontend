@@ -1,17 +1,20 @@
 <div class="card">
   <app-add-button (add)="createInterfaceConfig()"></app-add-button>
 
-  <p-table [value]="items" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }" editMode="row">
     <ng-template pTemplate="header">
       <tr>
-        <th>Schnittstellen Konfigurationen</th>
+        <th>Protokoll</th>
+        <th>Typ</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>
       <tr>
-        <td>{{ item.code }}</td>
+        <td>{{ item.protocolName }}</td>
+        <td>{{ item.type }}</td>
       </tr>
     </ng-template>
+
   </p-table>
 
 </div>

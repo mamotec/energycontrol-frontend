@@ -13,6 +13,7 @@
 
 export interface InterfaceConfigDao { 
     protocolId?: number;
+    protocolName?: string;
     /**
      * Die Schnittstellen Typen
      */
