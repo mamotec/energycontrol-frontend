@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DialogService} from "primeng/dynamicdialog";
-import {CreateInterfaceComponent} from "./create-interface/create-interface.component";
+import {CreateInterfaceConfigComponent} from "./create-interface/create-interface-config.component";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-interface',
@@ -12,15 +13,21 @@ export class InterfaceComponent {
   items: any[] = [];
 
 
-  constructor(private dialogRef: DialogService) {
+  constructor(private dialogRef: DialogService, private messageService: MessageService) {
   }
 
-  createInterface() {
-    const createDialog = this.dialogRef.open(CreateInterfaceComponent, {
+  createInterfaceConfig() {
+    const createDialog = this.dialogRef.open(CreateInterfaceConfigComponent, {
       header: 'Schnittstelle definieren',
       width: '30%',
-      height: '30%',
+      height: '50%',
       maximizable: true
     })
+
+    createDialog.onClose.subscribe(() => {
+      this.messageService.add({ severity: 'success', summary: 'Erfolgreich'});
+    })
+
+
   }
 }

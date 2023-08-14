@@ -1,10 +1,10 @@
 <div class="card">
-  <app-add-button (add)="createInterface()"></app-add-button>
+  <app-add-button (add)="createInterfaceConfig()"></app-add-button>
 
   <p-table [value]="items" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
-        <th>Geräteklasse</th>
+        <th>Schnittstellen Konfigurationen</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>

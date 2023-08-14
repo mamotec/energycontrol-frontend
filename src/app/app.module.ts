@@ -27,7 +27,7 @@ import {DeviceConfigComponent} from './components/config/device-config/device-co
 import {TableModule} from "primeng/table";
 import {AddButtonComponent} from './components/utils/add-button/add-button.component';
 import {MatIconModule} from "@angular/material/icon";
-import {CreateInterfaceComponent} from './components/config/device/interface/create-interface/create-interface.component';
+import {CreateInterfaceConfigComponent} from './components/config/device/interface/create-interface/create-interface-config.component';
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {ToastErrorHandler} from "./handler/toast-error-handler";
@@ -35,6 +35,7 @@ import {MessageService} from "primeng/api";
 import {ApiModule, Configuration} from "./api";
 import {ApiService} from "./service/api.service";
 import {environment} from "../environments/environment";
+import {AutoCompleteModule} from "primeng/autocomplete";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import {environment} from "../environments/environment";
     IdentificationComponent,
     DeviceConfigComponent,
     AddButtonComponent,
-    CreateInterfaceComponent,
+    CreateInterfaceConfigComponent,
   ],
   imports: [
     ApiModule,
@@ -71,7 +72,8 @@ import {environment} from "../environments/environment";
     TableModule,
     MatIconModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    AutoCompleteModule
   ],
   providers: [
     {
