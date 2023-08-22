@@ -19,9 +19,13 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Interface } from '../model/interface';
+import { DeviceYaml } from '../model/deviceYaml';
 // @ts-ignore
-import { InterfaceConfigDao } from '../model/interfaceConfigDao';
+import { InterfaceConfig } from '../model/interfaceConfig';
+// @ts-ignore
+import { InterfaceYaml } from '../model/interfaceYaml';
+// @ts-ignore
+import { ManufacturerYaml } from '../model/manufacturerYaml';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -95,16 +99,16 @@ export class InterfaceControllerService {
 
     /**
      * Erstelle eine neue Schnittstellen konfiguration für die angegebene Schnittstelle
-     * @param interfaceConfigDao 
+     * @param interfaceConfig 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<InterfaceConfigDao>;
-    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<InterfaceConfigDao>>;
-    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<InterfaceConfigDao>>;
-    public createInterfaceConfig(interfaceConfigDao: InterfaceConfigDao, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (interfaceConfigDao === null || interfaceConfigDao === undefined) {
-            throw new Error('Required parameter interfaceConfigDao was null or undefined when calling createInterfaceConfig.');
+    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<InterfaceConfig>;
+    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<InterfaceConfig>>;
+    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<InterfaceConfig>>;
+    public createInterfaceConfig(interfaceConfig: InterfaceConfig, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (interfaceConfig === null || interfaceConfig === undefined) {
+            throw new Error('Required parameter interfaceConfig was null or undefined when calling createInterfaceConfig.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -155,10 +159,10 @@ export class InterfaceControllerService {
         }
 
         let localVarPath = `/interface/config`;
-        return this.httpClient.request<InterfaceConfigDao>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<InterfaceConfig>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: interfaceConfigDao,
+                body: interfaceConfig,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -233,13 +237,82 @@ export class InterfaceControllerService {
     }
 
     /**
+     * Lade alle verfügbaren Geräte für den angegebenen Hersteller
+     * @param manufacturerId 
+     * @param deviceType 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DeviceYaml>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DeviceYaml>>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DeviceYaml>>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (manufacturerId === null || manufacturerId === undefined) {
+            throw new Error('Required parameter manufacturerId was null or undefined when calling fetchDevicesForManufacturer.');
+        }
+        if (deviceType === null || deviceType === undefined) {
+            throw new Error('Required parameter deviceType was null or undefined when calling fetchDevicesForManufacturer.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearerAuth) required
+        localVarCredential = this.configuration.lookupCredential('bearerAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/interface/${this.configuration.encodeParam({name: "manufacturerId", value: manufacturerId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/devices/${this.configuration.encodeParam({name: "deviceType", value: deviceType, in: "path", style: "simple", explode: false, dataType: "'INVERTER'", dataFormat: undefined})}`;
+        return this.httpClient.request<Array<DeviceYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Lade alle Schnittstellen erstellten Schnittstellen konfigurationen
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchInterfaceConfigs(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<InterfaceConfigDao>>;
-    public fetchInterfaceConfigs(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<InterfaceConfigDao>>>;
-    public fetchInterfaceConfigs(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<InterfaceConfigDao>>>;
+    public fetchInterfaceConfigs(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<InterfaceConfig>>;
+    public fetchInterfaceConfigs(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<InterfaceConfig>>>;
+    public fetchInterfaceConfigs(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<InterfaceConfig>>>;
     public fetchInterfaceConfigs(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -281,7 +354,7 @@ export class InterfaceControllerService {
         }
 
         let localVarPath = `/interface/config`;
-        return this.httpClient.request<Array<InterfaceConfigDao>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Array<InterfaceConfig>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -298,9 +371,9 @@ export class InterfaceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchInterfaces(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Interface>>;
-    public fetchInterfaces(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Interface>>>;
-    public fetchInterfaces(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Interface>>>;
+    public fetchInterfaces(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<InterfaceYaml>>;
+    public fetchInterfaces(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<InterfaceYaml>>>;
+    public fetchInterfaces(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<InterfaceYaml>>>;
     public fetchInterfaces(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -342,7 +415,68 @@ export class InterfaceControllerService {
         }
 
         let localVarPath = `/interface`;
-        return this.httpClient.request<Array<Interface>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Array<InterfaceYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Lade alle verfügbaren Hersteller
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public fetchManufactures(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<ManufacturerYaml>>;
+    public fetchManufactures(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<ManufacturerYaml>>>;
+    public fetchManufactures(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<ManufacturerYaml>>>;
+    public fetchManufactures(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearerAuth) required
+        localVarCredential = this.configuration.lookupCredential('bearerAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/interface/manufacturer`;
+        return this.httpClient.request<Array<ManufacturerYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

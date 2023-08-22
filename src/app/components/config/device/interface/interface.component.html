@@ -2,23 +2,77 @@
   <h2>Schnittstellen konfigurieren</h2>
   <app-add-button (add)="createInterfaceConfig()"></app-add-button>
 
-  <p-table [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table *ngIf="interfaceConfigs.length > 0" [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
-        <th>Protokoll</th>
-        <th>Typ</th>
+        <th>Beschreibung</th>
+        <th>Typ/Port</th>
         <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>
       <tr>
-        <td>{{ item.protocolName }}</td>
+        <td>{{ item.description }}</td>
         <td>{{ item.type }}</td>
         <td>
-          <button pButton type="button" icon="pi pi-trash" (click)="onRowDelete(item)"
+          <button pButton type="button" icon="pi pi-trash" (click)="onInterfaceRowDelete(item)"
                   class="p-button-rounded p-button-text p-button-danger mr-2"></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
+</div>
+
+<div class="card">
+  <h2>Geräte konfigurieren</h2>
+  <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
+    <ng-template pTemplate>
+      <i class="pi pi-info-circle"></i>
+      <div class="ml-2">Bitte mindestens eine Schnittstelle konfigurieren, damit Geräte erstellt werden können.</div>
+    </ng-template>
+  </p-messages>
+
+  <app-add-button *ngIf="interfaceConfigs.length > 0" (add)="createDevice()"></app-add-button>
+
+  <p-table [value]="devices" sortField="unitId" sortMode="single" [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="interfaceConfig.type"
+           [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Slave-ID</th>
+        <th>Gerätetyp</th>
+        <th>Erstellt am</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="groupheader" let-device>
+      <tr pRowGroupHeader>
+        <td colspan="4">
+          <span class="font-bold">{{device.interfaceConfig.type}} - {{ device.interfaceConfig.description }}</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="groupfooter" let-device>
+      <tr>
+        <td colspan="5" class="text-right font-bold pr-6">Anzahl an Geräten: {{calculateDeviceTotal(device.interfaceConfig)}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">
+      <tr>
+        <td>
+          {{device.name}}
+        </td>
+        <td>
+          {{device.unitId}}
+        </td>
+        <td>
+          {{device.deviceType}}
+        </td>
+
+        <td>
+          {{device.createdAt | date: 'dd.MM.yyyy HH:mm'}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
 </div>

@@ -9,22 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ManufacturerYaml } from './manufacturerYaml';
 
 
-export interface InterfaceConfigDao { 
-    id?: number;
-    /**
-     * Die Schnittstellen Typen
-     */
-    type?: InterfaceConfigDao.TypeEnum;
-    description?: string;
+export interface MetaDataYaml { 
+    manufacturer?: ManufacturerYaml;
 }
-export namespace InterfaceConfigDao {
-    export type TypeEnum = 'RS485' | 'TCP';
-    export const TypeEnum = {
-        Rs485: 'RS485' as TypeEnum,
-        Tcp: 'TCP' as TypeEnum
-    };
-}
-
 

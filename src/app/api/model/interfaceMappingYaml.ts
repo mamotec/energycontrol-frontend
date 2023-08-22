@@ -9,22 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { RegisterMapping } from './registerMapping';
 
 
-export interface InterfaceConfigDao { 
-    id?: number;
-    /**
-     * Die Schnittstellen Typen
-     */
-    type?: InterfaceConfigDao.TypeEnum;
-    description?: string;
+export interface InterfaceMappingYaml { 
+    power?: RegisterMapping;
+    powerReduction?: RegisterMapping;
 }
-export namespace InterfaceConfigDao {
-    export type TypeEnum = 'RS485' | 'TCP';
-    export const TypeEnum = {
-        Rs485: 'RS485' as TypeEnum,
-        Tcp: 'TCP' as TypeEnum
-    };
-}
-
 

@@ -15,11 +15,7 @@ export class IdentificationComponent {
   }
 
   startScan() {
-    this.deviceService.deviceScan().subscribe(() => {
-      if (this.deviceListComponent){
-        this.deviceListComponent.loadDevices();
-      }
-    });
+
   }
 
 }

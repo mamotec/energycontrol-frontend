@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DialogService} from "primeng/dynamicdialog";
 import {CreateInterfaceConfigComponent} from "./create-interface/create-interface-config.component";
 import {MessageService} from "primeng/api";
-import {InterfaceConfigDao, InterfaceControllerService} from "../../../../api";
+import {Device, DeviceControllerService, InterfaceConfig, InterfaceControllerService} from "../../../../api";
+import {CreateDeviceComponent} from "../create-device/create-device.component";
 
 @Component({
   selector: 'app-interface',
@@ -11,18 +12,21 @@ import {InterfaceConfigDao, InterfaceControllerService} from "../../../../api";
   providers: [DialogService]
 })
 export class InterfaceComponent implements OnInit {
-  interfaceConfigs: InterfaceConfigDao[] = [];
-
+  interfaceConfigs: InterfaceConfig[] = [];
+  devices: Device[] = [];
 
   constructor(private dialogRef: DialogService,
               private messageService: MessageService,
-              private interfaceConfigService: InterfaceControllerService) {
+              private interfaceConfigService: InterfaceControllerService,
+              private deviceControllerService: DeviceControllerService) {
   }
 
   ngOnInit(): void {
     this.loadInterfaces();
+    this.loadDevices();
   }
 
+  // region Schnittstellen
   loadInterfaces() {
     this.interfaceConfigService.fetchInterfaceConfigs().subscribe({
       next: (items) => {
@@ -35,25 +39,72 @@ export class InterfaceComponent implements OnInit {
     const createDialog = this.dialogRef.open(CreateInterfaceConfigComponent, {
       header: 'Schnittstelle definieren',
       width: '30%',
-      height: '50%',
+      height: '40%',
       maximizable: true
     })
 
     createDialog.onClose.subscribe(() => {
-      this.messageService.add({ severity: 'success', summary: 'Erfolgreich'});
       this.loadInterfaces();
     })
 
   }
 
-  onRowDelete(interfaceToDelete: InterfaceConfigDao) {
+  onInterfaceRowDelete(interfaceToDelete: InterfaceConfig) {
     this.interfaceConfigService.deleteInterfaceConfig(interfaceToDelete.id as number).subscribe({
       next: () => {
         this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
         this.loadInterfaces();
       }
     });
+  }
+
+  // endregion
+
+  // region Geräte
+
+  loadDevices() {
+    this.deviceControllerService.fetchDevices().subscribe({
+      next: (items) => {
+        this.devices = items;
+      }
+    })
+  }
+
+  createDevice() {
+    const createDialog = this.dialogRef.open(CreateDeviceComponent, {
+      data: {
+        interfaceConfigs: this.interfaceConfigs
+      },
+      header: 'Gerät definieren',
+      width: '40%',
+      height: '60%',
+      maximizable: true
+    })
+
+    createDialog.onClose.subscribe(() => {
+      this.loadDevices();
+    })
 
   }
+
+  calculateDeviceTotal(interfaceConfig: InterfaceConfig) {
+    let total = 0;
+
+    if (this.devices) {
+      for (let d of this.devices) {
+        if (d.interfaceConfig === interfaceConfig) {
+          total++;
+        }
+      }
+    }
+
+    return total;
+  }
+
+  // endregion
+
+
+
+
 
 }

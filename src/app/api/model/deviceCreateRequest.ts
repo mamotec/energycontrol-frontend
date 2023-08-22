@@ -13,7 +13,18 @@ import { InterfaceConfig } from './interfaceConfig';
 
 
 export interface DeviceCreateRequest { 
-    unitId?: number;
     interfaceConfig?: InterfaceConfig;
+    unitId?: number;
+    manufacturerId?: number;
+    deviceType?: DeviceCreateRequest.DeviceTypeEnum;
+    name?: string;
+    deviceId?: number;
 }
+export namespace DeviceCreateRequest {
+    export type DeviceTypeEnum = 'INVERTER';
+    export const DeviceTypeEnum = {
+        Inverter: 'INVERTER' as DeviceTypeEnum
+    };
+}
+
 

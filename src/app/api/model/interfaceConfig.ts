@@ -15,13 +15,11 @@ export interface InterfaceConfig {
     id?: number;
     createdAt?: string;
     updatedAt?: string;
-    protocolId?: number;
-    protocolName?: string;
     /**
      * Die Schnittstellen Typen
      */
     type?: InterfaceConfig.TypeEnum;
-    port?: string;
+    description?: string;
 }
 export namespace InterfaceConfig {
     export type TypeEnum = 'RS485' | 'TCP';

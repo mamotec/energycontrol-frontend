@@ -9,21 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { InterfaceConfig } from './interfaceConfig';
+import { InterfaceConnectionYaml } from './interfaceConnectionYaml';
+import { InterfaceMappingYaml } from './interfaceMappingYaml';
 
 
-export interface Device { 
-    id?: number;
-    createdAt?: string;
-    updatedAt?: string;
-    interfaceConfig?: InterfaceConfig;
-    name?: string;
-    manufacturerId?: number;
+export interface DeviceYaml { 
     deviceId?: number;
-    deviceType?: Device.DeviceTypeEnum;
-    unitId: number;
+    deviceType?: DeviceYaml.DeviceTypeEnum;
+    name?: string;
+    connection?: InterfaceConnectionYaml;
+    mapping?: InterfaceMappingYaml;
 }
-export namespace Device {
+export namespace DeviceYaml {
     export type DeviceTypeEnum = 'INVERTER';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum

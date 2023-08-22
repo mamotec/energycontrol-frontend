@@ -11,20 +11,8 @@
  */
 
 
-export interface InterfaceConfigDao { 
-    id?: number;
-    /**
-     * Die Schnittstellen Typen
-     */
-    type?: InterfaceConfigDao.TypeEnum;
-    description?: string;
+export interface ManufacturerYaml { 
+    manufacturerId?: number;
+    manufacturer?: string;
 }
-export namespace InterfaceConfigDao {
-    export type TypeEnum = 'RS485' | 'TCP';
-    export const TypeEnum = {
-        Rs485: 'RS485' as TypeEnum,
-        Tcp: 'TCP' as TypeEnum
-    };
-}
-
 

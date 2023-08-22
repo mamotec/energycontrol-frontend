@@ -36,6 +36,9 @@ import {ApiService} from "./service/api.service";
 import {environment} from "../environments/environment";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import { DeviceListComponent } from './components/config/device/device-list/device-list.component';
+import {MessagesModule} from "primeng/messages";
+import { CreateDeviceComponent } from './components/config/device/create-device/create-device.component';
+import {InputNumberModule} from "primeng/inputnumber";
 
 @NgModule({
   declarations: [
@@ -51,30 +54,33 @@ import { DeviceListComponent } from './components/config/device/device-list/devi
     AddButtonComponent,
     CreateInterfaceConfigComponent,
     DeviceListComponent,
+    CreateDeviceComponent,
   ],
-  imports: [
-    ApiModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    FormsModule,
-    ButtonModule,
-    CheckboxModule,
-    RippleModule,
-    MegaMenuModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    MatMenuModule,
-    AppLayoutModule,
-    TableModule,
-    MatIconModule,
-    DropdownModule,
-    ToastModule,
-    AutoCompleteModule
-  ],
+    imports: [
+        ApiModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        CheckboxModule,
+        RippleModule,
+        MegaMenuModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatSidenavModule,
+        MatMenuModule,
+        AppLayoutModule,
+        TableModule,
+        MatIconModule,
+        DropdownModule,
+        ToastModule,
+        AutoCompleteModule,
+        MessagesModule,
+        InputNumberModule
+    ],
   providers: [
     {
       provide: Configuration,
