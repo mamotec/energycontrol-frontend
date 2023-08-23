@@ -22,6 +22,7 @@ export interface Device {
     deviceId?: number;
     deviceType?: Device.DeviceTypeEnum;
     unitId: number;
+    model?: string;
 }
 export namespace Device {
     export type DeviceTypeEnum = 'INVERTER';

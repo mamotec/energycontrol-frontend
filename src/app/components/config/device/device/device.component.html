@@ -22,13 +22,14 @@
       <tr>
         <th>Name</th>
         <th>Slave-ID</th>
+        <th>Modell</th>
         <th>Gerätetyp</th>
         <th>Erstellt am</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="groupheader" let-device>
       <tr pRowGroupHeader>
-        <td colspan="4">
+        <td colspan="5">
           <span class="font-bold">{{device.interfaceConfig.type}} - {{ device.interfaceConfig.description }}</span>
         </td>
       </tr>
@@ -46,6 +47,9 @@
         </td>
         <td>
           {{device.unitId}}
+        </td>
+        <td>
+          {{device.model}}
         </td>
         <td>
           {{device.deviceType}}
