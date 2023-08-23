@@ -42,6 +42,8 @@ import { DeviceComponent } from './components/config/device/device/device.compon
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import { DeleteDialogComponent } from './components/utils/delete-dialog/delete-dialog.component';
 import {DialogService} from "primeng/dynamicdialog";
+import { HealthCheckComponent } from './components/health/health-check/health-check.component';
+import {ChipModule} from "primeng/chip";
 
 @NgModule({
   declarations: [
@@ -59,33 +61,35 @@ import {DialogService} from "primeng/dynamicdialog";
     CreateDeviceComponent,
     DeviceComponent,
     DeleteDialogComponent,
+    HealthCheckComponent,
   ],
-    imports: [
-        ApiModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        InputTextModule,
-        FormsModule,
-        ButtonModule,
-        CheckboxModule,
-        RippleModule,
-        MegaMenuModule,
-        BrowserAnimationsModule,
-        MatSlideToggleModule,
-        MatSidenavModule,
-        MatMenuModule,
-        AppLayoutModule,
-        TableModule,
-        MatIconModule,
-        DropdownModule,
-        ToastModule,
-        AutoCompleteModule,
-        MessagesModule,
-        InputNumberModule,
-        ConfirmDialogModule
-    ],
+  imports: [
+    ApiModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    FormsModule,
+    ButtonModule,
+    CheckboxModule,
+    RippleModule,
+    MegaMenuModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatMenuModule,
+    AppLayoutModule,
+    TableModule,
+    MatIconModule,
+    DropdownModule,
+    ToastModule,
+    AutoCompleteModule,
+    MessagesModule,
+    InputNumberModule,
+    ConfirmDialogModule,
+    ChipModule
+  ],
   providers: [
     {
       provide: Configuration,

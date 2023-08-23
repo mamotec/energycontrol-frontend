@@ -9,6 +9,7 @@ import {DayDataComponent} from "./components/yield-data/day-data/day-data.compon
 import {WeekDataComponent} from "./components/yield-data/week-data/week-data.component";
 import {InterfaceComponent} from "./components/config/interface/interface.component";
 import {DeviceComponent} from "./components/config/device/device/device.component";
+import {HealthCheckComponent} from "./components/health/health-check/health-check.component";
 
 const routes: Routes = [
   // App routes
@@ -44,6 +45,11 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
+      // Healtcheck
+      {
+        path: 'health',
+        component: HealthCheckComponent,
+      }
     ]
   },
 
