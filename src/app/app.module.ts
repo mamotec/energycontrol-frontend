@@ -29,7 +29,7 @@ import {CreateInterfaceConfigComponent} from './components/config/interface/crea
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {ToastErrorHandler} from "./handler/toast-error-handler";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 import {ApiModule, Configuration} from "./api";
 import {ApiService} from "./service/api.service";
 import {environment} from "../environments/environment";
@@ -39,6 +39,9 @@ import {MessagesModule} from "primeng/messages";
 import { CreateDeviceComponent } from './components/config/device/create-device/create-device.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import { DeviceComponent } from './components/config/device/device/device.component';
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { DeleteDialogComponent } from './components/utils/delete-dialog/delete-dialog.component';
+import {DialogService} from "primeng/dynamicdialog";
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { DeviceComponent } from './components/config/device/device/device.compon
     DeviceListComponent,
     CreateDeviceComponent,
     DeviceComponent,
+    DeleteDialogComponent,
   ],
     imports: [
         ApiModule,
@@ -79,7 +83,8 @@ import { DeviceComponent } from './components/config/device/device/device.compon
         ToastModule,
         AutoCompleteModule,
         MessagesModule,
-        InputNumberModule
+        InputNumberModule,
+        ConfirmDialogModule
     ],
   providers: [
     {
@@ -94,7 +99,7 @@ import { DeviceComponent } from './components/config/device/device/device.compon
       multi: false
     },
     {provide: ErrorHandler, useClass: ToastErrorHandler},
-    MessageService,
+    MessageService, ConfirmationService, DialogService
   ],
 
   bootstrap: [AppComponent]
