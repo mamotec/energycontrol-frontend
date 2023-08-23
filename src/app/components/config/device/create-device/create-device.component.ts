@@ -65,6 +65,8 @@ export class CreateDeviceComponent implements OnInit {
       next: () => {
         this.ref.close();
         this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
+      }, error: (err) => {
+        this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
       }
     })
   }
