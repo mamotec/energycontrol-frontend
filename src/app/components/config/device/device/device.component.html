@@ -20,6 +20,7 @@
            [tableStyle]="{'min-width': '60rem'}">
     <ng-template pTemplate="header">
       <tr>
+        <th>Status</th>
         <th>Name</th>
         <th>Slave-ID</th>
         <th>Modell</th>
@@ -30,19 +31,23 @@
     </ng-template>
     <ng-template pTemplate="groupheader" let-device>
       <tr pRowGroupHeader>
-        <td colspan="6">
+        <td colspan="7">
           <span class="font-bold">{{device.interfaceConfig.type}} - {{ device.interfaceConfig.description }}</span>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="groupfooter" let-device>
       <tr>
-        <td colspan="6" class="text-right font-bold pr-6">Anzahl an
+        <td colspan="7" class="text-right font-bold pr-6">Anzahl an
           Geräten: {{calculateDeviceTotal(device.interfaceConfig)}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">
       <tr>
+        <td>
+          <p-chip *ngIf="device.active" label="Erreichbar" image="assets/images/green_dot.png"/>
+          <p-chip *ngIf="!device.active" label="Nicht Erreichbar" image="assets/images/red_dot.png"/>
+        </td>
         <td>
           {{device.name}}
         </td>

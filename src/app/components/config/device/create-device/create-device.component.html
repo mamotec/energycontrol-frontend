@@ -1,4 +1,10 @@
 <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+  <p-messages severity="info">
+    <ng-template pTemplate>
+      <i class="pi pi-info-circle"></i>
+      <div class="ml-2">Das Gerät wird erst als erreichbar eingestuft, wenn Daten empfangen sowie gespeichert werden können.</div>
+    </ng-template>
+  </p-messages>
 
   <!-- Beschreibung -->
   <div class="field">
@@ -14,8 +20,11 @@
   <!-- Schnittstellen Konfiguration -->
   <div class="field">
     <label for="interfaceConfig" class="block text-900 font-light mb-2">Schnittstelle</label>
-    <p-dropdown id="interfaceConfig" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs" optionLabel="type"
-                formControlName="interfaceConfig" class="w-full"></p-dropdown>
+    <p-dropdown id="interfaceConfig" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs"
+                formControlName="interfaceConfig" class="w-full">
+      <ng-template pTemplate="item" let-option><span>{{option.type}} - {{option.description}}</span></ng-template>
+
+    </p-dropdown>
     <div class="p-error"
          *ngIf="deviceForm.controls['interfaceConfig'].touched && deviceForm.controls['interfaceConfig'].errors?.['required']">
       Bitte wählen Sie eine Schnittstellen typen aus.
@@ -66,7 +75,7 @@
   <!-- Modell -->
   <div class="field">
     <label for="deviceId" class="block text-900 font-light mb-2">Modell</label>
-    <p-dropdown id="deviceId" placeholder="Modell auswählen" [options]="models" optionLabel="name" optionValue="deviceId"
+    <p-dropdown id="deviceId" placeholder="Modell auswählen" [options]="models" optionLabel="name" optionValue="deviceId" emptyMessage="Nichts gefunden"
                 formControlName="deviceId" class="w-full"></p-dropdown>
     <div class="p-error"
          *ngIf="deviceForm.controls['deviceId'].touched && deviceForm.controls['deviceId'].errors?.['required']">
