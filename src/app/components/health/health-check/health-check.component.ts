@@ -13,11 +13,13 @@ export class HealthCheckComponent implements OnInit {
   redDot: string = "assets/images/red_dot.png";
 
   nodeRedStatus: string = this.redDot;
+  backendStatus: string = this.redDot;
 
 
   constructor(private deviceService: DeviceControllerService) {
     this.deviceService.isServiceAvailable().subscribe({
       next: (result) => {
+        this.backendStatus = this.greenDot;
         if (result) {
           this.nodeRedStatus = this.greenDot;
         } else {
