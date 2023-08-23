@@ -45,8 +45,8 @@
     <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">
       <tr>
         <td>
-          <p-chip *ngIf="device.active" label="Erreichbar" image="assets/images/green_dot.png"/>
-          <p-chip *ngIf="!device.active" label="Nicht Erreichbar" image="assets/images/red_dot.png"/>
+          <p-chip *ngIf="device.active" label="Erreichbar" image="assets/images/green_dot.png" tooltipPosition="bottom" pTooltip="Daten vom Gerät werden empfangen. "/>
+          <p-chip *ngIf="!device.active" label="Nicht Erreichbar" image="assets/images/red_dot.png" tooltipPosition="bottom" pTooltip="Bitte überprüfen Sie die Konfiguration des Gerätes. Das Geräte wird erst aktiv geschalten, wenn das Gerät erreichbar ist."/>
         </td>
         <td>
           {{device.name}}
