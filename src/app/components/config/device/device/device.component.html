@@ -1,29 +1,4 @@
 <div class="card">
-  <h2>Schnittstellen konfigurieren</h2>
-  <app-add-button (add)="createInterfaceConfig()"></app-add-button>
-
-  <p-table *ngIf="interfaceConfigs.length > 0" [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Beschreibung</th>
-        <th>Typ/Port</th>
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-item>
-      <tr>
-        <td>{{ item.description }}</td>
-        <td>{{ item.type }}</td>
-        <td>
-          <button pButton type="button" icon="pi pi-trash" (click)="onInterfaceRowDelete(item)"
-                  class="p-button-rounded p-button-text p-button-danger mr-2"></button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
-
-<div class="card">
   <h2>Geräte konfigurieren</h2>
   <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
     <ng-template pTemplate>
@@ -34,7 +9,14 @@
 
   <app-add-button *ngIf="interfaceConfigs.length > 0" (add)="createDevice()"></app-add-button>
 
-  <p-table [value]="devices" sortField="unitId" sortMode="single" [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="interfaceConfig.type"
+  <p-table *ngIf="interfaceConfigs.length > 0"
+           [value]="devices"
+           sortField="unitId"
+           sortMode="single"
+           [scrollable]="true"
+           scrollHeight="400px"
+           rowGroupMode="subheader"
+           groupRowsBy="interfaceConfig.description"
            [tableStyle]="{'min-width': '60rem'}">
     <ng-template pTemplate="header">
       <tr>
@@ -53,7 +35,8 @@
     </ng-template>
     <ng-template pTemplate="groupfooter" let-device>
       <tr>
-        <td colspan="5" class="text-right font-bold pr-6">Anzahl an Geräten: {{calculateDeviceTotal(device.interfaceConfig)}}</td>
+        <td colspan="5" class="text-right font-bold pr-6">Anzahl an
+          Geräten: {{calculateDeviceTotal(device.interfaceConfig)}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">

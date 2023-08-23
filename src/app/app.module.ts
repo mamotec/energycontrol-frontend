@@ -21,12 +21,11 @@ import {AppLayoutModule} from "./layout/app.layout.module";
 import {CurrentPowerComponent} from './components/yield-data/current-power/current-power.component';
 import {DayDataComponent} from './components/yield-data/day-data/day-data.component';
 import {WeekDataComponent} from './components/yield-data/week-data/week-data.component';
-import {InterfaceComponent} from './components/config/device/interface/interface.component';
-import {IdentificationComponent} from './components/config/identification/identification.component';
+import {InterfaceComponent} from './components/config/interface/interface.component';
 import {TableModule} from "primeng/table";
 import {AddButtonComponent} from './components/utils/add-button/add-button.component';
 import {MatIconModule} from "@angular/material/icon";
-import {CreateInterfaceConfigComponent} from './components/config/device/interface/create-interface/create-interface-config.component';
+import {CreateInterfaceConfigComponent} from './components/config/interface/create-interface/create-interface-config.component';
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {ToastErrorHandler} from "./handler/toast-error-handler";
@@ -39,6 +38,7 @@ import { DeviceListComponent } from './components/config/device/device-list/devi
 import {MessagesModule} from "primeng/messages";
 import { CreateDeviceComponent } from './components/config/device/create-device/create-device.component';
 import {InputNumberModule} from "primeng/inputnumber";
+import { DeviceComponent } from './components/config/device/device/device.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +50,11 @@ import {InputNumberModule} from "primeng/inputnumber";
     DayDataComponent,
     WeekDataComponent,
     InterfaceComponent,
-    IdentificationComponent,
     AddButtonComponent,
     CreateInterfaceConfigComponent,
     DeviceListComponent,
     CreateDeviceComponent,
+    DeviceComponent,
   ],
     imports: [
         ApiModule,

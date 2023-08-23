@@ -7,8 +7,8 @@ import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {CurrentPowerComponent} from "./components/yield-data/current-power/current-power.component";
 import {DayDataComponent} from "./components/yield-data/day-data/day-data.component";
 import {WeekDataComponent} from "./components/yield-data/week-data/week-data.component";
-import {InterfaceComponent} from "./components/config/device/interface/interface.component";
-import {IdentificationComponent} from "./components/config/identification/identification.component";
+import {InterfaceComponent} from "./components/config/interface/interface.component";
+import {DeviceComponent} from "./components/config/device/device/device.component";
 
 const routes: Routes = [
   // App routes
@@ -37,8 +37,8 @@ const routes: Routes = [
         component: InterfaceComponent,
       },
       {
-        path: 'identification',
-        component: IdentificationComponent,
+        path: 'device',
+        component: DeviceComponent,
       },
       {
         path: 'dashboard',

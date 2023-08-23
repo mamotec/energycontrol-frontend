@@ -29,12 +29,8 @@ export class AppMenuComponent implements OnInit {
       {
         label: 'Konfiguration',
         items: [
-          {
-            label: 'Geräte', icon: 'pi pi-fw pi-bolt', items: [
-              {label: 'Definition', routerLink: ['/interface']},
-              {label: 'Erkennung', routerLink: ['/identification']}
-            ]
-          },
+          {label: 'Schnittstellen', routerLink: ['/interface']},
+          {label: 'Geräte', routerLink: ['/device']},
         ]
       },
     ];

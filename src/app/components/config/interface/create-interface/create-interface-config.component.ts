@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {InterfaceControllerService} from "../../../../../api";
-import {InterfaceConfig} from "../../../../../api/model/interfaceConfig";
+import {InterfaceControllerService} from "../../../../api";
+import {InterfaceConfig} from "../../../../api/model/interfaceConfig";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 
