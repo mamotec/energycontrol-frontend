@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://raspberrypi:8080',
+  apiUrl: 'http://backend-app:8080',
 };
