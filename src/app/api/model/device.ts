@@ -22,6 +22,7 @@ export interface Device {
     deviceId?: number;
     deviceType?: Device.DeviceTypeEnum;
     unitId: number;
+    active: boolean;
     model?: string;
 }
 export namespace Device {

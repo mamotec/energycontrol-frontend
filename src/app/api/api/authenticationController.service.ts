@@ -156,7 +156,7 @@ export class AuthenticationControllerService {
             }
         }
 
-        let localVarPath = `/auth/authenticate`;
+        let localVarPath = `/api/auth/authenticate`;
         return this.httpClient.request<AuthenticationResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -231,7 +231,7 @@ export class AuthenticationControllerService {
             }
         }
 
-        let localVarPath = `/auth/register`;
+        let localVarPath = `/api/auth/register`;
         return this.httpClient.request<AuthenticationResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,

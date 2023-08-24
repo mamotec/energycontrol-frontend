@@ -158,7 +158,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/config`;
+        let localVarPath = `/api/interface/config`;
         return this.httpClient.request<InterfaceConfig>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -223,7 +223,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/config/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        let localVarPath = `/api/interface/config/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
         return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -292,7 +292,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/${this.configuration.encodeParam({name: "manufacturerId", value: manufacturerId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/devices/${this.configuration.encodeParam({name: "deviceType", value: deviceType, in: "path", style: "simple", explode: false, dataType: "'INVERTER'", dataFormat: undefined})}`;
+        let localVarPath = `/api/interface/${this.configuration.encodeParam({name: "manufacturerId", value: manufacturerId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/devices/${this.configuration.encodeParam({name: "deviceType", value: deviceType, in: "path", style: "simple", explode: false, dataType: "'INVERTER'", dataFormat: undefined})}`;
         return this.httpClient.request<Array<DeviceYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -353,7 +353,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/config`;
+        let localVarPath = `/api/interface/config`;
         return this.httpClient.request<Array<InterfaceConfig>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -414,7 +414,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface`;
+        let localVarPath = `/api/interface`;
         return this.httpClient.request<Array<InterfaceYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -475,7 +475,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/manufacturer`;
+        let localVarPath = `/api/interface/manufacturer`;
         return this.httpClient.request<Array<ManufacturerYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
