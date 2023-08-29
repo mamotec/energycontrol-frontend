@@ -6,8 +6,9 @@
       <div class="ml-2">Bitte mindestens eine Schnittstelle konfigurieren, damit Geräte erstellt werden können.</div>
     </ng-template>
   </p-messages>
-<p>TEST</p>
+
   <app-add-button *ngIf="interfaceConfigs.length > 0" (add)="createDevice()"></app-add-button>
+
   <p-table *ngIf="interfaceConfigs.length > 0"
            [value]="devices"
            sortField="unitId"
