@@ -95,7 +95,7 @@ import {ChipModule} from "primeng/chip";
       provide: Configuration,
       useFactory: (authService: ApiService) => new Configuration(
         {
-          basePath: '',
+          basePath: environment.apiUrl,
           accessToken: authService.GetAccessToken.bind(authService)
         }
       ),

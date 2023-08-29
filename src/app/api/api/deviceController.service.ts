@@ -156,7 +156,7 @@ export class DeviceControllerService {
             }
         }
 
-        let localVarPath = `/api/device`;
+        let localVarPath = `/device`;
         return this.httpClient.request<DeviceCreateResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -221,7 +221,7 @@ export class DeviceControllerService {
             }
         }
 
-        let localVarPath = `/api/device/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}`;
+        let localVarPath = `/device/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}`;
         return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -282,7 +282,7 @@ export class DeviceControllerService {
             }
         }
 
-        let localVarPath = `/api/device`;
+        let localVarPath = `/device`;
         return this.httpClient.request<Array<Device>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -343,7 +343,7 @@ export class DeviceControllerService {
             }
         }
 
-        let localVarPath = `/api/device/service`;
+        let localVarPath = `/device/service`;
         return this.httpClient.request<boolean>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,

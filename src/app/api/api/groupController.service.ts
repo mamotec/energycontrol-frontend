@@ -151,7 +151,7 @@ export class GroupControllerService {
             }
         }
 
-        let localVarPath = `/api/group`;
+        let localVarPath = `/group`;
         return this.httpClient.request<Group>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
