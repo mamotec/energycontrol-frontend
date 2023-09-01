@@ -21,9 +21,11 @@ export interface DeviceCreateRequest {
     deviceId?: number;
 }
 export namespace DeviceCreateRequest {
-    export type DeviceTypeEnum = 'INVERTER';
+    export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
     export const DeviceTypeEnum = {
-        Inverter: 'INVERTER' as DeviceTypeEnum
+        Inverter: 'INVERTER' as DeviceTypeEnum,
+        HybridInverter: 'HYBRID_INVERTER' as DeviceTypeEnum,
+        Battery: 'BATTERY' as DeviceTypeEnum
     };
 }
 
