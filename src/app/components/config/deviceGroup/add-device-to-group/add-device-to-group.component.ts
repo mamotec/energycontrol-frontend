@@ -34,8 +34,6 @@ export class AddDeviceToGroupComponent implements OnInit {
         this.validDevices = res;
       }
     });
-
-
   }
 
   addDevicesToGroup() {
