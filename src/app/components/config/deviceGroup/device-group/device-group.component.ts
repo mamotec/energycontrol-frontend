@@ -45,12 +45,25 @@ export class DeviceGroupComponent implements OnInit {
 
   }
 
-  addDeviceToGroup(group: Group) {
+  addDeviceToGroup(group: DeviceGroup) {
 
   }
 
 
-  deleteGroup(group: any) {
-
+  deleteGroup(group: DeviceGroup) {
+    this.confirmationService.confirm({
+      message: 'Wollen Sie die Gruppe wirklich löschen?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if (group != null) {
+          this.deviceGroupService.deleteGroup(group.id!).subscribe({
+            next: () => {
+              this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Gruppe gelöscht', life: 3000});
+              this.loadDeviceGroups();
+            }
+          })
+        }
+      }
+    });
   }
 }
