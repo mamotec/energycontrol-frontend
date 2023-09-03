@@ -31,6 +31,7 @@ export class AppMenuComponent implements OnInit {
         items: [
           {label: 'Schnittstellen', routerLink: ['/interface']},
           {label: 'Geräte', routerLink: ['/device']},
+          {label: 'Gruppen', routerLink: ['/group']},
         ]
       },
     ];

@@ -44,6 +44,8 @@ import { DeleteDialogComponent } from './components/utils/delete-dialog/delete-d
 import {DialogService} from "primeng/dynamicdialog";
 import { HealthCheckComponent } from './components/health/health-check/health-check.component';
 import {ChipModule} from "primeng/chip";
+import { DeviceGroupComponent } from './components/config/deviceGroup/device-group/device-group.component';
+import { CreateDeviceGroupComponent } from './components/config/deviceGroup/create-device-group/create-device-group.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import {ChipModule} from "primeng/chip";
     DeviceComponent,
     DeleteDialogComponent,
     HealthCheckComponent,
+    DeviceGroupComponent,
+    CreateDeviceGroupComponent,
   ],
   imports: [
     ApiModule,

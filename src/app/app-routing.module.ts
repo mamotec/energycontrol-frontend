@@ -10,6 +10,7 @@ import {WeekDataComponent} from "./components/yield-data/week-data/week-data.com
 import {InterfaceComponent} from "./components/config/interface/interface.component";
 import {DeviceComponent} from "./components/config/device/device/device.component";
 import {HealthCheckComponent} from "./components/health/health-check/health-check.component";
+import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group/device-group.component";
 
 const routes: Routes = [
   // App routes
@@ -32,7 +33,7 @@ const routes: Routes = [
         path: 'week-data',
         component: WeekDataComponent,
       },
-      // Konfiguration (Schnittstellen, Geräte)
+      // Konfiguration (Schnittstellen, Geräte, Gruppen)
       {
         path: 'interface',
         component: InterfaceComponent,
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'device',
         component: DeviceComponent,
+      },
+      {
+        path: 'group',
+        component: DeviceGroupComponent,
       },
       {
         path: 'dashboard',
