@@ -46,6 +46,7 @@ import { HealthCheckComponent } from './components/health/health-check/health-ch
 import {ChipModule} from "primeng/chip";
 import { DeviceGroupComponent } from './components/config/deviceGroup/device-group/device-group.component';
 import { CreateDeviceGroupComponent } from './components/config/deviceGroup/create-device-group/create-device-group.component';
+import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-device-to-group/add-device-to-group.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CreateDeviceGroupComponent } from './components/config/deviceGroup/crea
     HealthCheckComponent,
     DeviceGroupComponent,
     CreateDeviceGroupComponent,
+    AddDeviceToGroupComponent,
   ],
   imports: [
     ApiModule,
