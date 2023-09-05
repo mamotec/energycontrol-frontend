@@ -1,7 +1,7 @@
 <p-messages *ngIf="validDevices.length === 0" severity="info">
   <ng-template pTemplate>
     <i class="pi pi-info-circle"></i>
-    <div class="ml-2">Noch keine Geräte für diesen Gruppentypen verfügbar.</div>
+    <div class="ml-2">Noch keine Geräte für diesen Gruppentypen verfügbar, oder alle verfügbare Geräte sind schon einer Gruppe zugewiesen.</div>
   </ng-template>
 </p-messages>
 
@@ -9,6 +9,7 @@
          [value]="validDevices"
          [(selection)]="selectedDevices"
          sortField="unitId"
+         dataKey="id"
          sortMode="single"
          [scrollable]="true"
          scrollHeight="400px"

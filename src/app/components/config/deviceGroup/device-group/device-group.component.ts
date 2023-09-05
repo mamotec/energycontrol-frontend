@@ -72,7 +72,12 @@ export class DeviceGroupComponent implements OnInit {
         if (group != null) {
           this.deviceGroupService.deleteGroup(group.id!).subscribe({
             next: () => {
-              this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Gruppe gelöscht', life: 3000});
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Erfolgreich',
+                detail: 'Gruppe gelöscht',
+                life: 3000
+              });
               this.loadDeviceGroups();
             }
           })
@@ -81,20 +86,33 @@ export class DeviceGroupComponent implements OnInit {
     });
   }
 
-  deleteDeviceFromGroup(group: Group, device: Device) {
-    let req: DeviceLinkRequest = {
-      deviceIds: []
-    }
-    // @ts-ignore
-    req.deviceIds.push(device.id!);
-    // @ts-ignore
-    this.deviceGroupService.deleteDeviceFromGroup(group.id, req).subscribe({
-      next: () => {
-        this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Gerät entfernt', life: 3000});
-        this.loadDeviceGroups();
-      }, error: (err) => {
-        this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
+  deleteDeviceFromGroup(device: Device) {
+
+    this.confirmationService.confirm({
+      message: 'Wollen Sie das Gerät wirklich aus der Gruppe entfernen?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        let req: DeviceLinkRequest = {
+          deviceIds: []
+        }
+        // @ts-ignore
+        req.deviceIds.push(device.id!);
+        // @ts-ignore
+        this.deviceGroupService.deleteDeviceFromGroup(req).subscribe({
+          next: () => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Erfolgreich',
+              detail: 'Gerät entfernt',
+              life: 3000
+            });
+            this.loadDeviceGroups();
+          }, error: (err) => {
+            this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
+          }
+        })
       }
-    })
+    });
+
   }
 }

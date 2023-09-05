@@ -1,5 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Device, DeviceControllerService, DeviceGroup, DeviceGroupControllerService, DeviceLinkRequest} from "../../../../api";
+import {
+  Device,
+  DeviceControllerService,
+  DeviceGroup,
+  DeviceGroupControllerService,
+  DeviceLinkRequest
+} from "../../../../api";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 
@@ -34,6 +40,17 @@ export class AddDeviceToGroupComponent implements OnInit {
         this.validDevices = res;
       }
     });
+
+    this.validDevices
+      .forEach((device) => {
+        if (device.groupId != null)
+          this.selectedDevices.push(device)
+      })
+
+    this.validDevices = this.validDevices.filter((device) => device.groupId != null)
+
+    console.log(this.validDevices)
+    console.log(this.selectedDevices)
   }
 
   addDevicesToGroup() {

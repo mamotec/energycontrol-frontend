@@ -16,13 +16,16 @@
         <th>Name</th>
         <th>Gruppen typ</th>
         <th>Erstellt am</th>
+        <th style="width: 10rem">Anzahl Geräte</th>
         <th></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-group let-rowIndex="rowIndex">
+    <ng-template pTemplate="body" let-group let-expanded="expanded">
       <tr>
         <td>
-          <button type="button" pButton pRipple [pRowToggler]="group" class="p-button-text p-button-rounded p-button-plain"></button>
+          <button *ngIf="group.devices.length > 0" type="button" pButton pRipple [pRowToggler]="group"
+                  class="p-button-text p-button-rounded p-button-plain"
+                  [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
         </td>
         <td>
           {{group.name}}
@@ -35,7 +38,14 @@
         </td>
 
         <td style="text-align: center">
-          <button pButton type="button" icon="pi pi-server" (click)="addDeviceToGroup(group)" pTooltip="Geräte hinzufügen"
+          {{
+          group.devices.length
+          }}
+        </td>
+
+        <td style="text-align: center">
+          <button pButton type="button" icon="pi pi-server" (click)="addDeviceToGroup(group)"
+                  pTooltip="Geräte hinzufügen"
                   class="p-button-rounded p-button-text"></button>
 
           <button pButton type="button" icon="pi pi-trash" (click)="deleteGroup(group)"
@@ -76,7 +86,7 @@
                   </td>
 
                   <td>
-                    <button pButton type="button" icon="pi pi-trash" (click)="deleteDeviceFromGroup(group, device)"
+                    <button pButton type="button" icon="pi pi-trash" (click)="deleteDeviceFromGroup(device)"
                             class="p-button-rounded p-button-text p-button-danger mr-2"></button>
                   </td>
 
