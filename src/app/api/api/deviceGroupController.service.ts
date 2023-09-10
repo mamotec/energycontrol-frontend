@@ -21,6 +21,8 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { DeviceGroup } from '../model/deviceGroup';
 // @ts-ignore
+import { DeviceGroupCreate } from '../model/deviceGroupCreate';
+// @ts-ignore
 import { DeviceLinkRequest } from '../model/deviceLinkRequest';
 
 // @ts-ignore
@@ -173,16 +175,16 @@ export class DeviceGroupControllerService {
 
     /**
      * Erstelle eine neue Gruppe
-     * @param deviceGroup 
+     * @param deviceGroupCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createGroup(deviceGroup: DeviceGroup, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DeviceGroup>;
-    public createGroup(deviceGroup: DeviceGroup, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DeviceGroup>>;
-    public createGroup(deviceGroup: DeviceGroup, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DeviceGroup>>;
-    public createGroup(deviceGroup: DeviceGroup, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (deviceGroup === null || deviceGroup === undefined) {
-            throw new Error('Required parameter deviceGroup was null or undefined when calling createGroup.');
+    public createGroup(deviceGroupCreate: DeviceGroupCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DeviceGroup>;
+    public createGroup(deviceGroupCreate: DeviceGroupCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DeviceGroup>>;
+    public createGroup(deviceGroupCreate: DeviceGroupCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DeviceGroup>>;
+    public createGroup(deviceGroupCreate: DeviceGroupCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (deviceGroupCreate === null || deviceGroupCreate === undefined) {
+            throw new Error('Required parameter deviceGroupCreate was null or undefined when calling createGroup.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -236,7 +238,7 @@ export class DeviceGroupControllerService {
         return this.httpClient.request<DeviceGroup>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deviceGroup,
+                body: deviceGroupCreate,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

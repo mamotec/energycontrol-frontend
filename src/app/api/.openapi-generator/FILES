@@ -3,6 +3,7 @@ README.md
 api.module.ts
 api/api.ts
 api/authenticationController.service.ts
+api/configurationController.service.ts
 api/deviceController.service.ts
 api/deviceGroupController.service.ts
 api/interfaceController.service.ts
@@ -12,10 +13,12 @@ git_push.sh
 index.ts
 model/authenticationRequest.ts
 model/authenticationResponse.ts
+model/configuration.ts
 model/device.ts
 model/deviceCreateRequest.ts
 model/deviceCreateResponse.ts
 model/deviceGroup.ts
+model/deviceGroupCreate.ts
 model/deviceLinkRequest.ts
 model/deviceYaml.ts
 model/interfaceConfig.ts
