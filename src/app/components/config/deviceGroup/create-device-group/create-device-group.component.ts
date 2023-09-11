@@ -28,10 +28,12 @@ export class CreateDeviceGroupComponent {
     if (this.deviceGroupForm.invalid) {
       return;
     }
-
-    let req: DeviceGroup = {
-      name: this.deviceGroupForm.value.name,
-      type: this.deviceGroupForm.value.type.value,
+    let req = {}
+    if (this.deviceGroupForm.value.type.value == 'PLANT') {
+      req = {
+        name: this.deviceGroupForm.value.name,
+        type: this.deviceGroupForm.value.type.value,
+      }
     }
 
     this.deviceGroupService.createGroup(req).subscribe({

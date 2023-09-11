@@ -19,7 +19,7 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Configuration } from '../model/configuration';
+import { SystemConfiguration } from '../model/systemConfiguration';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -96,9 +96,9 @@ export class ConfigurationControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getConfiguration(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Configuration>;
-    public getConfiguration(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Configuration>>;
-    public getConfiguration(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Configuration>>;
+    public getConfiguration(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<SystemConfiguration>;
+    public getConfiguration(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<SystemConfiguration>>;
+    public getConfiguration(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<SystemConfiguration>>;
     public getConfiguration(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -140,7 +140,7 @@ export class ConfigurationControllerService {
         }
 
         let localVarPath = `/configuration`;
-        return this.httpClient.request<Configuration>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<SystemConfiguration>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -154,16 +154,16 @@ export class ConfigurationControllerService {
 
     /**
      * Aktualisiere Konfiguration
-     * @param configuration 
+     * @param systemConfiguration 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateConfiguration(configuration: Configuration, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Configuration>;
-    public updateConfiguration(configuration: Configuration, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Configuration>>;
-    public updateConfiguration(configuration: Configuration, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Configuration>>;
-    public updateConfiguration(configuration: Configuration, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (configuration === null || configuration === undefined) {
-            throw new Error('Required parameter configuration was null or undefined when calling updateConfiguration.');
+    public updateConfiguration(systemConfiguration: SystemConfiguration, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<SystemConfiguration>;
+    public updateConfiguration(systemConfiguration: SystemConfiguration, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<SystemConfiguration>>;
+    public updateConfiguration(systemConfiguration: SystemConfiguration, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<SystemConfiguration>>;
+    public updateConfiguration(systemConfiguration: SystemConfiguration, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (systemConfiguration === null || systemConfiguration === undefined) {
+            throw new Error('Required parameter systemConfiguration was null or undefined when calling updateConfiguration.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -214,10 +214,10 @@ export class ConfigurationControllerService {
         }
 
         let localVarPath = `/configuration`;
-        return this.httpClient.request<Configuration>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<SystemConfiguration>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: configuration,
+                body: systemConfiguration,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

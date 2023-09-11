@@ -12,7 +12,7 @@
 import { Device } from './device';
 
 
-export interface DeviceGroup { 
+export interface PlantDeviceGroup { 
     id?: number;
     createdAt?: string;
     updatedAt?: string;
@@ -21,9 +21,10 @@ export interface DeviceGroup {
     /**
      * Die Gruppen Typen
      */
-    type?: DeviceGroup.TypeEnum;
+    type?: PlantDeviceGroup.TypeEnum;
+    directMarketing?: boolean;
 }
-export namespace DeviceGroup {
+export namespace PlantDeviceGroup {
     export type TypeEnum = 'PLANT';
     export const TypeEnum = {
         Plant: 'PLANT' as TypeEnum

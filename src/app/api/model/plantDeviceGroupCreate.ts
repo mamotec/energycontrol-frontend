@@ -9,25 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { DeviceGroupCreate } from './deviceGroupCreate';
 import { Device } from './device';
 
 
-export interface DeviceGroup { 
-    id?: number;
-    createdAt?: string;
-    updatedAt?: string;
-    name?: string;
-    devices?: Array<Device>;
-    /**
-     * Die Gruppen Typen
-     */
-    type?: DeviceGroup.TypeEnum;
+export interface PlantDeviceGroupCreate extends DeviceGroupCreate { 
+    directMarketing?: boolean;
 }
-export namespace DeviceGroup {
-    export type TypeEnum = 'PLANT';
-    export const TypeEnum = {
-        Plant: 'PLANT' as TypeEnum
-    };
+export namespace PlantDeviceGroupCreate {
 }
 
 
