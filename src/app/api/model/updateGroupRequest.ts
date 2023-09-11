@@ -9,14 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { DeviceGroupCreate } from './deviceGroupCreate';
-import { PlantDeviceGroupCreate } from './plantDeviceGroupCreate';
+import { PlantDeviceGroupUpdate } from './plantDeviceGroupUpdate';
 import { Device } from './device';
+import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 
 /**
  * @type UpdateGroupRequest
  * @export
  */
-export type UpdateGroupRequest = DeviceGroupCreate | PlantDeviceGroupCreate;
+export type UpdateGroupRequest = DeviceGroupUpdate | PlantDeviceGroupUpdate;
 

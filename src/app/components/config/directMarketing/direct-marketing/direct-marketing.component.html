@@ -1,8 +1,11 @@
 <div class="card">
-  <p>It Works!</p>
+  <h2>Direktvermarktung</h2>
+
+  <p-selectButton (onOptionClick)="saveConfiguration()" [options]="stateOptions" [(ngModel)]="configuration.directMarketing" optionLabel="label" optionValue="value"></p-selectButton>
 </div>
 
 <div class="card">
+  <h2>Verwaltung</h2>
 
   <!-- Liste -->
   <p-pickList [source]="deviceGroups"

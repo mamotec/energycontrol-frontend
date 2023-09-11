@@ -19,13 +19,19 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { CreateGroupRequest } from '../model/createGroupRequest';
+// @ts-ignore
 import { DeviceGroupCreate } from '../model/deviceGroupCreate';
+// @ts-ignore
+import { DeviceGroupUpdate } from '../model/deviceGroupUpdate';
 // @ts-ignore
 import { DeviceLinkRequest } from '../model/deviceLinkRequest';
 // @ts-ignore
 import { GetAllGroups200ResponseInner } from '../model/getAllGroups200ResponseInner';
 // @ts-ignore
 import { PlantDeviceGroupCreate } from '../model/plantDeviceGroupCreate';
+// @ts-ignore
+import { PlantDeviceGroupUpdate } from '../model/plantDeviceGroupUpdate';
 // @ts-ignore
 import { UpdateGroupRequest } from '../model/updateGroupRequest';
 
@@ -453,16 +459,16 @@ export class DeviceGroupControllerService {
 
     /**
      * Aktualisiere eine Gruppe
-     * @param deviceGroupCreatePlantDeviceGroupCreate 
+     * @param deviceGroupUpdatePlantDeviceGroupUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<GetAllGroups200ResponseInner>;
-    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<GetAllGroups200ResponseInner>>;
-    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<GetAllGroups200ResponseInner>>;
-    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (deviceGroupCreatePlantDeviceGroupCreate === null || deviceGroupCreatePlantDeviceGroupCreate === undefined) {
-            throw new Error('Required parameter deviceGroupCreatePlantDeviceGroupCreate was null or undefined when calling updateGroup.');
+    public updateGroup(deviceGroupUpdatePlantDeviceGroupUpdate: DeviceGroupUpdate | PlantDeviceGroupUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<GetAllGroups200ResponseInner>;
+    public updateGroup(deviceGroupUpdatePlantDeviceGroupUpdate: DeviceGroupUpdate | PlantDeviceGroupUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<GetAllGroups200ResponseInner>>;
+    public updateGroup(deviceGroupUpdatePlantDeviceGroupUpdate: DeviceGroupUpdate | PlantDeviceGroupUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<GetAllGroups200ResponseInner>>;
+    public updateGroup(deviceGroupUpdatePlantDeviceGroupUpdate: DeviceGroupUpdate | PlantDeviceGroupUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (deviceGroupUpdatePlantDeviceGroupUpdate === null || deviceGroupUpdatePlantDeviceGroupUpdate === undefined) {
+            throw new Error('Required parameter deviceGroupUpdatePlantDeviceGroupUpdate was null or undefined when calling updateGroup.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -516,7 +522,7 @@ export class DeviceGroupControllerService {
         return this.httpClient.request<GetAllGroups200ResponseInner>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deviceGroupCreatePlantDeviceGroupCreate,
+                body: deviceGroupUpdatePlantDeviceGroupUpdate,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

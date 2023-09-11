@@ -49,6 +49,7 @@ import { CreateDeviceGroupComponent } from './components/config/deviceGroup/crea
 import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-device-to-group/add-device-to-group.component';
 import { DirectMarketingComponent } from './components/config/directMarketing/direct-marketing/direct-marketing.component';
 import {PickListModule} from "primeng/picklist";
+import {SelectButtonModule} from "primeng/selectbutton";
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import {PickListModule} from "primeng/picklist";
     InputNumberModule,
     ConfirmDialogModule,
     ChipModule,
-    PickListModule
+    PickListModule,
+    SelectButtonModule
   ],
   providers: [
     {

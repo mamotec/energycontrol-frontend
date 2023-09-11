@@ -1,7 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {DeviceGroup, DeviceGroupControllerService, PlantDeviceGroup, PlantDeviceGroupCreate} from "../../../../api";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {DialogService} from "primeng/dynamicdialog";
+import {
+  ConfigurationControllerService,
+  DeviceGroup,
+  DeviceGroupControllerService,
+  PlantDeviceGroup,
+  PlantDeviceGroupCreate,
+  PlantDeviceGroupUpdate,
+  SystemConfiguration
+} from "../../../../api";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-direct-marketing',
@@ -11,15 +18,17 @@ import {DialogService} from "primeng/dynamicdialog";
 export class DirectMarketingComponent implements OnInit {
   deviceGroups: DeviceGroup[] = [];
   directMarketingGroups: DeviceGroup[] = [];
+  configuration: SystemConfiguration = {directMarketing: false}
+  stateOptions: any[] = [{label: 'Aus', value: false}, {label: 'An', value: true}];
 
   constructor(private deviceGroupService: DeviceGroupControllerService,
-              private messageService: MessageService,
-              private confirmationService: ConfirmationService,
-              private dialogService: DialogService) {
+              private configurationService: ConfigurationControllerService,
+              private messageService: MessageService) {
   }
 
   ngOnInit(): void {
     this.loadDeviceGroups();
+    this.loadConfiguration();
   }
 
   loadDeviceGroups() {
@@ -34,7 +43,7 @@ export class DirectMarketingComponent implements OnInit {
   onMoveToTarget() {
     let hasError = false;
     this.directMarketingGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupCreate = {
+      let request: PlantDeviceGroupUpdate = {
         type: group.type,
         name: group.name,
         id: group.id,
@@ -58,7 +67,7 @@ export class DirectMarketingComponent implements OnInit {
   onMoveToSource() {
     let hasError = false;
     this.deviceGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupCreate = {
+      let request: PlantDeviceGroupUpdate = {
         type: group.type,
         name: group.name,
         id: group.id,
@@ -78,4 +87,21 @@ export class DirectMarketingComponent implements OnInit {
     }
   }
 
+  private loadConfiguration() {
+    this.configurationService.getConfiguration().subscribe({
+      next: (res) => {
+        this.configuration = res;
+      }
+    })
+  }
+
+  saveConfiguration() {
+    this.configurationService.updateConfiguration(this.configuration).subscribe({
+      next: () => {
+        this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Konfiguration gespeichert'});
+      }, error: (err) => {
+        this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
+      }
+    })
+  }
 }

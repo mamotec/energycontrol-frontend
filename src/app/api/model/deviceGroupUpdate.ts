@@ -13,13 +13,13 @@ import { Device } from './device';
 
 
 export interface DeviceGroupUpdate { 
-    id?: number;
     name?: string;
     devices?: Array<Device>;
     /**
      * Die Gruppen Typen
      */
     type?: DeviceGroupUpdate.TypeEnum;
+    id?: number;
 }
 export namespace DeviceGroupUpdate {
     export type TypeEnum = 'PLANT';

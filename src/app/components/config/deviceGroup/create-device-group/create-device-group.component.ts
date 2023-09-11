@@ -31,6 +31,7 @@ export class CreateDeviceGroupComponent {
     let req = {}
     if (this.deviceGroupForm.value.type.value == 'PLANT') {
       req = {
+        id: null,
         name: this.deviceGroupForm.value.name,
         type: this.deviceGroupForm.value.type.value,
       }

@@ -13,7 +13,6 @@ import { Device } from './device';
 
 
 export interface DeviceGroupCreate { 
-    id?: number;
     name?: string;
     devices?: Array<Device>;
     /**
