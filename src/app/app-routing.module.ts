@@ -11,6 +11,7 @@ import {InterfaceComponent} from "./components/config/interface/interface.compon
 import {DeviceComponent} from "./components/config/device/device/device.component";
 import {HealthCheckComponent} from "./components/health/health-check/health-check.component";
 import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group/device-group.component";
+import {DirectMarketingComponent} from "./components/config/directMarketing/direct-marketing/direct-marketing.component";
 
 const routes: Routes = [
   // App routes
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'group',
         component: DeviceGroupComponent,
+      },
+      {
+        path: 'direct-marketing',
+        component: DirectMarketingComponent,
       },
       {
         path: 'dashboard',

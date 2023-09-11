@@ -47,6 +47,8 @@ import {ChipModule} from "primeng/chip";
 import { DeviceGroupComponent } from './components/config/deviceGroup/device-group/device-group.component';
 import { CreateDeviceGroupComponent } from './components/config/deviceGroup/create-device-group/create-device-group.component';
 import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-device-to-group/add-device-to-group.component';
+import { DirectMarketingComponent } from './components/config/directMarketing/direct-marketing/direct-marketing.component';
+import {PickListModule} from "primeng/picklist";
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-d
     DeviceGroupComponent,
     CreateDeviceGroupComponent,
     AddDeviceToGroupComponent,
+    DirectMarketingComponent,
   ],
   imports: [
     ApiModule,
@@ -94,7 +97,8 @@ import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-d
     MessagesModule,
     InputNumberModule,
     ConfirmDialogModule,
-    ChipModule
+    ChipModule,
+    PickListModule
   ],
   providers: [
     {

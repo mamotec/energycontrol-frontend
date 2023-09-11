@@ -12,16 +12,16 @@
 import { Device } from './device';
 
 
-export interface DeviceGroupCreate { 
+export interface DeviceGroupUpdate { 
     id?: number;
     name?: string;
     devices?: Array<Device>;
     /**
      * Die Gruppen Typen
      */
-    type?: DeviceGroupCreate.TypeEnum;
+    type?: DeviceGroupUpdate.TypeEnum;
 }
-export namespace DeviceGroupCreate {
+export namespace DeviceGroupUpdate {
     export type TypeEnum = 'PLANT';
     export const TypeEnum = {
         Plant: 'PLANT' as TypeEnum

@@ -13,7 +13,6 @@ git_push.sh
 index.ts
 model/authenticationRequest.ts
 model/authenticationResponse.ts
-model/createGroupRequest.ts
 model/device.ts
 model/deviceCreateRequest.ts
 model/deviceCreateResponse.ts
@@ -35,5 +34,6 @@ model/plantDeviceGroupCreateAllOf.ts
 model/registerMapping.ts
 model/registerRequest.ts
 model/systemConfiguration.ts
+model/updateGroupRequest.ts
 param.ts
 variables.ts

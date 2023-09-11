@@ -3,7 +3,6 @@ import {DialogService} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {Device, DeviceGroup, DeviceGroupControllerService, DeviceLinkRequest} from "../../../../api";
 import {CreateDeviceGroupComponent} from "../create-device-group/create-device-group.component";
-import {Group} from "../../../../api/model/group";
 import {AddDeviceToGroupComponent} from "../add-device-to-group/add-device-to-group.component";
 
 @Component({

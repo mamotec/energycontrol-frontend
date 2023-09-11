@@ -1,0 +1,34 @@
+<div class="card">
+  <p>It Works!</p>
+</div>
+
+<div class="card">
+
+  <!-- Liste -->
+  <p-pickList [source]="deviceGroups"
+              [target]="directMarketingGroups"
+              sourceHeader="Gruppen"
+              targetHeader="Direktvermarktung"
+              [dragdrop]="true"
+              [responsive]="true"
+              [sourceStyle]="{ height: '30rem' }"
+              [targetStyle]="{ height: '30rem' }"
+              filterBy="name"
+              sourceFilterPlaceholder="Gruppennamen suchen"
+              targetFilterPlaceholder="Gruppennamen suchen"
+              (onMoveToTarget)="onMoveToTarget()"
+              (onMoveAllToTarget)="onMoveToTarget()"
+              (onMoveToSource)="onMoveToSource()"
+              (onMoveAllToSource)="onMoveToSource()">
+    <ng-template let-group pTemplate="item">
+      <h3 class="font-bold">{{ group.name }}</h3>
+      <div class="flex flex-wrap align-items-center gap-2 pt-2">
+        <div *ngFor="let d of group.devices">
+          <p-chip *ngIf="d.active" label="{{ d.name }}" image="assets/images/green_dot.png"/>
+          <p-chip *ngIf="!d.active" label="{{ d.name }}" image="assets/images/red_dot.png"/>
+        </div>
+      </div>
+    </ng-template>
+  </p-pickList>
+
+</div>

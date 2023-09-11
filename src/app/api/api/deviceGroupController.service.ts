@@ -19,8 +19,6 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { CreateGroupRequest } from '../model/createGroupRequest';
-// @ts-ignore
 import { DeviceGroupCreate } from '../model/deviceGroupCreate';
 // @ts-ignore
 import { DeviceLinkRequest } from '../model/deviceLinkRequest';
@@ -28,6 +26,8 @@ import { DeviceLinkRequest } from '../model/deviceLinkRequest';
 import { GetAllGroups200ResponseInner } from '../model/getAllGroups200ResponseInner';
 // @ts-ignore
 import { PlantDeviceGroupCreate } from '../model/plantDeviceGroupCreate';
+// @ts-ignore
+import { UpdateGroupRequest } from '../model/updateGroupRequest';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -442,6 +442,81 @@ export class DeviceGroupControllerService {
         return this.httpClient.request<Array<GetAllGroups200ResponseInner>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Aktualisiere eine Gruppe
+     * @param deviceGroupCreatePlantDeviceGroupCreate 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<GetAllGroups200ResponseInner>;
+    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<GetAllGroups200ResponseInner>>;
+    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<GetAllGroups200ResponseInner>>;
+    public updateGroup(deviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | PlantDeviceGroupCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (deviceGroupCreatePlantDeviceGroupCreate === null || deviceGroupCreatePlantDeviceGroupCreate === undefined) {
+            throw new Error('Required parameter deviceGroupCreatePlantDeviceGroupCreate was null or undefined when calling updateGroup.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearerAuth) required
+        localVarCredential = this.configuration.lookupCredential('bearerAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/group`;
+        return this.httpClient.request<GetAllGroups200ResponseInner>('put', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: deviceGroupCreatePlantDeviceGroupCreate,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

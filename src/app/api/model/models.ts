@@ -1,6 +1,5 @@
 export * from './authenticationRequest';
 export * from './authenticationResponse';
-export * from './createGroupRequest';
 export * from './device';
 export * from './deviceCreateRequest';
 export * from './deviceCreateResponse';
@@ -21,3 +20,4 @@ export * from './plantDeviceGroupCreateAllOf';
 export * from './registerMapping';
 export * from './registerRequest';
 export * from './systemConfiguration';
+export * from './updateGroupRequest';

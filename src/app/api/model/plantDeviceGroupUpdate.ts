@@ -10,22 +10,13 @@
  * Do not edit the class manually.
  */
 import { Device } from './device';
+import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 
-export interface DeviceGroupCreate { 
-    id?: number;
-    name?: string;
-    devices?: Array<Device>;
-    /**
-     * Die Gruppen Typen
-     */
-    type?: DeviceGroupCreate.TypeEnum;
+export interface PlantDeviceGroupUpdate extends DeviceGroupUpdate { 
+    directMarketing?: boolean;
 }
-export namespace DeviceGroupCreate {
-    export type TypeEnum = 'PLANT';
-    export const TypeEnum = {
-        Plant: 'PLANT' as TypeEnum
-    };
+export namespace PlantDeviceGroupUpdate {
 }
 
 
