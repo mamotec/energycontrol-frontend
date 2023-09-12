@@ -13,22 +13,13 @@ export class AppMenuComponent implements OnInit {
 
   ngOnInit() {
     this.model = [
-      {
-        label: 'Ertragsdaten',
-        items: [
-          {
-            label: 'Momentanwerte', icon: 'pi pi-fw pi-home', items: [
-              {label: 'Aktuelle Leistung', routerLink: ['/current-power']},
-              {label: 'Tageswerte', routerLink: ['/day-data']},
-              {label: 'Wochenwerte', routerLink: ['/week-data']},
 
-            ]
-          },
-        ]
-      },
       {
         label: 'Konfiguration',
         items: [
+          {
+            label: 'Dashboard',  routerLink: ['/dashboard']
+          },
           {label: 'Schnittstellen', routerLink: ['/interface']},
           {label: 'Geräte', routerLink: ['/device']},
           {label: 'Gruppen', routerLink: ['/group']},

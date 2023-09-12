@@ -4,14 +4,12 @@ import {AppLayoutComponent} from "./layout/app.layout.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {authGuard} from "./guard/auth.guard";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
-import {CurrentPowerComponent} from "./components/yield-data/current-power/current-power.component";
-import {DayDataComponent} from "./components/yield-data/day-data/day-data.component";
-import {WeekDataComponent} from "./components/yield-data/week-data/week-data.component";
 import {InterfaceComponent} from "./components/config/interface/interface.component";
 import {DeviceComponent} from "./components/config/device/device/device.component";
 import {HealthCheckComponent} from "./components/health/health-check/health-check.component";
 import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group/device-group.component";
 import {DirectMarketingComponent} from "./components/config/directMarketing/direct-marketing/direct-marketing.component";
+import {DataDashboardComponent} from "./components/dashboard/data-dashboard/data-dashboard.component";
 
 const routes: Routes = [
   // App routes
@@ -23,16 +21,8 @@ const routes: Routes = [
     children: [
       // Momentanwerte
       {
-        path: 'current-power',
-        component: CurrentPowerComponent,
-      },
-      {
-        path: 'day-data',
-        component: DayDataComponent,
-      },
-      {
-        path: 'week-data',
-        component: WeekDataComponent,
+        path: 'dashboard',
+        component: DataDashboardComponent,
       },
       // Konfiguration (Schnittstellen, Geräte, Gruppen)
       {

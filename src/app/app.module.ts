@@ -18,9 +18,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
 import {AppLayoutModule} from "./layout/app.layout.module";
-import {CurrentPowerComponent} from './components/yield-data/current-power/current-power.component';
-import {DayDataComponent} from './components/yield-data/day-data/day-data.component';
-import {WeekDataComponent} from './components/yield-data/week-data/week-data.component';
 import {InterfaceComponent} from './components/config/interface/interface.component';
 import {TableModule} from "primeng/table";
 import {AddButtonComponent} from './components/utils/add-button/add-button.component';
@@ -50,6 +47,9 @@ import { AddDeviceToGroupComponent } from './components/config/deviceGroup/add-d
 import { DirectMarketingComponent } from './components/config/directMarketing/direct-marketing/direct-marketing.component';
 import {PickListModule} from "primeng/picklist";
 import {SelectButtonModule} from "primeng/selectbutton";
+import { GroupDashboardComponent } from './components/dashboard/group-dashboard/group-dashboard.component';
+import { DataDashboardComponent } from './components/dashboard/data-dashboard/data-dashboard.component';
+import { PlantGroupDashboardComponent } from './components/dashboard/plant-group-dashboard/plant-group-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +57,6 @@ import {SelectButtonModule} from "primeng/selectbutton";
     LoginComponent,
     DashboardComponent,
     AuthLayoutComponent,
-    CurrentPowerComponent,
-    DayDataComponent,
-    WeekDataComponent,
     InterfaceComponent,
     AddButtonComponent,
     CreateInterfaceConfigComponent,
@@ -72,6 +69,9 @@ import {SelectButtonModule} from "primeng/selectbutton";
     CreateDeviceGroupComponent,
     AddDeviceToGroupComponent,
     DirectMarketingComponent,
+    GroupDashboardComponent,
+    DataDashboardComponent,
+    PlantGroupDashboardComponent,
   ],
   imports: [
     ApiModule,

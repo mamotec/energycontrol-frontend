@@ -19,9 +19,11 @@ model/deviceCreateRequest.ts
 model/deviceCreateResponse.ts
 model/deviceGroup.ts
 model/deviceGroupCreate.ts
+model/deviceGroupRepresentation.ts
 model/deviceGroupUpdate.ts
 model/deviceLinkRequest.ts
 model/deviceYaml.ts
+model/fetchData200Response.ts
 model/getAllGroups200ResponseInner.ts
 model/interfaceConfig.ts
 model/interfaceConnectionYaml.ts
@@ -30,6 +32,8 @@ model/interfaceYaml.ts
 model/manufacturerYaml.ts
 model/metaDataYaml.ts
 model/models.ts
+model/plantDataRepresentation.ts
+model/plantDataRepresentationAllOf.ts
 model/plantDeviceGroup.ts
 model/plantDeviceGroupCreate.ts
 model/plantDeviceGroupUpdate.ts
