@@ -1,7 +1,7 @@
 <div class="card">
   <h2>Direktvermarktung</h2>
 
-  <p-selectButton (onOptionClick)="saveConfiguration()" [options]="stateOptions" [(ngModel)]="configuration.directMarketing" optionLabel="label" optionValue="value"></p-selectButton>
+  <p-selectButton [disabled]="deviceGroups.length == 0" (onOptionClick)="saveConfiguration()" [options]="stateOptions" [(ngModel)]="configuration.directMarketing" optionLabel="label" optionValue="value"></p-selectButton>
 </div>
 
 <div class="card">
