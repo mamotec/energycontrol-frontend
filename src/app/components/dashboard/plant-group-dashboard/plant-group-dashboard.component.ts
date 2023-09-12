@@ -17,7 +17,7 @@ export class PlantGroupDashboardComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.deviceGroupService.fetchData(this.deviceGroup.id).subscribe((data) => {
-      console.log(data);
+      this.plantGroupRepresentation = data;
     });
   }
 
