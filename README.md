@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Run `curl http://localhost:8080/v3/api-docs --output swagger.json` on running backend
 
-Run `npx openapi-generator-cli generate -i swagger.json -g typescript-angular -o //Users/<user>/IdeaProjects/energycontrol-frontend/src/app/api` to generate api code from swagger.json
+Run `npx openapi-generator-cli generate -i swagger.json -g typescript-angular -o //Users/mvogt/IdeaProjects/energycontrol-frontend/src/app/api` to generate api code from swagger.json
