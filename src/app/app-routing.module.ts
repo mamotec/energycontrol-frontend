@@ -19,7 +19,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     canActivate: [authGuard],
     children: [
-      // Momentanwerte
+      // Dashboard
       {
         path: 'dashboard',
         component: DataDashboardComponent,
