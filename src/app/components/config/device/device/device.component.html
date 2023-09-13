@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="min-height: 85vh;">
   <h2>Geräte konfigurieren</h2>
   <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
     <ng-template pTemplate>
@@ -14,7 +14,6 @@
            sortField="unitId"
            sortMode="single"
            [scrollable]="true"
-           scrollHeight="400px"
            rowGroupMode="subheader"
            groupRowsBy="interfaceConfig.description"
            [tableStyle]="{'min-width': '60rem'}">

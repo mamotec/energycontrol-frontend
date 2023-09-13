@@ -35,7 +35,7 @@ export class DeviceGroupComponent implements OnInit {
     const createDialog = this.dialogService.open(CreateDeviceGroupComponent, {
       header: 'Gerätegruppe erstellen',
       width: '40%',
-      height: '60%',
+      height: '60vh',
       maximizable: true
     });
 

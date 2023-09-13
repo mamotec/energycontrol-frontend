@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="min-height: 85vh;">
   <h2>Gruppen konfigurieren</h2>
 
   <app-add-button (add)="createDeviceGroup()"></app-add-button>
@@ -6,7 +6,6 @@
   <p-table [value]="deviceGroups"
            dataKey="id"
            [scrollable]="true"
-           scrollHeight="400px"
            rowGroupMode="subheader"
            groupRowsBy="interfaceConfig.description"
            [tableStyle]="{'min-width': '60rem'}">
