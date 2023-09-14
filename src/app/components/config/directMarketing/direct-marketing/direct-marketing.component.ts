@@ -47,7 +47,8 @@ export class DirectMarketingComponent implements OnInit {
         type: group.type,
         name: group.name,
         id: group.id,
-        directMarketing: true
+        directMarketing: true,
+        feedInManagement: group.feedInManagement
       }
 
       this.deviceGroupService.updateGroup(request).subscribe({
@@ -71,7 +72,8 @@ export class DirectMarketingComponent implements OnInit {
         type: group.type,
         name: group.name,
         id: group.id,
-        directMarketing: false
+        directMarketing: false,
+        feedInManagement: group.feedInManagement
       }
 
       this.deviceGroupService.updateGroup(request).subscribe({

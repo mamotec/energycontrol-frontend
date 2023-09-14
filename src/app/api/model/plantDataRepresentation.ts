@@ -14,5 +14,7 @@ import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
 
 export interface PlantDataRepresentation extends DeviceGroupRepresentation { 
     activePower?: number;
+    directMarketing?: boolean;
+    feedInManagement?: boolean;
 }
 

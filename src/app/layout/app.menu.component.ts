@@ -14,18 +14,21 @@ export class AppMenuComponent implements OnInit {
   ngOnInit() {
     this.model = [
       {
-        label: 'Allgemein',  items: [
-          {label: 'Dashboard', routerLink: ['/dashboard']}
-        ]
+        label: 'Allgemein',
+        show: true,
+        items: [
+          {label: 'Dashboard', routerLink: ['/dashboard'], show: true},
+        ],
       },
       {
         label: 'Konfiguration',
+        show: true,
         items: [
-          {label: 'Schnittstellen', routerLink: ['/interface']},
-          {label: 'Geräte', routerLink: ['/device']},
-          {label: 'Gruppen', routerLink: ['/group']},
-          {label: "Direktvermarktung", routerLink: ['/direct-marketing']},
-          {label: "Einspeisemanagement", routerLink: ['/feed-in-management']},
+          {label: 'Schnittstellen', routerLink: ['/interface'], show: true},
+          {label: 'Geräte', routerLink: ['/device'], show: true},
+          {label: 'Gruppen', routerLink: ['/group'], show: true},
+          {label: "Direktvermarktung", routerLink: ['/direct-marketing'], show: true},
+          {label: "Einspeisemanagement", routerLink: ['/feed-in-management'], show: true},
         ]
       },
     ];

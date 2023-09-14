@@ -39,7 +39,8 @@ export class FeedInManagementComponent implements OnInit {
         type: group.type,
         name: group.name,
         id: group.id,
-        feedInManagement: true
+        feedInManagement: true,
+        directMarketing: group.directMarketing
       }
 
       this.deviceGroupService.updateGroup(request).subscribe({
@@ -63,7 +64,8 @@ export class FeedInManagementComponent implements OnInit {
         type: group.type,
         name: group.name,
         id: group.id,
-        feedInManagement: false
+        feedInManagement: false,
+        directMarketing: group.directMarketing
       }
 
       this.deviceGroupService.updateGroup(request).subscribe({

@@ -13,5 +13,7 @@
 
 export interface PlantDataRepresentationAllOf { 
     activePower?: number;
+    directMarketing?: boolean;
+    feedInManagement?: boolean;
 }
 
