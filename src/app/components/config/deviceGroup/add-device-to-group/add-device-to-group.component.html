@@ -6,16 +6,16 @@
 </p-messages>
 
 <p-table *ngIf="validDevices.length > 0"
-         [value]="validDevices"
          [(selection)]="selectedDevices"
-         sortField="unitId"
-         dataKey="id"
-         sortMode="single"
          [scrollable]="true"
-         scrollHeight="55vh"
-         rowGroupMode="subheader"
+         [tableStyle]="{'min-width': '6W0rem'}"
+         [value]="validDevices"
+         dataKey="id"
          groupRowsBy="interfaceConfig.description"
-         [tableStyle]="{'min-width': '60rem'}">
+         rowGroupMode="subheader"
+         scrollHeight="55vh"
+         sortField="unitId"
+         sortMode="single">
   <ng-template pTemplate="header">
     <tr>
       <th style="width: 4rem">

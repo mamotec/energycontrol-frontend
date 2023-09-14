@@ -25,6 +25,7 @@ export interface Device {
     active: boolean;
     model?: string;
     groupId?: number;
+    deleted?: boolean;
 }
 export namespace Device {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
