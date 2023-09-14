@@ -32,7 +32,7 @@ export class AuthService {
 
         if (token.token != undefined) {
           this.localStorageService.set("auth-token", token.token)
-          this.router.navigate(['']);
+          this.router.navigate(['/dashboard']);
         } else {
           this.logout()
         }
