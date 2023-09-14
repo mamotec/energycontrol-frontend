@@ -63,7 +63,7 @@ export class DeviceComponent implements OnInit {
 
   deleteDevice(device: Device) {
     this.confirmationService.confirm({
-      message: 'Wollen Sie das Gerät wirklich löschen? Beim Löschen werden alle bereits geloggten Daten gelöscht! Das Gerät wird aus der Aufzeichnung entfernt - Dieser Vorgang kann nicht rückgängig gemacht werden!',
+      message: 'Wollen Sie das Gerät wirklich löschen? Das Gerät wird aus der Aufzeichnung entfernt - Dieser Vorgang kann nicht rückgängig gemacht werden!',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         if (device != null) {
