@@ -15,6 +15,7 @@ export interface SystemConfiguration {
     id?: number;
     createdAt?: string;
     updatedAt?: string;
-    directMarketing: boolean;
+    directMarketing?: boolean;
+    feedInManagement?: boolean;
 }
 

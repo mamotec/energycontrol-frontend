@@ -50,6 +50,7 @@ import {SelectButtonModule} from "primeng/selectbutton";
 import { GroupDashboardComponent } from './components/dashboard/group-dashboard/group-dashboard.component';
 import { DataDashboardComponent } from './components/dashboard/data-dashboard/data-dashboard.component';
 import { PlantGroupDashboardComponent } from './components/dashboard/plant-group-dashboard/plant-group-dashboard.component';
+import { FeedInManagementComponent } from './components/config/feedInManagement/feed-in-management/feed-in-management.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { PlantGroupDashboardComponent } from './components/dashboard/plant-group
     GroupDashboardComponent,
     DataDashboardComponent,
     PlantGroupDashboardComponent,
+    FeedInManagementComponent,
   ],
   imports: [
     ApiModule,

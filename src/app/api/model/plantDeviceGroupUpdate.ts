@@ -15,6 +15,7 @@ import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 export interface PlantDeviceGroupUpdate extends DeviceGroupUpdate { 
     directMarketing?: boolean;
+    feedInManagement?: boolean;
 }
 export namespace PlantDeviceGroupUpdate {
 }

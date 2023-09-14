@@ -10,6 +10,7 @@ import {HealthCheckComponent} from "./components/health/health-check/health-chec
 import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group/device-group.component";
 import {DirectMarketingComponent} from "./components/config/directMarketing/direct-marketing/direct-marketing.component";
 import {DataDashboardComponent} from "./components/dashboard/data-dashboard/data-dashboard.component";
+import {FeedInManagementComponent} from "./components/config/feedInManagement/feed-in-management/feed-in-management.component";
 
 const routes: Routes = [
   // App routes
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'direct-marketing',
         component: DirectMarketingComponent,
+      },
+      {
+        path: 'feed-in-management',
+        component: FeedInManagementComponent,
       },
       {
         path: 'dashboard',

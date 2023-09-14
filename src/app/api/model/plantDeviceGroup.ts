@@ -23,6 +23,7 @@ export interface PlantDeviceGroup {
      */
     type?: PlantDeviceGroup.TypeEnum;
     directMarketing?: boolean;
+    feedInManagement?: boolean;
 }
 export namespace PlantDeviceGroup {
     export type TypeEnum = 'PLANT';

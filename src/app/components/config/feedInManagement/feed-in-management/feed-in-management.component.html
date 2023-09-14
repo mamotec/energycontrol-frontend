@@ -1,12 +1,11 @@
 <div class="card">
   <div class="flex">
-    <h2>Direktvermarktung</h2>
-    <i pTooltip="Die Direktvermarktung von PV-Anlagen ermöglicht es, den erzeugten Strom selbst zu verkaufen, anstatt ihn an einen Energieversorger zu liefern." class="pi pi-info-circle"></i>
+    <h2>Einspeisemanagement</h2>
   </div>
 
-  <p-selectButton [pTooltip]="deviceGroups.length == 0 ? 'Direktvermarktung erst verfügbar, wenn es Gruppen gibt.': ''"
+  <p-selectButton [pTooltip]="deviceGroups.length == 0 ? 'Einspeisemanagement erst verfügbar, wenn es Gruppen gibt.': ''"
                   tooltipPosition="left"
-                  [disabled]="deviceGroups.length == 0 && directMarketingGroups.length == 0"
+                  [disabled]="deviceGroups.length == 0 && feedInManagementGroups.length == 0"
                   (onOptionClick)="saveConfiguration()"
                   [options]="stateOptions"
                   [(ngModel)]="configuration.directMarketing"
@@ -20,9 +19,9 @@
 
   <!-- Liste -->
   <p-pickList [source]="deviceGroups"
-              [target]="directMarketingGroups"
+              [target]="feedInManagementGroups"
               sourceHeader="Verfügbare Gruppen"
-              targetHeader="Für Direktvermarktung ausgewählte Gruppen"
+              targetHeader="Für Einspeisung ausgewählte Gruppen"
               [dragdrop]="true"
               [responsive]="true"
               [sourceStyle]="{ height: '55vh' }"

@@ -22,6 +22,7 @@ export * from './plantDataRepresentation';
 export * from './plantDataRepresentationAllOf';
 export * from './plantDeviceGroup';
 export * from './plantDeviceGroupCreate';
+export * from './plantDeviceGroupCreateAllOf';
 export * from './plantDeviceGroupUpdate';
 export * from './plantDeviceGroupUpdateAllOf';
 export * from './registerMapping';

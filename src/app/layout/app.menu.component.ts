@@ -25,6 +25,7 @@ export class AppMenuComponent implements OnInit {
           {label: 'Geräte', routerLink: ['/device']},
           {label: 'Gruppen', routerLink: ['/group']},
           {label: "Direktvermarktung", routerLink: ['/direct-marketing']},
+          {label: "Einspeisemanagement", routerLink: ['/feed-in-management']},
         ]
       },
     ];

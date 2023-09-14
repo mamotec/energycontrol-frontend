@@ -36,6 +36,7 @@ model/plantDataRepresentation.ts
 model/plantDataRepresentationAllOf.ts
 model/plantDeviceGroup.ts
 model/plantDeviceGroupCreate.ts
+model/plantDeviceGroupCreateAllOf.ts
 model/plantDeviceGroupUpdate.ts
 model/plantDeviceGroupUpdateAllOf.ts
 model/registerMapping.ts
