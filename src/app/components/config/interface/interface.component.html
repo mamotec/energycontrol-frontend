@@ -1,5 +1,10 @@
 <div class="card" style="min-height: 85vh;">
-  <h2>Schnittstellen konfigurieren</h2>
+  <div class="flex">
+    <h2>Schnittstellen konfigurieren</h2>
+    <i pTooltip="Die Konfiguration der Schnittstellen ist die erste Anlaufstelle um seine Geräte zu verwalten." class="pi pi-info-circle"></i>
+  </div>
+
+
   <app-add-button (add)="createInterfaceConfig()"></app-add-button>
 
   <p-table *ngIf="interfaceConfigs.length > 0" [value]="interfaceConfigs" [tableStyle]="{ 'min-width': '50rem' }">

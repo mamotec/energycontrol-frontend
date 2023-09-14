@@ -3,6 +3,7 @@ import {LocalStorageService} from "./local-storage.service";
 import {Router} from "@angular/router";
 import jwtDecode from "jwt-decode";
 import {AuthenticationControllerService, AuthenticationResponse} from "../api";
+import {Message, MessageService} from "primeng/api";
 
 export interface AuthRequest {
   username: string,
@@ -15,6 +16,7 @@ export interface AuthRequest {
 export class AuthService {
 
   constructor(private authControllerService: AuthenticationControllerService,
+              private messageService: MessageService,
               private localStorageService: LocalStorageService,
               private router: Router) {
   }
@@ -35,8 +37,8 @@ export class AuthService {
           this.logout()
         }
       },
-      error: (error) => {
-        console.log("Exception when logging on:", error)
+      error: () => {
+        this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Falscher Benutzername oder Passwort'});
       }
     })
   }

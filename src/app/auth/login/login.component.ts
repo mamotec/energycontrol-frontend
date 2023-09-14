@@ -23,7 +23,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-
     if (this.loginForm.invalid) {
       return;
     }

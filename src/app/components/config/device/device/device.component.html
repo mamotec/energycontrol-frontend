@@ -1,5 +1,10 @@
 <div class="card" style="min-height: 85vh;">
-  <h2>Geräte konfigurieren</h2>
+
+  <div class="flex">
+    <h2>Geräte konfigurieren</h2>
+    <i pTooltip="Hier können Sie ihre Geräte erstellen. Ab den Zeitpunkt wo diese erreichbar sind, werden Metriken aufgenommen." class="pi pi-info-circle"></i>
+  </div>
+
   <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
     <ng-template pTemplate>
       <i class="pi pi-info-circle"></i>
