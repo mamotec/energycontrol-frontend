@@ -19,11 +19,17 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Device } from '../model/device';
+import { CreateDeviceRequest } from '../model/createDeviceRequest';
 // @ts-ignore
 import { DeviceCreateRequest } from '../model/deviceCreateRequest';
 // @ts-ignore
 import { DeviceCreateResponse } from '../model/deviceCreateResponse';
+// @ts-ignore
+import { FetchDevices200ResponseInner } from '../model/fetchDevices200ResponseInner';
+// @ts-ignore
+import { SerialDeviceCreateRequest } from '../model/serialDeviceCreateRequest';
+// @ts-ignore
+import { TcpDeviceCreateRequest } from '../model/tcpDeviceCreateRequest';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -97,16 +103,16 @@ export class DeviceControllerService {
 
     /**
      * Erstelle ein neues Gerät
-     * @param deviceCreateRequest 
+     * @param deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createDevice(deviceCreateRequest: DeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DeviceCreateResponse>;
-    public createDevice(deviceCreateRequest: DeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DeviceCreateResponse>>;
-    public createDevice(deviceCreateRequest: DeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DeviceCreateResponse>>;
-    public createDevice(deviceCreateRequest: DeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (deviceCreateRequest === null || deviceCreateRequest === undefined) {
-            throw new Error('Required parameter deviceCreateRequest was null or undefined when calling createDevice.');
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DeviceCreateResponse>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DeviceCreateResponse>>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DeviceCreateResponse>>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === null || deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === undefined) {
+            throw new Error('Required parameter deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest was null or undefined when calling createDevice.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -160,7 +166,7 @@ export class DeviceControllerService {
         return this.httpClient.request<DeviceCreateResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deviceCreateRequest,
+                body: deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -239,9 +245,9 @@ export class DeviceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchDevices(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Device>>;
-    public fetchDevices(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Device>>>;
-    public fetchDevices(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Device>>>;
+    public fetchDevices(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<FetchDevices200ResponseInner>>;
+    public fetchDevices(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<FetchDevices200ResponseInner>>>;
+    public fetchDevices(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<FetchDevices200ResponseInner>>>;
     public fetchDevices(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -283,7 +289,7 @@ export class DeviceControllerService {
         }
 
         let localVarPath = `/device`;
-        return this.httpClient.request<Array<Device>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Array<FetchDevices200ResponseInner>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -301,9 +307,9 @@ export class DeviceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchDevicesForGroup(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Device>>;
-    public fetchDevicesForGroup(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Device>>>;
-    public fetchDevicesForGroup(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Device>>>;
+    public fetchDevicesForGroup(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<FetchDevices200ResponseInner>>;
+    public fetchDevicesForGroup(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<FetchDevices200ResponseInner>>>;
+    public fetchDevicesForGroup(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<FetchDevices200ResponseInner>>>;
     public fetchDevicesForGroup(id: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling fetchDevicesForGroup.');
@@ -348,7 +354,7 @@ export class DeviceControllerService {
         }
 
         let localVarPath = `/device/group/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}`;
-        return this.httpClient.request<Array<Device>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Array<FetchDevices200ResponseInner>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

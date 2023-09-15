@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import { PlantDeviceGroup } from './plantDeviceGroup';
-import { Device } from './device';
+import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 
 
 /**

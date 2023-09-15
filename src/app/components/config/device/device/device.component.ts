@@ -51,8 +51,9 @@ export class DeviceComponent implements OnInit {
         interfaceConfigs: this.interfaceConfigs
       },
       header: 'Gerät definieren',
-      width: '40%',
-      height: '60%',
+      width: '90%',
+      height: '100%',
+
       maximizable: true
     })
 

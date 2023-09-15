@@ -9,14 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PlantDeviceGroupUpdate } from './plantDeviceGroupUpdate';
-import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
-import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 
-/**
- * @type UpdateGroupRequest
- * @export
- */
-export type UpdateGroupRequest = DeviceGroupUpdate | PlantDeviceGroupUpdate;
+export interface SerialDeviceCreateRequestAllOf { 
+    unitId?: number;
+    manufacturerId?: number;
+    deviceId?: number;
+}
 

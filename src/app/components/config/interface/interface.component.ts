@@ -34,8 +34,8 @@ export class InterfaceComponent implements OnInit {
   createInterfaceConfig() {
     const createDialog = this.dialogRef.open(CreateInterfaceConfigComponent, {
       header: 'Schnittstelle definieren',
-      width: '30%',
-      height: '40%',
+      width: '90%',
+      height: '100%',
       maximizable: true
     })
 

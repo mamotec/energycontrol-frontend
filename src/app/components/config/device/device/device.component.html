@@ -26,7 +26,6 @@
       <tr>
         <th>Status</th>
         <th>Name</th>
-        <th>Slave-ID</th>
         <th>Modell</th>
         <th>Gerätetyp</th>
         <th>Erstellt am</th>
@@ -46,7 +45,7 @@
           Geräten: {{calculateDeviceTotal(device.interfaceConfig)}}</td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">
+    <ng-template pTemplate="body" let-device >
       <tr>
         <td>
           <p-chip *ngIf="device.active" label="Erreichbar" image="assets/images/green_dot.png" tooltipPosition="bottom" pTooltip="Daten vom Gerät werden empfangen. "/>
@@ -54,9 +53,6 @@
         </td>
         <td>
           {{device.name}}
-        </td>
-        <td>
-          {{device.unitId}}
         </td>
         <td>
           {{device.model}}

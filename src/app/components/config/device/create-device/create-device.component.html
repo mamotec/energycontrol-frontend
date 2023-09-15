@@ -14,7 +14,52 @@
          *ngIf="deviceForm.controls['name'].touched && deviceForm.controls['name'].errors?.['required']">
       Bitte gebe einen Namen für das Gerät ein.
     </div>
+  </div>
 
+  <div class="grid">
+    <div class="col">
+      <!-- Geräte-Typ -->
+      <div class="field">
+        <label for="deviceType" class="block text-900 font-light mb-2">Typ des Gerätes</label>
+        <p-dropdown id="deviceType" placeholder="Gerätetyp"
+                    [style]="{'width':'100%'}"
+                    [options]="deviceTypes | keyvalue"
+                    optionLabel="value"
+                    (onChange)="loadModelsByManufacturer()"
+                    formControlName="deviceType"></p-dropdown>
+        <div class="p-error"
+             *ngIf="deviceForm.controls['deviceType'].touched && deviceForm.controls['deviceType'].errors?.['required']">
+          Bitte wählen Sie einen Gerätetypen aus.
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- Hersteller -->
+      <div class="field">
+        <label for="manufacturerId" class="block text-900 font-light mb-2">Hersteller</label>
+        <p-dropdown id="manufacturerId" placeholder="Hersteller auswählen" [options]="manufacturer" optionLabel="manufacturer" optionValue="manufacturerId"
+                    [style]="{'width':'100%'}"
+                    (onChange)="loadModelsByManufacturer()"
+                    formControlName="manufacturerId" class="w-full"></p-dropdown>
+        <div class="p-error"
+             *ngIf="deviceForm.controls['manufacturerId'].touched && deviceForm.controls['manufacturerId'].errors?.['required']">
+          Bitte wählen Sie einen Hersteller aus.
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- Modell -->
+      <div class="field">
+        <label for="deviceId" class="block text-900 font-light mb-2">Modell</label>
+        <p-dropdown id="deviceId" placeholder="Modell auswählen" [options]="models" optionLabel="name" optionValue="deviceId" emptyMessage="Nichts gefunden"
+                    [style]="{'width':'100%'}"
+                    formControlName="deviceId" class="w-full"></p-dropdown>
+        <div class="p-error"
+             *ngIf="deviceForm.controls['deviceId'].touched && deviceForm.controls['deviceId'].errors?.['required']">
+          Bitte wählen Sie ein Modell aus.
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Schnittstellen Konfiguration -->
@@ -31,55 +76,47 @@
     </div>
   </div>
 
-
-  <!-- Slave-Id -->
-  <div class="field">
-    <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
-    <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="255"></p-inputNumber>
-
-    <div class="p-error"
-         *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">
-      Bitte geben Sie eine Slave-ID ein.
+  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Tcp">
+    <hr>
+    <div class="grid">
+      <!-- Host -->
+      <div class="field col-6">
+        <label for="host" class="block text-900 font-light mb-2">IP-Adresse des Gerätes</label>
+        <input id="host" required type="text" pInputText formControlName="host" class="w-full">
+        <div class="p-error"
+             *ngIf="deviceForm.controls['host'].touched && deviceForm.controls['host'].errors?.['required']">
+          Bitte gebe Sie die IP-Addresse des Gerätes an.
+        </div>
     </div>
 
-    <div class="p-error"
-         *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['max']">
-      Slave-ID darf nicht mehr als 3 Zeichen haben.
+      <!-- port -->
+      <div class="field col-6">
+        <label for="port" class="block text-900 font-light mb-2">Port des Gerätes</label>
+        <input id="port" required type="text" pInputText formControlName="port" class="w-full">
+        <div class="p-error"
+             *ngIf="deviceForm.controls['port'].touched && deviceForm.controls['port'].errors?.['required']">
+          Bitte gebe Sie den Port des Gerätes an.
+        </div>
+      </div>
     </div>
+
   </div>
+  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Rs485">
+    <hr>
+    <!-- Slave-Id -->
+    <div class="field">
+      <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
+      <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="255" ></p-inputNumber>
 
-  <!-- Geräte-Typ -->
-  <div class="field">
-    <label for="deviceType" class="block text-900 font-light mb-2">Typ des Gerätes</label>
-    <p-dropdown id="deviceType" placeholder="Gerätetyp" [options]="deviceTypes | keyvalue" optionLabel="value"
-                (onChange)="loadModelsByManufacturer()"
-                formControlName="deviceType" class="w-full"></p-dropdown>
-    <div class="p-error"
-         *ngIf="deviceForm.controls['deviceType'].touched && deviceForm.controls['deviceType'].errors?.['required']">
-      Bitte wählen Sie einen Gerätetypen aus.
-    </div>
-  </div>
+      <div class="p-error"
+           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">
+        Bitte geben Sie eine Slave-ID ein.
+      </div>
 
-  <!-- Hersteller -->
-  <div class="field">
-    <label for="manufacturerId" class="block text-900 font-light mb-2">Hersteller</label>
-    <p-dropdown id="manufacturerId" placeholder="Hersteller auswählen" [options]="manufacturer" optionLabel="manufacturer" optionValue="manufacturerId"
-                (onChange)="loadModelsByManufacturer()"
-                formControlName="manufacturerId" class="w-full"></p-dropdown>
-    <div class="p-error"
-         *ngIf="deviceForm.controls['manufacturerId'].touched && deviceForm.controls['manufacturerId'].errors?.['required']">
-      Bitte wählen Sie einen Hersteller aus.
-    </div>
-  </div>
-
-  <!-- Modell -->
-  <div class="field">
-    <label for="deviceId" class="block text-900 font-light mb-2">Modell</label>
-    <p-dropdown id="deviceId" placeholder="Modell auswählen" [options]="models" optionLabel="name" optionValue="deviceId" emptyMessage="Nichts gefunden"
-                formControlName="deviceId" class="w-full"></p-dropdown>
-    <div class="p-error"
-         *ngIf="deviceForm.controls['deviceId'].touched && deviceForm.controls['deviceId'].errors?.['required']">
-      Bitte wählen Sie ein Modell aus.
+      <div class="p-error"
+           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['max']">
+        Slave-ID darf nicht mehr als 3 Zeichen haben.
+      </div>
     </div>
   </div>
 

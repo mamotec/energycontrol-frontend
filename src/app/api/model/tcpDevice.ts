@@ -12,16 +12,24 @@
 import { InterfaceConfig } from './interfaceConfig';
 
 
-export interface DeviceCreateRequest { 
-    interfaceConfig?: InterfaceConfig;
-    deviceType?: DeviceCreateRequest.DeviceTypeEnum;
+export interface TcpDevice { 
+    id?: number;
+    createdAt?: string;
+    updatedAt?: string;
     name?: string;
+    interfaceConfig?: InterfaceConfig;
+    deviceType?: TcpDevice.DeviceTypeEnum;
+    active: boolean;
+    groupId?: number;
+    deleted?: boolean;
     /**
      * Die Schnittstellen Typen
      */
-    interfaceType?: DeviceCreateRequest.InterfaceTypeEnum;
+    interfaceType?: TcpDevice.InterfaceTypeEnum;
+    host?: string;
+    port?: string;
 }
-export namespace DeviceCreateRequest {
+export namespace TcpDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum,

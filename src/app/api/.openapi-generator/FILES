@@ -13,6 +13,7 @@ git_push.sh
 index.ts
 model/authenticationRequest.ts
 model/authenticationResponse.ts
+model/createDeviceRequest.ts
 model/createGroupRequest.ts
 model/device.ts
 model/deviceCreateRequest.ts
@@ -24,6 +25,7 @@ model/deviceGroupUpdate.ts
 model/deviceLinkRequest.ts
 model/deviceYaml.ts
 model/fetchData200Response.ts
+model/fetchDevices200ResponseInner.ts
 model/getAllGroups200ResponseInner.ts
 model/interfaceConfig.ts
 model/interfaceConnectionYaml.ts
@@ -41,7 +43,14 @@ model/plantDeviceGroupUpdate.ts
 model/plantDeviceGroupUpdateAllOf.ts
 model/registerMapping.ts
 model/registerRequest.ts
+model/serialDevice.ts
+model/serialDeviceAllOf.ts
+model/serialDeviceCreateRequest.ts
+model/serialDeviceCreateRequestAllOf.ts
 model/systemConfiguration.ts
+model/tcpDevice.ts
+model/tcpDeviceAllOf.ts
+model/tcpDeviceCreateRequest.ts
 model/updateGroupRequest.ts
 param.ts
 variables.ts

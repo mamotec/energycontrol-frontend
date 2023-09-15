@@ -12,16 +12,26 @@
 import { InterfaceConfig } from './interfaceConfig';
 
 
-export interface DeviceCreateRequest { 
-    interfaceConfig?: InterfaceConfig;
-    deviceType?: DeviceCreateRequest.DeviceTypeEnum;
+export interface SerialDevice { 
+    id?: number;
+    createdAt?: string;
+    updatedAt?: string;
     name?: string;
+    interfaceConfig?: InterfaceConfig;
+    deviceType?: SerialDevice.DeviceTypeEnum;
+    active: boolean;
+    groupId?: number;
+    deleted?: boolean;
     /**
      * Die Schnittstellen Typen
      */
-    interfaceType?: DeviceCreateRequest.InterfaceTypeEnum;
+    interfaceType?: SerialDevice.InterfaceTypeEnum;
+    manufacturerId?: number;
+    deviceId?: number;
+    unitId?: number;
+    model?: string;
 }
-export namespace DeviceCreateRequest {
+export namespace SerialDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum,

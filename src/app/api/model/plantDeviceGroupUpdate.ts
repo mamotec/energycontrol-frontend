@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Device } from './device';
+import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 

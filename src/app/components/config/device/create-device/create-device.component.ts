@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DeviceControllerService, DeviceCreateRequest, DeviceYaml, InterfaceConfig, InterfaceControllerService, ManufacturerYaml} from "../../../../api";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
+import {InterfaceConfigDao} from "../../../../api/model/interfaceConfigDao";
+import TypeEnum = InterfaceConfigDao.TypeEnum;
 
 @Component({
   selector: 'app-create-device',
@@ -27,11 +29,13 @@ export class CreateDeviceComponent implements OnInit {
 
     this.deviceForm = this.formBuilder.group({
       interfaceConfig: new FormControl(InterfaceConfig, [Validators.required, Validators.max(3)]),
-      unitId: new FormControl('', [Validators.required]),
+      unitId: new FormControl(''),
       manufacturerId: new FormControl('', [Validators.required]),
       deviceType: new FormControl('', [Validators.required]),
       deviceId: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
+      host: new FormControl(''),
+      port: new FormControl(''),
     })
   }
 
@@ -52,13 +56,20 @@ export class CreateDeviceComponent implements OnInit {
       return;
     }
 
-    let req: DeviceCreateRequest = {
+    let req: any = {
       interfaceConfig: this.deviceForm.value.interfaceConfig,
-      unitId: this.deviceForm.value.unitId,
       manufacturerId: this.deviceForm.value.manufacturerId,
       deviceType: this.deviceForm.value.deviceType.value,
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
+    }
+    if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
+      req.host = this.deviceForm.value.host;
+      req.port = this.deviceForm.value.port;
+      req.interfaceType = TypeEnum.Tcp;
+    } else if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Rs485) {
+      req.unitId = this.deviceForm.value.unitId;
+      req.interfaceType = TypeEnum.Rs485;
     }
 
     this.deviceService.createDevice(req).subscribe({
@@ -85,4 +96,5 @@ export class CreateDeviceComponent implements OnInit {
   }
 
 
+  protected readonly InterfaceConfig = InterfaceConfig;
 }

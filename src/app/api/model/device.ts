@@ -16,16 +16,16 @@ export interface Device {
     id?: number;
     createdAt?: string;
     updatedAt?: string;
-    interfaceConfig?: InterfaceConfig;
     name?: string;
-    manufacturerId?: number;
-    deviceId?: number;
+    interfaceConfig?: InterfaceConfig;
     deviceType?: Device.DeviceTypeEnum;
-    unitId: number;
     active: boolean;
-    model?: string;
     groupId?: number;
     deleted?: boolean;
+    /**
+     * Die Schnittstellen Typen
+     */
+    interfaceType?: Device.InterfaceTypeEnum;
 }
 export namespace Device {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
@@ -33,6 +33,11 @@ export namespace Device {
         Inverter: 'INVERTER' as DeviceTypeEnum,
         HybridInverter: 'HYBRID_INVERTER' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
+    };
+    export type InterfaceTypeEnum = 'RS485' | 'TCP';
+    export const InterfaceTypeEnum = {
+        Rs485: 'RS485' as InterfaceTypeEnum,
+        Tcp: 'TCP' as InterfaceTypeEnum
     };
 }
 

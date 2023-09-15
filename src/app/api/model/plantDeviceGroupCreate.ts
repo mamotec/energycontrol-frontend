@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import { DeviceGroupCreate } from './deviceGroupCreate';
-import { Device } from './device';
+import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 
 
 export interface PlantDeviceGroupCreate extends DeviceGroupCreate { 

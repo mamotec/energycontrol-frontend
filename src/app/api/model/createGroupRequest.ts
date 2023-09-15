@@ -11,7 +11,7 @@
  */
 import { DeviceGroupCreate } from './deviceGroupCreate';
 import { PlantDeviceGroupCreate } from './plantDeviceGroupCreate';
-import { Device } from './device';
+import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 
 
 /**
