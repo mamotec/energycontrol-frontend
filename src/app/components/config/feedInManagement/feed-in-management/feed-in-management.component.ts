@@ -9,7 +9,7 @@ import {MessageService} from "primeng/api";
 })
 export class FeedInManagementComponent implements OnInit {
   deviceGroups: DeviceGroup[] = [];
-  feedInManagementGroups: DeviceGroup[] = [];
+  selectedGroups: any[] = [];
   configuration: SystemConfiguration = {feedInManagement: false}
   stateOptions: any[] = [{label: 'Aus', value: false}, {label: 'An', value: true}];
 
@@ -26,59 +26,10 @@ export class FeedInManagementComponent implements OnInit {
   loadDeviceGroups() {
     this.deviceGroupService.getAllGroups().subscribe({
       next: (res) => {
-        this.feedInManagementGroups = res.filter((group: PlantDeviceGroup) => group.feedInManagement);
-        this.deviceGroups = res.filter((group: PlantDeviceGroup) => !group.feedInManagement);
+        this.deviceGroups = res;
+        this.selectedGroups = res.filter((group: PlantDeviceGroup) => group.feedInManagement);
       }
     })
-  }
-
-  onMoveToTarget() {
-    let hasError = false;
-    this.feedInManagementGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupUpdate = {
-        type: group.type,
-        name: group.name,
-        id: group.id,
-        feedInManagement: true,
-        directMarketing: group.directMarketing
-      }
-
-      this.deviceGroupService.updateGroup(request).subscribe({
-        error: () => {
-          hasError = true;
-        }
-      })
-
-    });
-    if (!hasError) {
-      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe(n) wurde erfolgreich zur Einspeisung hinzugefügt.'});
-    } else {
-      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe(n) konnte nicht zur Einspeisung hinzugefügt werden.'});
-    }
-  }
-
-  onMoveToSource() {
-    let hasError = false;
-    this.deviceGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupUpdate = {
-        type: group.type,
-        name: group.name,
-        id: group.id,
-        feedInManagement: false,
-        directMarketing: group.directMarketing
-      }
-
-      this.deviceGroupService.updateGroup(request).subscribe({
-        error: () => {
-          hasError = true;
-        }
-      });
-    });
-    if (!hasError) {
-      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe(n) wurde erfolgreich aus der Einspeisung entfernt.'});
-    } else {
-      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe(n) konnte nicht aus der Einspeisung entfernt werden.'});
-    }
   }
 
   private loadConfiguration() {
@@ -87,6 +38,31 @@ export class FeedInManagementComponent implements OnInit {
         this.configuration = res;
       }
     })
+  }
+
+  updateGroup(group: DeviceGroup) {
+    let plantDeviceGroup: PlantDeviceGroup = group;
+    let hasError = false;
+    let feedInManagement = this.selectedGroups.find((group: DeviceGroup) => group.id == plantDeviceGroup.id) != null;
+
+    let request: PlantDeviceGroupUpdate = {
+      type: plantDeviceGroup.type,
+      name: plantDeviceGroup.name,
+      id: plantDeviceGroup.id,
+      directMarketing: plantDeviceGroup.directMarketing,
+      feedInManagement: feedInManagement
+    }
+
+    this.deviceGroupService.updateGroup(request).subscribe({
+      error: () => {
+        hasError = true;
+      }
+    });
+    if (!hasError) {
+      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe wurde erfolgreich gespeichert.'});
+    } else {
+      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe konnte nicht gespeichert werden.'});
+    }
   }
 
   saveConfiguration() {
