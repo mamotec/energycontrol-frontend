@@ -21,7 +21,11 @@ export interface Device {
     deviceType?: Device.DeviceTypeEnum;
     active: boolean;
     groupId?: number;
+    model?: string;
+    manufacturerId?: number;
+    deviceId?: number;
     deleted?: boolean;
+    unitId?: number;
     /**
      * Die Schnittstellen Typen
      */

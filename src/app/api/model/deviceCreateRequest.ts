@@ -20,6 +20,9 @@ export interface DeviceCreateRequest {
      * Die Schnittstellen Typen
      */
     interfaceType?: DeviceCreateRequest.InterfaceTypeEnum;
+    manufacturerId?: number;
+    deviceId?: number;
+    unitId?: number;
 }
 export namespace DeviceCreateRequest {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';

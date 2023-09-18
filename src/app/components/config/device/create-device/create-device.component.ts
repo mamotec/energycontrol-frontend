@@ -62,13 +62,13 @@ export class CreateDeviceComponent implements OnInit {
       deviceType: this.deviceForm.value.deviceType.value,
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
+      unitId: this.deviceForm.value.unitId,
     }
     if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
       req.host = this.deviceForm.value.host;
       req.port = this.deviceForm.value.port;
       req.interfaceType = TypeEnum.Tcp;
     } else if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Rs485) {
-      req.unitId = this.deviceForm.value.unitId;
       req.interfaceType = TypeEnum.Rs485;
     }
 

@@ -14,9 +14,6 @@ import { DeviceCreateRequest } from './deviceCreateRequest';
 
 
 export interface SerialDeviceCreateRequest extends DeviceCreateRequest { 
-    unitId?: number;
-    manufacturerId?: number;
-    deviceId?: number;
 }
 export namespace SerialDeviceCreateRequest {
 }

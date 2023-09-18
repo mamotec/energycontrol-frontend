@@ -21,15 +21,15 @@ export interface SerialDevice {
     deviceType?: SerialDevice.DeviceTypeEnum;
     active: boolean;
     groupId?: number;
+    model?: string;
+    manufacturerId?: number;
+    deviceId?: number;
     deleted?: boolean;
+    unitId?: number;
     /**
      * Die Schnittstellen Typen
      */
     interfaceType?: SerialDevice.InterfaceTypeEnum;
-    manufacturerId?: number;
-    deviceId?: number;
-    unitId?: number;
-    model?: string;
 }
 export namespace SerialDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';

@@ -23,8 +23,6 @@ import { CreateDeviceRequest } from '../model/createDeviceRequest';
 // @ts-ignore
 import { DeviceCreateRequest } from '../model/deviceCreateRequest';
 // @ts-ignore
-import { DeviceCreateResponse } from '../model/deviceCreateResponse';
-// @ts-ignore
 import { FetchDevices200ResponseInner } from '../model/fetchDevices200ResponseInner';
 // @ts-ignore
 import { SerialDeviceCreateRequest } from '../model/serialDeviceCreateRequest';
@@ -107,10 +105,10 @@ export class DeviceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DeviceCreateResponse>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DeviceCreateResponse>>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DeviceCreateResponse>>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpResponse<any>>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpEvent<any>>;
+    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any> {
         if (deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === null || deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === undefined) {
             throw new Error('Required parameter deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest was null or undefined when calling createDevice.');
         }
@@ -128,7 +126,6 @@ export class DeviceControllerService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
-                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -163,7 +160,7 @@ export class DeviceControllerService {
         }
 
         let localVarPath = `/device`;
-        return this.httpClient.request<DeviceCreateResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<any>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest,

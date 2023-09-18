@@ -74,6 +74,22 @@
     </div>
   </div>
 
+  <!-- Slave-Id -->
+  <div class="field">
+    <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
+    <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="255" ></p-inputNumber>
+
+    <div class="p-error"
+         *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">
+      Bitte geben Sie eine Slave-ID ein.
+    </div>
+
+    <div class="p-error"
+         *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['max']">
+      Slave-ID darf nicht mehr als 3 Zeichen haben.
+    </div>
+  </div>
+
   <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Tcp">
     <hr>
     <div class="grid">
@@ -98,24 +114,6 @@
       </div>
     </div>
 
-  </div>
-  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Rs485">
-    <hr>
-    <!-- Slave-Id -->
-    <div class="field">
-      <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
-      <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="255" ></p-inputNumber>
-
-      <div class="p-error"
-           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">
-        Bitte geben Sie eine Slave-ID ein.
-      </div>
-
-      <div class="p-error"
-           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['max']">
-        Slave-ID darf nicht mehr als 3 Zeichen haben.
-      </div>
-    </div>
   </div>
 
   <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">

@@ -17,7 +17,6 @@ model/createDeviceRequest.ts
 model/createGroupRequest.ts
 model/device.ts
 model/deviceCreateRequest.ts
-model/deviceCreateResponse.ts
 model/deviceGroup.ts
 model/deviceGroupCreate.ts
 model/deviceGroupRepresentation.ts
@@ -44,9 +43,7 @@ model/plantDeviceGroupUpdateAllOf.ts
 model/registerMapping.ts
 model/registerRequest.ts
 model/serialDevice.ts
-model/serialDeviceAllOf.ts
 model/serialDeviceCreateRequest.ts
-model/serialDeviceCreateRequestAllOf.ts
 model/systemConfiguration.ts
 model/tcpDevice.ts
 model/tcpDeviceAllOf.ts
