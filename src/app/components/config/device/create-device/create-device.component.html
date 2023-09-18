@@ -65,10 +65,8 @@
   <!-- Schnittstellen Konfiguration -->
   <div class="field">
     <label for="interfaceConfig" class="block text-900 font-light mb-2">Schnittstelle</label>
-    <p-dropdown id="interfaceConfig" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs"
+    <p-dropdown id="interfaceConfig" optionGroupLabel="e" optionLabel="description" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs"
                 formControlName="interfaceConfig" class="w-full">
-      <ng-template pTemplate="item" let-option><span>{{option.type}} - {{option.description}}</span></ng-template>
-
     </p-dropdown>
     <div class="p-error"
          *ngIf="deviceForm.controls['interfaceConfig'].touched && deviceForm.controls['interfaceConfig'].errors?.['required']">
