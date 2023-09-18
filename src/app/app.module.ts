@@ -51,6 +51,7 @@ import { GroupDashboardComponent } from './components/dashboard/group-dashboard/
 import { DataDashboardComponent } from './components/dashboard/data-dashboard/data-dashboard.component';
 import { PlantGroupDashboardComponent } from './components/dashboard/plant-group-dashboard/plant-group-dashboard.component';
 import { FeedInManagementComponent } from './components/config/feedInManagement/feed-in-management/feed-in-management.component';
+import {DataViewModule} from "primeng/dataview";
 
 @NgModule({
   declarations: [
@@ -75,35 +76,36 @@ import { FeedInManagementComponent } from './components/config/feedInManagement/
     PlantGroupDashboardComponent,
     FeedInManagementComponent,
   ],
-  imports: [
-    ApiModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    FormsModule,
-    ButtonModule,
-    CheckboxModule,
-    RippleModule,
-    MegaMenuModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    MatMenuModule,
-    AppLayoutModule,
-    TableModule,
-    MatIconModule,
-    DropdownModule,
-    ToastModule,
-    AutoCompleteModule,
-    MessagesModule,
-    InputNumberModule,
-    ConfirmDialogModule,
-    ChipModule,
-    PickListModule,
-    SelectButtonModule
-  ],
+    imports: [
+        ApiModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        CheckboxModule,
+        RippleModule,
+        MegaMenuModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatSidenavModule,
+        MatMenuModule,
+        AppLayoutModule,
+        TableModule,
+        MatIconModule,
+        DropdownModule,
+        ToastModule,
+        AutoCompleteModule,
+        MessagesModule,
+        InputNumberModule,
+        ConfirmDialogModule,
+        ChipModule,
+        PickListModule,
+        SelectButtonModule,
+        DataViewModule
+    ],
   providers: [
     {
       provide: Configuration,

@@ -9,7 +9,7 @@
   <!-- Name -->
   <div class="field">
     <label for="name" class="block text-900 font-light mb-2">Name der Gruppe</label>
-    <input id="name" type="text" pInputText formControlName="name" class="w-full">
+    <input id="name" type="text" pInputText formControlName="name" class="w-full" maxlength="100">
     <div class="p-error"
          *ngIf="deviceGroupForm.controls['name'].touched && deviceGroupForm.controls['name'].errors?.['required']">
       Bitte gebe einen Namen für die Gruppe ein.

@@ -83,7 +83,6 @@ export class CreateDeviceComponent implements OnInit {
   }
 
   loadModelsByManufacturer() {
-    // oder
     if (this.deviceForm.value.manufacturerId != null && this.deviceForm.value.manufacturerId != "" &&
       this.deviceForm.value.deviceType.value != null) {
       this.interfaceService.fetchDevicesForManufacturer(this.deviceForm.value.manufacturerId, this.deviceForm.value.deviceType.value).subscribe({
@@ -92,9 +91,7 @@ export class CreateDeviceComponent implements OnInit {
         }
       })
     }
-
   }
-
 
   protected readonly InterfaceConfig = InterfaceConfig;
 }

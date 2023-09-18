@@ -17,32 +17,16 @@
 
 <div class="card" style="height: calc(100vh - 21rem);">
   <h2>Verwaltung</h2>
-
-  <!-- Liste -->
-  <p-pickList [source]="deviceGroups"
-              [target]="directMarketingGroups"
-              sourceHeader="Verfügbare Gruppen"
-              targetHeader="Für Direktvermarktung ausgewählte Gruppen"
-              [dragdrop]="true"
-              [responsive]="true"
-              [sourceStyle]="{ height: 'calc(100vh - 50rem)' }"
-              [targetStyle]="{ height: 'calc(100vh - 50rem)' }"
-              filterBy="name"
-              sourceFilterPlaceholder="Gruppennamen suchen"
-              targetFilterPlaceholder="Gruppennamen suchen"
-              (onMoveToTarget)="onMoveToTarget()"
-              (onMoveAllToTarget)="onMoveToTarget()"
-              (onMoveToSource)="onMoveToSource()"
-              (onMoveAllToSource)="onMoveToSource()">
-    <ng-template let-group pTemplate="item">
-      <h3 class="font-bold">{{ group.name }}</h3>
-      <div class="flex flex-wrap align-items-center gap-2 pt-2">
-        <div *ngFor="let d of group.devices">
-          <p-chip *ngIf="d.active" label="{{ d.name }}" image="assets/images/green_dot.png"/>
-          <p-chip *ngIf="!d.active" label="{{ d.name }}" image="assets/images/red_dot.png"/>
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3" *ngFor="let group of deviceGroups">
+      <div class="card">
+        <div class="grid" style="align-items: baseline">
+          <div class="col-10">{{group.name}}</div>
+          <div class="col-2">
+            <p-checkbox [value]="group" [(ngModel)]="selectedGroups" (onChange)="updateGroup(group)"></p-checkbox>
+          </div>
         </div>
       </div>
-    </ng-template>
-  </p-pickList>
-
+    </div>
+  </div>
 </div>

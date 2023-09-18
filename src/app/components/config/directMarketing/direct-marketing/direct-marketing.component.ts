@@ -1,13 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  ConfigurationControllerService,
-  DeviceGroup,
-  DeviceGroupControllerService,
-  PlantDeviceGroup,
-  PlantDeviceGroupCreate,
-  PlantDeviceGroupUpdate,
-  SystemConfiguration
-} from "../../../../api";
+import {ConfigurationControllerService, DeviceGroup, DeviceGroupControllerService, PlantDeviceGroup, PlantDeviceGroupUpdate, SystemConfiguration} from "../../../../api";
 import {MessageService} from "primeng/api";
 
 @Component({
@@ -16,7 +8,9 @@ import {MessageService} from "primeng/api";
   styleUrls: ['./direct-marketing.component.scss']
 })
 export class DirectMarketingComponent implements OnInit {
+
   deviceGroups: DeviceGroup[] = [];
+  selectedGroups: any[] = [];
   directMarketingGroups: DeviceGroup[] = [];
   configuration: SystemConfiguration = {directMarketing: false}
   stateOptions: any[] = [{label: 'Aus', value: false}, {label: 'An', value: true}];
@@ -34,59 +28,10 @@ export class DirectMarketingComponent implements OnInit {
   loadDeviceGroups() {
     this.deviceGroupService.getAllGroups().subscribe({
       next: (res) => {
-        this.directMarketingGroups = res.filter((group: PlantDeviceGroup) => group.directMarketing);
-        this.deviceGroups = res.filter((group: PlantDeviceGroup) => !group.directMarketing);
+        this.deviceGroups = res;
+        this.selectedGroups = res.filter((group: PlantDeviceGroup) => group.directMarketing);
       }
     })
-  }
-
-  onMoveToTarget() {
-    let hasError = false;
-    this.directMarketingGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupUpdate = {
-        type: group.type,
-        name: group.name,
-        id: group.id,
-        directMarketing: true,
-        feedInManagement: group.feedInManagement
-      }
-
-      this.deviceGroupService.updateGroup(request).subscribe({
-        error: () => {
-          hasError = true;
-        }
-      })
-
-    });
-    if (!hasError) {
-      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe(n) wurde erfolgreich zur Direktvermarktung hinzugefügt.'});
-    } else {
-      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe(n) konnte nicht zur Direktvermarktung hinzugefügt werden.'});
-    }
-  }
-
-  onMoveToSource() {
-    let hasError = false;
-    this.deviceGroups.forEach((group: PlantDeviceGroup) => {
-      let request: PlantDeviceGroupUpdate = {
-        type: group.type,
-        name: group.name,
-        id: group.id,
-        directMarketing: false,
-        feedInManagement: group.feedInManagement
-      }
-
-      this.deviceGroupService.updateGroup(request).subscribe({
-        error: () => {
-          hasError = true;
-        }
-      });
-    });
-    if (!hasError) {
-      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe(n) wurde erfolgreich aus der Direktvermarktung entfernt.'});
-    } else {
-      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe(n) konnte nicht aus der Direktvermarktung entfernt werden.'});
-    }
   }
 
   private loadConfiguration() {
@@ -105,5 +50,30 @@ export class DirectMarketingComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
       }
     })
+  }
+
+  updateGroup(group: DeviceGroup) {
+    let plantDeviceGroup: PlantDeviceGroup = group;
+    let hasError = false;
+    let directMarketing = this.selectedGroups.find((group: DeviceGroup) => group.id == plantDeviceGroup.id) != null;
+
+    let request: PlantDeviceGroupUpdate = {
+      type: plantDeviceGroup.type,
+      name: plantDeviceGroup.name,
+      id: plantDeviceGroup.id,
+      directMarketing: directMarketing,
+      feedInManagement: plantDeviceGroup.feedInManagement
+    }
+
+    this.deviceGroupService.updateGroup(request).subscribe({
+      error: () => {
+        hasError = true;
+      }
+    });
+    if (!hasError) {
+      this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Die Gruppe wurde erfolgreich gespeichert.'});
+    } else {
+      this.messageService.add({severity: 'error', summary: 'Fehler', detail: 'Die Gruppe konnte nicht gespeichert werden.'});
+    }
   }
 }
