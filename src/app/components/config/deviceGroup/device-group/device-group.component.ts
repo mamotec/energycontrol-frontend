@@ -45,24 +45,6 @@ export class DeviceGroupComponent implements OnInit {
 
   }
 
-  addDeviceToGroup(group: DeviceGroup) {
-    const addDialog = this.dialogService.open(AddDeviceToGroupComponent, {
-      data: {
-        deviceGroup: group
-      },
-      header: 'Gerät hinzufügen',
-      width: '60%',
-      height: '60%',
-      maximizable: true
-    });
-
-    addDialog.onClose.subscribe(() => {
-      this.loadDeviceGroups();
-    });
-
-  }
-
-
   deleteGroup(group: DeviceGroup) {
     this.confirmationService.confirm({
       message: 'Wollen Sie die Gruppe wirklich löschen?',
@@ -85,33 +67,14 @@ export class DeviceGroupComponent implements OnInit {
     });
   }
 
-  deleteDeviceFromGroup(device: Device) {
-
-    this.confirmationService.confirm({
-      message: 'Wollen Sie das Gerät wirklich aus der Gruppe entfernen?',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        let req: DeviceLinkRequest = {
-          deviceIds: []
-        }
-        // @ts-ignore
-        req.deviceIds.push(device.id!);
-        // @ts-ignore
-        this.deviceGroupService.deleteDeviceFromGroup(req).subscribe({
-          next: () => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Erfolgreich',
-              detail: 'Gerät entfernt',
-              life: 3000
-            });
-            this.loadDeviceGroups();
-          }, error: (err) => {
-            this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
-          }
-        })
-      }
-    });
-
+  getCountOfDevices(group: DeviceGroup): string {
+    if (group.devices == null) {
+      return "0";
+    } else {
+      return group.devices.length.toString();
+    }
   }
+
+  protected readonly console = console;
+
 }

@@ -11,6 +11,7 @@ import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group
 import {DirectMarketingComponent} from "./components/config/directMarketing/direct-marketing/direct-marketing.component";
 import {DataDashboardComponent} from "./components/dashboard/data-dashboard/data-dashboard.component";
 import {FeedInManagementComponent} from "./components/config/feedInManagement/feed-in-management/feed-in-management.component";
+import {DeviceGroupDetailsComponent} from "./components/config/deviceGroup/device-group-details/device-group-details.component";
 
 const routes: Routes = [
   // App routes
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'group',
         component: DeviceGroupComponent,
+      },
+      {
+        path: 'group/:id',
+        component: DeviceGroupDetailsComponent,
       },
       {
         path: 'direct-marketing',

@@ -1,0 +1,83 @@
+<div class="grid">
+    <div class="col-12 md:col-12 lg:col-8">
+        <div class="card">
+            <div class="flex" style="align-items: baseline">
+                <h2>Geräte ({{ deviceGroup?.devices?.length}})</h2>
+
+                <button pButton type="button" icon="pi pi-plus" (click)="addDeviceToGroup()"
+                        pTooltip="Geräte hinzufügen"
+                        class="p-button-rounded p-button-text ml-2"></button>
+
+            </div>
+
+            <div class="grid mt-2">
+                <div class="col-12 md:col-6 lg:col-4" *ngFor="let device of deviceGroup?.devices">
+                    <div class="card">
+                        <div class="grid" style="align-items: center">
+                            <div class="col-10">
+                                {{device.name}}
+                            </div>
+                            <div class="col-2">
+                                <button pButton type="button" icon="pi pi-trash" (click)="deleteDeviceFromGroup(device)"
+                                        class="p-button-rounded p-button-text p-button-danger vertical-align-middle"></button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="grid" style="align-items: baseline">
+                            <div class="col">
+                                <span class="text-500">Erstellt am: {{device.createdAt | date: 'dd.MM.yyyy'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 md:col-12 lg:col-4">
+        <div class="card">
+            <div class="grid">
+                <div class="col">
+                    <label for="name" class="block font-medium mb-2">Name der Gruppe</label>
+                    <span id="name" class="text-500">{{deviceGroup?.name}}</span>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col">
+                    <label for="groupType" class="block font-medium mb-2">Typ</label>
+                    <span id="groupType" class="text-500">{{deviceGroup?.type}}</span>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col">
+                    <label for="createdAt" class="block font-medium mb-2">Erstellt am</label>
+                    <span id="createdAt" class="text-500">{{deviceGroup?.createdAt | date: 'dd.MM.yyyy'}}</span>
+                </div>
+            </div>
+
+
+            <div *ngIf="deviceGroup?.type == DeviceGroup.TypeEnum.Plant">
+                <hr>
+
+                <div class="grid">
+                    <div class="col">
+                        <label for="directMarketing" class="block font-medium mb-2">Dirketvermarktung</label>
+                        <span id="directMarketing" class="text-500">{{asPlantGroup(deviceGroup!).directMarketing ? 'Ja' : 'Nein' }}</span>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="col">
+                        <label for="feedInManagement" class="block font-medium mb-2">Einspeisemanagement</label>
+                        <span id="feedInManagement" class="text-500">{{asPlantGroup(deviceGroup!).feedInManagement ? 'Ja' : 'Nein' }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

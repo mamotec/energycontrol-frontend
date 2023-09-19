@@ -1,4 +1,4 @@
-<div class="card" style="height: calc(100vh - 9rem);">
+<div class="card">
   <div class="flex">
     <h2>Gruppen konfigurieren</h2>
     <i pTooltip="Gerätegruppen sind eine Möglichkeit, mehrere Geräte zu gruppieren und diese dann gemeinsam zu konfigurieren." class="pi pi-info-circle"></i>
@@ -6,99 +6,26 @@
 
   <app-add-button (add)="createDeviceGroup()"></app-add-button>
 
-  <p-table [value]="deviceGroups"
-           dataKey="id"
-           [scrollable]="true"
-           rowGroupMode="subheader"
-           groupRowsBy="interfaceConfig.description"
-           [tableStyle]="{'min-width': '60rem'}">
-    <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 5rem"></th>
-        <th>Name</th>
-        <th>Gruppen typ</th>
-        <th>Erstellt am</th>
-        <th style="width: 10rem">Anzahl Geräte</th>
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-group let-expanded="expanded">
-      <tr>
-        <td>
-          <button *ngIf="group.devices.length > 0" type="button" pButton pRipple [pRowToggler]="group"
-                  class="p-button-text p-button-rounded p-button-plain"
-                  [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-        </td>
-        <td>
-          {{group.name}}
-        </td>
-        <td>
-          {{group.type}}
-        </td>
-        <td>
-          {{group.createdAt | date: 'dd.MM.yyyy HH:mm'}}
-        </td>
-
-        <td style="text-align: center">
-          {{
-          group.devices.length
-          }}
-        </td>
-
-        <td style="text-align: center">
-          <button pButton type="button" icon="pi pi-server" (click)="addDeviceToGroup(group)"
-                  pTooltip="Geräte hinzufügen"
-                  class="p-button-rounded p-button-text"></button>
-
-          <button pButton type="button" icon="pi pi-trash" (click)="deleteGroup(group)"
-                  class="p-button-rounded p-button-text p-button-danger mr-2"></button>
-
-        </td>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="rowexpansion" let-group>
-      <tr>
-        <td colspan="7">
-          <div class="p-3">
-            <p-table *ngIf="group.devices.length > 0"
-                     [value]="group.devices"
-                     dataKey="id"
-                     sortField="unitId"
-                     sortMode="single"
-                     [scrollable]="true"
-                     scrollHeight="400px"
-                     [tableStyle]="{'min-width': '60rem'}">
-              <ng-template pTemplate="body" let-device let-rowIndex="rowIndex">
-                <tr>
-                  <td>
-                    {{ rowIndex + 1}}.
-                  </td>
-                  <td>
-                    {{device.name}}
-                  </td>
-                  <td>
-                    {{device.unitId}}
-                  </td>
-                  <td>
-                    {{device.model}}
-                  </td>
-                  <td>
-                    {{device.deviceType}}
-                  </td>
-
-                  <td>
-                    <button pButton type="button" icon="pi pi-trash" (click)="deleteDeviceFromGroup(device)"
-                            class="p-button-rounded p-button-text p-button-danger mr-2"></button>
-                  </td>
-
-                </tr>
-              </ng-template>
-            </p-table>
+  <div class="grid mt-2">
+    <div class="col-12 md:col-6 lg:col-4" *ngFor="let group of deviceGroups">
+      <div class="card cursor-pointer " pBadge [value]="getCountOfDevices(group)" [routerLink]="['/group', group.id]">
+        <div class="grid" style="align-items: center">
+          <div class="col-10">
+            {{group.name}}
           </div>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+          <div class="col-2">
+            <button pButton type="button" icon="pi pi-trash" (click)="deleteGroup(group)"
+                    class="p-button-rounded p-button-text p-button-danger vertical-align-middle"></button>
+          </div>
+        </div>
+        <hr>
+        <div class="grid" style="align-items: baseline">
+          <div class="col">
+            <span class="text-500">Erstellt am: {{group.createdAt | date: 'dd.MM.yyyy'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <app-delete-dialog></app-delete-dialog>

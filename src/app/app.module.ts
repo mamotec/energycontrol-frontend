@@ -52,6 +52,9 @@ import { DataDashboardComponent } from './components/dashboard/data-dashboard/da
 import { PlantGroupDashboardComponent } from './components/dashboard/plant-group-dashboard/plant-group-dashboard.component';
 import { FeedInManagementComponent } from './components/config/feedInManagement/feed-in-management/feed-in-management.component';
 import {DataViewModule} from "primeng/dataview";
+import {ContextMenuModule} from "primeng/contextmenu";
+import {BadgeModule} from "primeng/badge";
+import { DeviceGroupDetailsComponent } from './components/config/deviceGroup/device-group-details/device-group-details.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,7 @@ import {DataViewModule} from "primeng/dataview";
     DataDashboardComponent,
     PlantGroupDashboardComponent,
     FeedInManagementComponent,
+    DeviceGroupDetailsComponent,
   ],
     imports: [
         ApiModule,
@@ -104,7 +108,9 @@ import {DataViewModule} from "primeng/dataview";
         ChipModule,
         PickListModule,
         SelectButtonModule,
-        DataViewModule
+        DataViewModule,
+        ContextMenuModule,
+        BadgeModule
     ],
   providers: [
     {

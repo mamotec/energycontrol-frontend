@@ -50,6 +50,7 @@ export class DeviceComponent implements OnInit {
         interfaceConfigs: this.interfaceConfigs
       },
       styleClass: 'card',
+      maximizable: true,
       header: 'Gerät definieren',
     })
 

@@ -36,7 +36,8 @@ export class InterfaceComponent implements OnInit {
       header: 'Schnittstelle definieren',
       styleClass: 'card',
       maximizable: true,
-      keepInViewport: true,
+      width: '100%',
+      height: '100%',
     })
 
     createDialog.onClose.subscribe(() => {
