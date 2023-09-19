@@ -31,7 +31,6 @@ import {ApiModule, Configuration} from "./api";
 import {ApiService} from "./service/api.service";
 import {environment} from "../environments/environment";
 import {AutoCompleteModule} from "primeng/autocomplete";
-import { DeviceListComponent } from './components/config/device/device-list/device-list.component';
 import {MessagesModule} from "primeng/messages";
 import { CreateDeviceComponent } from './components/config/device/create-device/create-device.component';
 import {InputNumberModule} from "primeng/inputnumber";
@@ -57,6 +56,7 @@ import {BadgeModule} from "primeng/badge";
 import { DeviceGroupDetailsComponent } from './components/config/deviceGroup/device-group-details/device-group-details.component';
 import { BackButtonComponent } from './components/utils/back-button/back-button.component';
 import {MenuModule} from "primeng/menu";
+import { DeviceDetailsComponent } from './components/config/device/device-details/device-details.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,6 @@ import {MenuModule} from "primeng/menu";
     InterfaceComponent,
     AddButtonComponent,
     CreateInterfaceConfigComponent,
-    DeviceListComponent,
     CreateDeviceComponent,
     DeviceComponent,
     DeleteDialogComponent,
@@ -82,6 +81,7 @@ import {MenuModule} from "primeng/menu";
     FeedInManagementComponent,
     DeviceGroupDetailsComponent,
     BackButtonComponent,
+    DeviceDetailsComponent,
   ],
     imports: [
         ApiModule,
