@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Device, DeviceGroup, DeviceGroupControllerService, DeviceLinkRequest, PlantDeviceGroup} from "../../../../api";
-import {ActivatedRoute} from "@angular/router";
-import {ConfirmationService, MessageService} from "primeng/api";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
 import {AddDeviceToGroupComponent} from "../add-device-to-group/add-device-to-group.component";
 import {DialogService} from "primeng/dynamicdialog";
 
@@ -12,18 +12,19 @@ import {DialogService} from "primeng/dynamicdialog";
 })
 export class DeviceGroupDetailsComponent implements OnInit {
   deviceGroup: DeviceGroup | undefined;
+  items!: MenuItem[];
 
   constructor(private deviceGroupService: DeviceGroupControllerService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
               private dialogService: DialogService,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
-  ngOnInit()
-      :
-      void {
+  ngOnInit(): void {
     this.loadDeviceGroup();
+    this.injectItems();
   }
 
   loadDeviceGroup() {
@@ -86,4 +87,51 @@ export class DeviceGroupDetailsComponent implements OnInit {
   }
 
   protected readonly DeviceGroup = DeviceGroup;
+
+  private injectItems() {
+    this.items = [{
+      label: 'Optionen',
+      items: [
+        {
+          label: 'Gerät hinzufügen',
+          icon: 'pi pi-plus',
+          command: () => {
+            this.addDeviceToGroup();
+          }
+        },
+        {
+          label: 'Gruppe löschen',
+          icon: 'pi pi-trash',
+          command: () => {
+            this.deleteGroup(this.deviceGroup!);
+          }
+        },
+        {separator: true},
+        {label: 'Zurück', icon: 'pi pi-arrow-left', routerLink: ['../']}
+      ]
+    }
+    ];
+  }
+
+  deleteGroup(group: DeviceGroup) {
+    this.confirmationService.confirm({
+      message: 'Wollen Sie die Gruppe wirklich löschen?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if (group != null) {
+          this.deviceGroupService.deleteGroup(group.id!).subscribe({
+            next: () => {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Erfolgreich',
+                detail: 'Gruppe gelöscht',
+                life: 3000
+              });
+              this.router.navigate(['../'], {relativeTo: this.route});
+            }
+          })
+        }
+      }
+    });
+  }
 }

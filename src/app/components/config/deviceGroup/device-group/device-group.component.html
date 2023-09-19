@@ -2,27 +2,27 @@
   <div class="flex">
     <h2>Gruppen konfigurieren</h2>
     <i pTooltip="Gerätegruppen sind eine Möglichkeit, mehrere Geräte zu gruppieren und diese dann gemeinsam zu konfigurieren." class="pi pi-info-circle"></i>
+    <button pButton type="button" icon="pi pi-plus" (click)="createDeviceGroup()"
+            pTooltip="Hinzfügen" style="margin-left: auto; order: 2" tooltipPosition="bottom"
+            class="p-button-rounded p-button-outlined "></button>
   </div>
 
-  <app-add-button (add)="createDeviceGroup()"></app-add-button>
 
-  <div class="grid mt-2">
+  <div class="grid mt-3">
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let group of deviceGroups">
-      <div class="card  " pBadge [value]="getCountOfDevices(group)" >
+      <div class="card cursor-pointer" [routerLink]="['/group', group.id]" pBadge [value]="getCountOfDevices(group)" >
         <div class="grid" style="align-items: center">
-          <div class="col-10 cursor-pointer" [routerLink]="['/group', group.id]">
+          <div class="col">
             {{group.name}}
-          </div>
-          <div class="col-2">
-            <button pButton type="button" icon="pi pi-trash" (click)="deleteGroup(group)"
-                    class="p-button-rounded p-button-text p-button-danger vertical-align-middle"></button>
           </div>
         </div>
         <hr>
-        <div class="grid" style="align-items: baseline">
-          <div class="col">
-            <span class="text-500">Erstellt am: {{group.createdAt | date: 'dd.MM.yyyy'}}</span>
-          </div>
+        <div class="flex" style="align-items: baseline">
+          <span class="text-500">Erstellt am: {{group.createdAt | date: 'dd.MM.yyyy'}}</span>
+
+          <button pButton type="button" icon="pi pi-arrow-right" [routerLink]="['/group', group.id]"
+                  pTooltip="Gerätegruppe bearbeiten" style="margin-left: auto; order: 2"
+                  class="p-button-rounded p-button-text mr-2"></button>
         </div>
       </div>
     </div>

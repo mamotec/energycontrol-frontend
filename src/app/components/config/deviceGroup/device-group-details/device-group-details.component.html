@@ -1,19 +1,19 @@
 <div class="grid">
     <div class="col-12 md:col-12 lg:col-8">
         <div class="card">
-            <div class="grid">
-                <div class="col">
-                    <h2>Geräte ({{ deviceGroup?.devices?.length}})</h2>
-                </div>
+            <div class="flex" style="align-items: baseline">
 
-                <div class="col-1">
-                    <app-back-button/>
-                </div>
-                <div class="col-1">
-                    <button pButton type="button" icon="pi pi-plus" (click)="addDeviceToGroup()"
-                            pTooltip="Geräte hinzufügen"
-                            class="p-button-rounded p-button-text ml-2"></button>
-                </div>
+                <h2>Geräte ({{ deviceGroup?.devices?.length}})</h2>
+
+                <button
+                        pButton
+                        class="kebab-icon p-button-rounded p-button-text p-button-plain"
+                        style="margin-left: auto; order: 2"
+                        icon="pi pi-ellipsis-v"
+                        (click)="menu.toggle($event)"
+                ></button>
+
+                <p-menu #menu [popup]="true" [model]="items"></p-menu>
             </div>
 
             <div class="grid mt-2">
