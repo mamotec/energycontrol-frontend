@@ -12,7 +12,6 @@ import {ConfirmationService, MessageService} from "primeng/api";
 export class DeviceComponent implements OnInit {
   devices: Device[] = [];
   interfaceConfigs: InterfaceConfig[] = [];
-  deleteDeviceDialogId: string = 'deleteDeviceDialog';
 
   constructor(private dialogRef: DialogService,
               private confirmationService: ConfirmationService,
@@ -50,12 +49,11 @@ export class DeviceComponent implements OnInit {
       data: {
         interfaceConfigs: this.interfaceConfigs
       },
+      styleClass: 'card',
       header: 'Gerät definieren',
-      width: '90%',
-      height: '100%',
-
-      maximizable: true
     })
+
+    createDialog.maximize(true)
 
     createDialog.onClose.subscribe(() => {
       this.loadDevices();

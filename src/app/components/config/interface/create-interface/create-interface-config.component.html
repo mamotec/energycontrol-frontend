@@ -1,17 +1,5 @@
 <form [formGroup]="interfaceForm" (ngSubmit)="onSubmit()">
 
-  <!-- Schnittstellen typ -->
-  <div class="field">
-    <label for="interfaceType" class="block text-900 font-light mb-2">Schnittstelle</label>
-    <p-dropdown id="interfaceType" placeholder="Schnittstelle auswählen" [options]="interfaceTypes | keyvalue" optionLabel="value"
-                formControlName="interfaceType" class="w-full"></p-dropdown>
-    <div class="p-error"
-         *ngIf="interfaceForm.controls['interfaceType'].touched && interfaceForm.controls['interfaceType'].errors?.['required']">
-      Bitte wählen Sie eine Schnittstellen typen aus.
-    </div>
-
-  </div>
-
   <!-- Beschreibung -->
   <div class="field">
     <label for="description" class="block text-900 font-light mb-2">Beschreibung</label>
@@ -21,6 +9,17 @@
       Bitte gebe eine Beschreibung für die Schnittstelle ein.
     </div>
 
+  </div>
+
+  <!-- Schnittstellen typ -->
+  <div class="field">
+    <label for="interfaceType" class="block text-900 font-light mb-2">Schnittstelle</label>
+    <p-dropdown id="interfaceType" placeholder="Schnittstelle auswählen" [options]="interfaceTypes | keyvalue" optionLabel="value"
+                formControlName="interfaceType" class="w-full"></p-dropdown>
+    <div class="p-error"
+         *ngIf="interfaceForm.controls['interfaceType'].touched && interfaceForm.controls['interfaceType'].errors?.['required']">
+      Bitte wählen Sie eine Schnittstellen typen aus.
+    </div>
   </div>
 
   <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">
