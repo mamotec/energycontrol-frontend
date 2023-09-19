@@ -8,9 +8,9 @@
 
   <div class="grid mt-2">
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let group of deviceGroups">
-      <div class="card cursor-pointer " pBadge [value]="getCountOfDevices(group)" [routerLink]="['/group', group.id]">
+      <div class="card  " pBadge [value]="getCountOfDevices(group)" >
         <div class="grid" style="align-items: center">
-          <div class="col-10">
+          <div class="col-10 cursor-pointer" [routerLink]="['/group', group.id]">
             {{group.name}}
           </div>
           <div class="col-2">

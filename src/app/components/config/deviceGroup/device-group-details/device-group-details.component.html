@@ -1,13 +1,19 @@
 <div class="grid">
     <div class="col-12 md:col-12 lg:col-8">
         <div class="card">
-            <div class="flex" style="align-items: baseline">
-                <h2>Geräte ({{ deviceGroup?.devices?.length}})</h2>
+            <div class="grid">
+                <div class="col">
+                    <h2>Geräte ({{ deviceGroup?.devices?.length}})</h2>
+                </div>
 
-                <button pButton type="button" icon="pi pi-plus" (click)="addDeviceToGroup()"
-                        pTooltip="Geräte hinzufügen"
-                        class="p-button-rounded p-button-text ml-2"></button>
-
+                <div class="col-1">
+                    <app-back-button/>
+                </div>
+                <div class="col-1">
+                    <button pButton type="button" icon="pi pi-plus" (click)="addDeviceToGroup()"
+                            pTooltip="Geräte hinzufügen"
+                            class="p-button-rounded p-button-text ml-2"></button>
+                </div>
             </div>
 
             <div class="grid mt-2">
@@ -74,10 +80,8 @@
                         <span id="feedInManagement" class="text-500">{{asPlantGroup(deviceGroup!).feedInManagement ? 'Ja' : 'Nein' }}</span>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </div>
+<app-delete-dialog></app-delete-dialog>

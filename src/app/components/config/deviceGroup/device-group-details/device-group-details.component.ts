@@ -36,7 +36,6 @@ export class DeviceGroupDetailsComponent implements OnInit {
   }
 
   deleteDeviceFromGroup(device: Device) {
-
     this.confirmationService.confirm({
       message: 'Wollen Sie das Gerät wirklich aus der Gruppe entfernen?',
       icon: 'pi pi-exclamation-triangle',

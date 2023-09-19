@@ -55,6 +55,7 @@ import {DataViewModule} from "primeng/dataview";
 import {ContextMenuModule} from "primeng/contextmenu";
 import {BadgeModule} from "primeng/badge";
 import { DeviceGroupDetailsComponent } from './components/config/deviceGroup/device-group-details/device-group-details.component';
+import { BackButtonComponent } from './components/utils/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { DeviceGroupDetailsComponent } from './components/config/deviceGroup/dev
     PlantGroupDashboardComponent,
     FeedInManagementComponent,
     DeviceGroupDetailsComponent,
+    BackButtonComponent,
   ],
     imports: [
         ApiModule,
