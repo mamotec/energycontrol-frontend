@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogService} from "primeng/dynamicdialog";
 import {CreateInterfaceConfigComponent} from "./create-interface/create-interface-config.component";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 import {InterfaceConfig, InterfaceControllerService} from "../../../api";
 
 @Component({
@@ -15,6 +15,7 @@ export class InterfaceComponent implements OnInit {
 
   constructor(private dialogRef: DialogService,
               private messageService: MessageService,
+              private confirmationService: ConfirmationService,
               private interfaceConfigService: InterfaceControllerService) {
   }
 
@@ -47,12 +48,21 @@ export class InterfaceComponent implements OnInit {
   }
 
   onInterfaceRowDelete(interfaceToDelete: InterfaceConfig) {
-    this.interfaceConfigService.deleteInterfaceConfig(interfaceToDelete.id as number).subscribe({
-      next: () => {
-        this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
-        this.loadInterfaces();
+    this.confirmationService.confirm({
+      message: 'Wollen Sie die Schnittstelle wirklich löschen?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if (interfaceToDelete != null) {
+          this.interfaceConfigService.deleteInterfaceConfig(interfaceToDelete.id as number).subscribe({
+            next: () => {
+              this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
+              this.loadInterfaces();
+            }
+          });
+        }
       }
     });
+
   }
 
   // endregion

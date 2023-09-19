@@ -3,7 +3,7 @@
   <!-- Beschreibung -->
   <div class="field">
     <label for="description" class="block text-900 font-light mb-2">Beschreibung</label>
-    <input id="description" type="text" pInputText formControlName="description" class="w-full">
+    <input id="description" type="text" pInputText formControlName="description" class="w-full" maxlength="100">
     <div class="p-error"
          *ngIf="interfaceForm.controls['description'].touched && interfaceForm.controls['description'].errors?.['required']">
       Bitte gebe eine Beschreibung für die Schnittstelle ein.

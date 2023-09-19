@@ -20,7 +20,7 @@ export class CreateInterfaceConfigComponent {
               public ref: DynamicDialogRef,
               private interfaceConfigService: InterfaceControllerService) {
     this.interfaceForm = this.formBuilder.group({
-      interfaceType: new FormControl(InterfaceConfig.TypeEnum.Rs485, [Validators.required]),
+      interfaceType: new FormControl('', [Validators.required]),
       description: new FormControl('',[Validators.required])
     })
   }

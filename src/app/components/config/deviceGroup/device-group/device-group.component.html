@@ -7,7 +7,6 @@
             class="p-button-rounded p-button-outlined "></button>
   </div>
 
-
   <div class="grid mt-3">
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let group of deviceGroups">
       <div class="card cursor-pointer" [routerLink]="['/group', group.id]" pBadge [value]="getCountOfDevices(group)" >
