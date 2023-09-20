@@ -10,10 +10,10 @@
                         class="kebab-icon p-button-rounded p-button-text p-button-plain"
                         style="margin-left: auto; order: 2"
                         icon="pi pi-ellipsis-v"
-                        (click)="menu.toggle($event)"
+                        (click)="deviceGroupMenu.toggle($event)"
                 ></button>
 
-                <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                <p-menu #deviceGroupMenu [popup]="true" [model]="items"></p-menu>
             </div>
 
             <div class="grid mt-2">

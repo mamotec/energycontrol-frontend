@@ -61,37 +61,6 @@ export class DeviceComponent implements OnInit {
     })
   }
 
-  deleteDevice(device: Device) {
-    this.confirmationService.confirm({
-      message: 'Wollen Sie das Gerät wirklich löschen? Das Gerät wird aus der Aufzeichnung entfernt - Dieser Vorgang kann nicht rückgängig gemacht werden!',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        if (device != null) {
-          this.deviceControllerService.deleteDevice(device.id!).subscribe({
-            next: () => {
-              this.messageService.add({severity: 'success', summary: 'Erfolgreich', detail: 'Geräte gelöscht', life: 3000});
-              this.loadDevices();
-            }
-          })
-        }
-      }
-    });
-  }
-
-  calculateDeviceTotal(interfaceConfig: InterfaceConfig) {
-    let total = 0;
-
-    if (this.devices) {
-      for (let d of this.devices) {
-        if (d.interfaceConfig?.id === interfaceConfig.id) {
-          total++;
-        }
-      }
-    }
-
-    return total;
-  }
-
   // endregion
 
 

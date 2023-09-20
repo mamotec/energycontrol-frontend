@@ -5,7 +5,7 @@
     <button *ngIf="interfaceConfigs.length > 0" pButton type="button" icon="pi pi-plus" (click)="createDevice()"
             tooltipPosition="bottom"
             pTooltip="Hinzfügen" style="margin-left: auto; order: 2"
-            class="p-button-rounded p-button-text"></button>
+            class="p-button-rounded p-button-outlined "></button>
   </div>
 
   <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
@@ -14,7 +14,6 @@
       <div class="ml-2">Bitte mindestens eine Schnittstelle konfigurieren, damit Geräte erstellt werden können.</div>
     </ng-template>
   </p-messages>
-
 
   <div class="grid mt-3">
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let device of devices">

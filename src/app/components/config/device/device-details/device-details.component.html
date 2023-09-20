@@ -4,6 +4,8 @@
             <label for="name" class="block font-medium mb-2">Name des Gerätes</label>
             <span id="name" class="text-500">{{device?.name}}</span>
         </div>
+        <button pButton type="button" icon="pi pi-trash" (click)="deleteDevice(device!)"
+                class="p-button-rounded p-button-text p-button-danger mr-2"></button>
     </div>
 
     <div class="grid">
@@ -59,5 +61,5 @@
             </div>
         </div>
     </div>
-
 </div>
+<app-delete-dialog></app-delete-dialog>

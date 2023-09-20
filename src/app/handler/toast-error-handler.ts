@@ -11,7 +11,7 @@ export class ToastErrorHandler implements ErrorHandler {
     this.messageService.add({
       severity: 'error',
       summary: 'Fehler',
-      detail: error.message || 'Bruder mach groß'
+      detail: error.message
     })
   }
 }
