@@ -18,23 +18,44 @@ export class DataDashboardComponent implements AfterViewInit {
     const element = this.chartContainer.nativeElement;
     this.svg = d3.select(element).append('svg')
       .attr('width', '70vw') // Breite auf 100% der übergeordneten Komponente setzen
-      .attr('height', '70vh') // Höhe auf 100% der übergeordneten Komponente setzen
+      .attr('height', '70vh')
       .attr('preserveAspectRatio', 'xMidYMid meet'); // xMidYMid bewirkt, dass das SVG zentriert bleibt
 
     // Plant
+    d3.xml('assets/svg/grid.svg').then(data => {
+      const importedNode = document.importNode(data.documentElement, true);
+      const importedSVG = d3.select(importedNode);
+
+      // Positioniere das importierte SVG-Element an den gewünschten Koordinaten (z.B., x=100, y=100)
+      importedSVG
+        .attr('x', '13.5vw')
+        .attr('y', '2vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
+
+      this.svg.append('text')
+        .attr('x', '15.5vw')
+        .attr('y', '12vh')
+        .text('Netzeinspeisung')
+        .style('font-size', '15px')
+        .style('fill', '#9c9898');
+
+      this.svg.node().appendChild(importedNode);
+    })
     d3.xml('assets/svg/plant.svg').then(data => {
       const importedNode = document.importNode(data.documentElement, true);
       const importedSVG = d3.select(importedNode);
 
       // Positioniere das importierte SVG-Element an den gewünschten Koordinaten (z.B., x=100, y=100)
       importedSVG
-        .attr('x', 570)
-        .attr('y', 290)
-        .attr('width', 150)
-        .attr('height', 150);
+        .attr('x', '15.5vw')
+        .attr('y', '28vh')
+        .attr('width', '10vw')
+        .attr('height', '10vh');
 
       this.svg.node().appendChild(importedNode);
     })
+
 
     // Pumpe
     d3.xml('assets/svg/pump.svg').then(data => {
@@ -42,15 +63,15 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', 1010)
-        .attr('y', 100)
-        .attr('width', 70)
-        .attr('height', 70);
+        .attr('x', '44.5vw')
+        .attr('y', '6vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
 
       this.svg.node().appendChild(importedNode);
       this.svg.append('text')
-        .attr('x', 1020)
-        .attr('y', 205)
+        .attr('x', '46.5vw')
+        .attr('y', '16.5vh')
         .text('Wärmepumpe')
         .style('font-size', '15px')
         .style('fill', '#9c9898');
@@ -62,16 +83,16 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', 1010)
-        .attr('y', 350)
-        .attr('width', 70)
-        .attr('height', 70);
+        .attr('x', '44.5vw')
+        .attr('y', '28vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
 
       this.svg.node().appendChild(importedNode);
 
       this.svg.append('text')
-        .attr('x', 1020)
-        .attr('y', 455)
+        .attr('x', '46.5vw')
+        .attr('y', '38.5vh')
         .text('Haushaltsverbrauch')
         .style('font-size', '15px')
         .style('fill', '#9c9898');
@@ -83,16 +104,16 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', 1010)
-        .attr('y', 500)
-        .attr('width', 70)
-        .attr('height', 70);
+        .attr('x', '44.5vw')
+        .attr('y', '48vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
 
       this.svg.node().appendChild(importedNode);
 
       this.svg.append('text')
-        .attr('x', 1020)
-        .attr('y', 605)
+        .attr('x', '46.5vw')
+        .attr('y', '58.5vh')
         .text('E-Auto')
         .style('font-size', '15px')
         .style('fill', '#9c9898');
@@ -104,16 +125,16 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', 500)
-        .attr('y', 580)
-        .attr('width', 70)
-        .attr('height', 70);
+        .attr('x', '13.5vw')
+        .attr('y', '55vh')
+        .attr('width', '3.5vw')
+        .attr('height', '3.5vh');
 
       this.svg.node().appendChild(importedNode);
 
       this.svg.append('text')
-        .attr('x', 505)
-        .attr('y', 660)
+        .attr('x', '13.3vw')
+        .attr('y', '62.5vh')
         .text('Batterie')
         .style('font-size', '15px')
         .style('fill', '#9c9898');
@@ -121,19 +142,19 @@ export class DataDashboardComponent implements AfterViewInit {
 
     this.svg
       .append('line')
-      .attr('x1', 630)
-      .attr('y1', 265)
-      .attr('x2', 630)
-      .attr('y2', 150)
+      .attr('x1', '20vw')
+      .attr('y1', '14vh')
+      .attr('x2', '20vw')
+      .attr('y2', '24vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
     this.svg
       .append('line')
-      .attr('x1', 630)
-      .attr('y1', 450)
-      .attr('x2', 630)
-      .attr('y2', 565)
+      .attr('x1', '20vw')
+      .attr('y1', '42vh')
+      .attr('x2', '20vw')
+      .attr('y2', '52vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
@@ -141,29 +162,29 @@ export class DataDashboardComponent implements AfterViewInit {
     // Haushalt
     this.svg
       .append('line')
-      .attr('x1', 750)
-      .attr('y1', 370)
-      .attr('x2', 950)
-      .attr('y2', 370)
+      .attr('x1', '27vw')
+      .attr('y1', '32vh')
+      .attr('x2', '43vw')
+      .attr('y2', '32vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
     // Wärmepumpe
     this.svg
       .append('line')
-      .attr('x1', 950)
-      .attr('x2', 950)
-      .attr('y1', 370)
-      .attr('y2', 200)
+      .attr('x1', '43vw')
+      .attr('y1', '39vh')
+      .attr('x2', '43vw')
+      .attr('y2', '16vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
     this.svg
       .append('line')
-      .attr('x1', 950)
-      .attr('x2', 1000)
-      .attr('y1', 200)
-      .attr('y2', 200)
+      .attr('x1', '43vw')
+      .attr('y1', '16vh')
+      .attr('x2', '46vw')
+      .attr('y2', '16vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
@@ -171,62 +192,60 @@ export class DataDashboardComponent implements AfterViewInit {
     // Haushaltverbrauch & E-Auto
     this.svg
       .append('line')
-      .attr('x1', 950)
-      .attr('x2', 950)
-      .attr('y1', 370)
-      .attr('y2', 600)
+      .attr('x1', '43vw')
+      .attr('y1', '32vh')
+      .attr('x2', '43vw')
+      .attr('y2', '58vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
     // Verbrauch
     this.svg
       .append('line')
-      .attr('x1', 950)
-      .attr('x2', 1000)
-      .attr('y1', 450)
-      .attr('y2', 450)
+      .attr('x1', '43vw')
+      .attr('y1', '38vh')
+      .attr('x2', '46vw')
+      .attr('y2', '38vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
     // E-Auto
     this.svg
       .append('line')
-      .attr('x1', 950)
-      .attr('x2', 1000)
-      .attr('y1', 600)
-      .attr('y2', 600)
+      .attr('x1', '43vw')
+      .attr('y1', '58vh')
+      .attr('x2', '46vw')
+      .attr('y2', '58vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
 
     let circleGrid = this.svg
       .append('circle')
-      .attr('cx', 630)
-      .attr('cy', 265)
+      .attr('cx', '20vw')
+      .attr('cy', '24vh')
       .attr('r', 7)
       .attr('fill', 'yellow');
 
     let circleBattery = this.svg
       .append('circle')
-      .attr('cx', 630)
-      .attr('cy', 450)
+      .attr('cx', '20vw')
+      .attr('cy', '42vh')
       .attr('r', 7)
       .attr('fill', 'yellow');
 
     let circleHaushalt = this.svg
       .append('circle')
-      .attr('cx', 750)
-      .attr('cy', 370)
+      .attr('cx', '27vw')
+      .attr('cy', '32vh')
       .attr('r', 7)
       .attr('fill', 'red');
 
-
-
-    this.animateCircleY(circleGrid, 265, 150);
-    this.animateCircleY(circleBattery, 450, 565);
-    this.animateCircleX(circleHaushalt, 750, 950);
-
     // Animation
+    this.animateCircleY(circleGrid, '24vh', '14vh');
+    this.animateCircleY(circleBattery, '42vh', '52vh');
+    this.animateCircleX(circleHaushalt, '27vw', '43vw');
+
   }
 
   private animateCircleY(circle: any, start: any, end: any): void {
