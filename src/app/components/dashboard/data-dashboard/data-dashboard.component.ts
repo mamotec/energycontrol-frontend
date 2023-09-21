@@ -37,7 +37,7 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('x', '15.5vw')
         .attr('y', '12vh')
         .text('Netzeinspeisung')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
 
       this.svg.node().appendChild(importedNode);
@@ -56,24 +56,24 @@ export class DataDashboardComponent implements AfterViewInit {
       this.svg.node().appendChild(importedNode);
 
       this.svg.append('text')
-        .attr('x', '13.5vw')
-        .attr('y', '28vh')
+        .attr('x', '12vw')
+        .attr('y', '30vh')
         .text('PV')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
-        .attr('x', '7.5vw')
-        .attr('y', '28vh')
+        .attr('x', '6vw')
+        .attr('y', '30vh')
         .text('7 kWp')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#555956');
 
       this.svg.append('text')
-        .attr('x', '7.5vw')
-        .attr('y', '32vh')
+        .attr('x', '6vw')
+        .attr('y', '34vh')
         .text('5,51 kW')
-        .style('font-size', '25px')
+        .style('font-size', '2vw')
         .style('fill', '#53c271');
     })
 
@@ -94,7 +94,7 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('x', '46.5vw')
         .attr('y', '16.5vh')
         .text('Wärmepumpe')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
     })
 
@@ -115,7 +115,7 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('x', '46.5vw')
         .attr('y', '38.5vh')
         .text('Haushaltsverbrauch')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
     })
 
@@ -136,7 +136,7 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('x', '46.5vw')
         .attr('y', '58.5vh')
         .text('E-Auto')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
     })
 
@@ -157,7 +157,7 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('x', '13.3vw')
         .attr('y', '60vh')
         .text('Batterie')
-        .style('font-size', '15px')
+        .style('font-size', '1vw')
         .style('fill', '#9c9898');
     })
 
