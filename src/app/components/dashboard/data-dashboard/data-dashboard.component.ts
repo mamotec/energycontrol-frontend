@@ -77,7 +77,6 @@ export class DataDashboardComponent implements AfterViewInit {
         .style('fill', '#53c271');
     })
 
-
     // Pumpe
     d3.xml('assets/svg/pump.svg').then(data => {
       const importedNode = document.importNode(data.documentElement, true);

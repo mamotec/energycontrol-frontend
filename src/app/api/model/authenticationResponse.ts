@@ -13,5 +13,14 @@
 
 export interface AuthenticationResponse { 
     token?: string;
+    applicationMode?: AuthenticationResponse.ApplicationModeEnum;
 }
+export namespace AuthenticationResponse {
+    export type ApplicationModeEnum = 'HOME' | 'PLANT';
+    export const ApplicationModeEnum = {
+        Home: 'HOME' as ApplicationModeEnum,
+        Plant: 'PLANT' as ApplicationModeEnum
+    };
+}
+
 

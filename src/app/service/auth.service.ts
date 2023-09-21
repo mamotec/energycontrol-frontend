@@ -30,8 +30,9 @@ export class AuthService {
     this.authControllerService.authenticate(authRequest).subscribe({
       next: (token: AuthenticationResponse) => {
 
-        if (token.token != undefined) {
+        if (token.token != undefined && token.applicationMode != undefined) {
           this.localStorageService.set("auth-token", token.token)
+          this.localStorageService.set("application-mode", token.applicationMode)
           this.router.navigate(['/dashboard']);
         } else {
           this.logout()
