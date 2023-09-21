@@ -24,6 +24,7 @@ export interface PlantDeviceGroup {
     type?: PlantDeviceGroup.TypeEnum;
     directMarketing?: boolean;
     feedInManagement?: boolean;
+    peakKilowatt?: number;
 }
 export namespace PlantDeviceGroup {
     export type TypeEnum = 'PLANT';

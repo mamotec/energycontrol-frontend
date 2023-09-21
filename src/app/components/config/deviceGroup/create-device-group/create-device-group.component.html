@@ -17,14 +17,30 @@
 
   </div>
 
-  <!-- Gruppen-Typ -->
-  <div class="field">
-    <label for="type" class="block text-900 font-light mb-2">Typ der Gruppe</label>
-    <p-dropdown id="type" placeholder="Gruppentyp" [options]="deviceGroupTypes | keyvalue" optionLabel="value"
-                formControlName="type" class="w-full"></p-dropdown>
-    <div class="p-error"
-         *ngIf="deviceGroupForm.controls['type'].touched && deviceGroupForm.controls['type'].errors?.['required']">
-      Bitte wählen Sie einen Gruppentypen aus.
+  <div class="grid">
+    <div class="col-6 xs:col-12">
+      <!-- Gruppen-Typ -->
+      <div class="field">
+        <label for="type" class="block text-900 font-light mb-2">Typ der Gruppe</label>
+        <p-dropdown id="type" placeholder="Gruppentyp" [options]="deviceGroupTypes | keyvalue" optionLabel="value"
+                    [style]="{'width':'100%'}" formControlName="type" class="w-full"></p-dropdown>
+        <div class="p-error"
+             *ngIf="deviceGroupForm.controls['type'].touched && deviceGroupForm.controls['type'].errors?.['required']">
+          Bitte wählen Sie einen Gruppentypen aus.
+        </div>
+      </div>
+    </div>
+    <div class="col-6 xs:col-12" *ngIf="deviceGroupForm.value.type.value === DeviceGroup.TypeEnum.Plant">
+        <!-- Peak Kilowatt -->
+        <div class="field">
+          <label for="peak" class="block text-900 font-light mb-2">Kilowatt-Peak der Anlage</label>
+          <input id="peak" [style]="{'width':'100%'}" required type="number" pInputText formControlName="peak" class="w-full">
+          <div class="p-error"
+               *ngIf="deviceGroupForm.controls['peak'].touched && deviceGroupForm.controls['peak'].errors?.['required']">
+            Bitte gebe Sie die Kilowatt-Peak der Anlage an.
+          </div>
+        </div>
+
     </div>
   </div>
 

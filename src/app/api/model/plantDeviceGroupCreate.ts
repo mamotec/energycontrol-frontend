@@ -14,7 +14,7 @@ import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 
 
 export interface PlantDeviceGroupCreate extends DeviceGroupCreate { 
-    directMarketing?: boolean;
+    peakKilowatt?: number;
 }
 export namespace PlantDeviceGroupCreate {
 }

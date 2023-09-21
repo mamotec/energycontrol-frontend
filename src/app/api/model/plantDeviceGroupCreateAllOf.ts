@@ -12,6 +12,6 @@
 
 
 export interface PlantDeviceGroupCreateAllOf { 
-    directMarketing?: boolean;
+    peakKilowatt?: number;
 }
 

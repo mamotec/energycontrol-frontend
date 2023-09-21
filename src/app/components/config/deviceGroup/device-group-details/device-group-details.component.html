@@ -80,6 +80,13 @@
                         <span id="feedInManagement" class="text-500">{{asPlantGroup(deviceGroup!).feedInManagement ? 'Ja' : 'Nein' }}</span>
                     </div>
                 </div>
+
+              <div class="grid">
+                <div class="col">
+                  <label for="peakKilowatt" class="block font-medium mb-2">Kilowatt-Peak der Anlage</label>
+                  <span id="peakKilowatt" class="text-500">{{asPlantGroup(deviceGroup!).peakKilowatt }} kWp</span>
+                </div>
+              </div>
             </div>
         </div>
     </div>

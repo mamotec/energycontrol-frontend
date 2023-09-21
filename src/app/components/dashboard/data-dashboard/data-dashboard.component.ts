@@ -54,6 +54,27 @@ export class DataDashboardComponent implements AfterViewInit {
         .attr('height', '10vh');
 
       this.svg.node().appendChild(importedNode);
+
+      this.svg.append('text')
+        .attr('x', '13.5vw')
+        .attr('y', '28vh')
+        .text('PV')
+        .style('font-size', '15px')
+        .style('fill', '#9c9898');
+
+      this.svg.append('text')
+        .attr('x', '7.5vw')
+        .attr('y', '28vh')
+        .text('7 kWp')
+        .style('font-size', '15px')
+        .style('fill', '#555956');
+
+      this.svg.append('text')
+        .attr('x', '7.5vw')
+        .attr('y', '32vh')
+        .text('5,51 kW')
+        .style('font-size', '25px')
+        .style('fill', '#53c271');
     })
 
 
@@ -99,7 +120,7 @@ export class DataDashboardComponent implements AfterViewInit {
     })
 
     // Auto
-    d3.xml('assets/svg/pump.svg').then(data => {
+    d3.xml('assets/svg/car.svg').then(data => {
       const importedNode = document.importNode(data.documentElement, true);
       const importedSVG = d3.select(importedNode);
 

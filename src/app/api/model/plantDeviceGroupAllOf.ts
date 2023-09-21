@@ -14,5 +14,6 @@
 export interface PlantDeviceGroupAllOf { 
     directMarketing?: boolean;
     feedInManagement?: boolean;
+    peakKilowatt?: number;
 }
 

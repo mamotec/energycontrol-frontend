@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DeviceGroup, DeviceGroupControllerService} from "../../../../api";
+import {DeviceGroup, DeviceGroupControllerService, InterfaceConfig} from "../../../../api";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 
@@ -21,6 +21,7 @@ export class CreateDeviceGroupComponent {
     this.deviceGroupForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       type: new FormControl('', [Validators.required]),
+      peak: new FormControl('', [Validators.required]),
     })
   }
 
@@ -34,6 +35,7 @@ export class CreateDeviceGroupComponent {
         id: null,
         name: this.deviceGroupForm.value.name,
         type: this.deviceGroupForm.value.type.value,
+        peakKilowatt: this.deviceGroupForm.value.peak,
       }
     }
 
@@ -47,4 +49,6 @@ export class CreateDeviceGroupComponent {
     })
   }
 
+  protected readonly InterfaceConfig = InterfaceConfig;
+  protected readonly DeviceGroup = DeviceGroup;
 }

@@ -22,6 +22,7 @@ export * from './metaDataYaml';
 export * from './plantDataRepresentation';
 export * from './plantDataRepresentationAllOf';
 export * from './plantDeviceGroup';
+export * from './plantDeviceGroupAllOf';
 export * from './plantDeviceGroupCreate';
 export * from './plantDeviceGroupCreateAllOf';
 export * from './plantDeviceGroupUpdate';
