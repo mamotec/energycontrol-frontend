@@ -28,8 +28,8 @@ export class DataDashboardComponent implements AfterViewInit {
 
       // Positioniere das importierte SVG-Element an den gewünschten Koordinaten (z.B., x=100, y=100)
       importedSVG
-        .attr('x', '13.5vw')
-        .attr('y', '2vh')
+        .attr('x', '14vw')
+        .attr('y', '3vh')
         .attr('width', '6vw')
         .attr('height', '6vh');
 
@@ -63,8 +63,8 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', '44.5vw')
-        .attr('y', '6vh')
+        .attr('x', '45vw')
+        .attr('y', '8vh')
         .attr('width', '6vw')
         .attr('height', '6vh');
 
@@ -83,8 +83,8 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', '44.5vw')
-        .attr('y', '28vh')
+        .attr('x', '45vw')
+        .attr('y', '30vh')
         .attr('width', '6vw')
         .attr('height', '6vh');
 
@@ -104,8 +104,8 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedSVG = d3.select(importedNode);
 
       importedSVG
-        .attr('x', '44.5vw')
-        .attr('y', '48vh')
+        .attr('x', '45vw')
+        .attr('y', '50vh')
         .attr('width', '6vw')
         .attr('height', '6vh');
 
@@ -134,7 +134,7 @@ export class DataDashboardComponent implements AfterViewInit {
 
       this.svg.append('text')
         .attr('x', '13.3vw')
-        .attr('y', '62.5vh')
+        .attr('y', '60vh')
         .text('Batterie')
         .style('font-size', '15px')
         .style('fill', '#9c9898');
