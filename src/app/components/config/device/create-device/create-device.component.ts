@@ -17,7 +17,7 @@ export class CreateDeviceComponent implements OnInit {
   interfaceConfigs: InterfaceConfig[] = [];
   manufacturer: ManufacturerYaml[] = [];
   models: DeviceYaml[] = [];
-  deviceTypes = DeviceYaml.DeviceTypeEnum;
+  deviceTypes: Array<string> = [];
 
   constructor(private formBuilder: FormBuilder,
               private interfaceService: InterfaceControllerService,
@@ -40,11 +40,11 @@ export class CreateDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadManufacturers();
+    this.loadDeviceTypes()
   }
 
   loadManufacturers() {
-    this.interfaceService.fetchManufactures().subscribe({
+    this.interfaceService.fetchManufactures(this.deviceForm.value.deviceType.value).subscribe({
       next: (res) => {
         this.manufacturer = res;
       }
@@ -94,4 +94,12 @@ export class CreateDeviceComponent implements OnInit {
   }
 
   protected readonly InterfaceConfig = InterfaceConfig;
+
+  private loadDeviceTypes() {
+    this.deviceService.fetchDeviceTypes().subscribe({
+      next: (res) => {
+        this.deviceTypes = res;
+      }
+    });
+  }
 }

@@ -25,7 +25,7 @@
                     [style]="{'width':'100%'}"
                     [options]="deviceTypes | keyvalue"
                     optionLabel="value"
-                    (onChange)="loadModelsByManufacturer()"
+                    (onChange)="loadManufacturers()"
                     formControlName="deviceType"></p-dropdown>
         <div class="p-error"
              *ngIf="deviceForm.controls['deviceType'].touched && deviceForm.controls['deviceType'].errors?.['required']">
@@ -115,8 +115,6 @@
           Bitte gebe Sie den Port des Gerätes an.
         </div>
       </div>
-
-
   </div>
 
 
