@@ -1,8 +1,8 @@
-<div class="card" pBadge [severity]="device?.active ? 'success' : 'danger'" size="large">
+<div class="card" pBadge [severity]="device.active ? 'success' : 'danger'" size="large">
     <div class="grid">
         <div class="col">
             <label for="name" class="block font-medium mb-2">Name des Gerätes</label>
-            <span id="name" class="text-500">{{device?.name}}</span>
+            <span id="name" class="text-500">{{device.name}}</span>
         </div>
         <button pButton type="button" icon="pi pi-trash" (click)="deleteDevice(device!)"
                 class="p-button-rounded p-button-text p-button-danger mr-2"></button>
@@ -11,35 +11,35 @@
     <div class="grid">
         <div class="col">
             <label for="model" class="block font-medium mb-2">Modell</label>
-            <span id="model" class="text-500">{{device?.model}}</span>
+            <span id="model" class="text-500">{{device.model}}</span>
         </div>
     </div>
 
     <div class="grid">
         <div class="col">
             <label for="deviceType" class="block font-medium mb-2">Schnittstelle</label>
-            <span id="deviceType" class="text-500">{{device?.interfaceType}}</span>
+            <span id="deviceType" class="text-500">{{device.interfaceType}}</span>
         </div>
     </div>
 
     <div class="grid">
         <div class="col">
             <label for="interfaceType" class="block font-medium mb-2">Gerätetyp</label>
-            <span id="interfaceType" class="text-500">{{device?.deviceType}}</span>
+            <span id="interfaceType" class="text-500">{{device.deviceType}}</span>
         </div>
     </div>
 
     <div class="grid">
         <div class="col">
             <label for="slaveId" class="block font-medium mb-2">Slave-Id</label>
-            <span id="slaveId" class="text-500">{{device?.unitId}}</span>
+            <span id="slaveId" class="text-500">{{device.unitId}}</span>
         </div>
     </div>
 
     <div class="grid">
         <div class="col">
             <label for="createdAt" class="block font-medium mb-2">Erstellt am</label>
-            <span id="createdAt" class="text-500">{{device?.createdAt | date: 'dd.MM.yyyy'}}</span>
+            <span id="createdAt" class="text-500">{{device.createdAt | date: 'dd.MM.yyyy'}}</span>
         </div>
     </div>
 

@@ -9,12 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RegisterMapping } from './registerMapping';
+import { DeviceGroupCreate } from './deviceGroupCreate';
+import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
 
 
-export interface InterfaceMappingYaml { 
-    power?: RegisterMapping;
-    batterySoc?: RegisterMapping;
-    powerReduction?: RegisterMapping;
+export interface EnergyDeviceGroupCreate extends DeviceGroupCreate { 
+    peakKilowatt?: number;
 }
+export namespace EnergyDeviceGroupCreate {
+}
+
 
