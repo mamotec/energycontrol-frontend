@@ -34,10 +34,12 @@ export interface TcpDevice {
     port?: string;
 }
 export namespace TcpDevice {
-    export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY';
+    export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum,
         HybridInverter: 'HYBRID_INVERTER' as DeviceTypeEnum,
+        ChargingStation: 'CHARGING_STATION' as DeviceTypeEnum,
+        HeatPump: 'HEAT_PUMP' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
     };
     export type InterfaceTypeEnum = 'RS485' | 'TCP';

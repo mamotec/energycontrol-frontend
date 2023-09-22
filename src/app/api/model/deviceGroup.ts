@@ -24,9 +24,13 @@ export interface DeviceGroup {
     type?: DeviceGroup.TypeEnum;
 }
 export namespace DeviceGroup {
-    export type TypeEnum = 'PLANT';
+    export type TypeEnum = 'PLANT' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY' | 'HOME';
     export const TypeEnum = {
-        Plant: 'PLANT' as TypeEnum
+        Plant: 'PLANT' as TypeEnum,
+        ChargingStation: 'CHARGING_STATION' as TypeEnum,
+        HeatPump: 'HEAT_PUMP' as TypeEnum,
+        Battery: 'BATTERY' as TypeEnum,
+        Home: 'HOME' as TypeEnum
     };
 }
 

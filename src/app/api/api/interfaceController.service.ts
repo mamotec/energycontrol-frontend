@@ -243,10 +243,10 @@ export class InterfaceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DeviceYaml>>;
-    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DeviceYaml>>>;
-    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DeviceYaml>>>;
-    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DeviceYaml>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DeviceYaml>>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DeviceYaml>>>;
+    public fetchDevicesForManufacturer(manufacturerId: number, deviceType: 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (manufacturerId === null || manufacturerId === undefined) {
             throw new Error('Required parameter manufacturerId was null or undefined when calling fetchDevicesForManufacturer.');
         }
@@ -292,7 +292,7 @@ export class InterfaceControllerService {
             }
         }
 
-        let localVarPath = `/interface/${this.configuration.encodeParam({name: "manufacturerId", value: manufacturerId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/devices/${this.configuration.encodeParam({name: "deviceType", value: deviceType, in: "path", style: "simple", explode: false, dataType: "'INVERTER' | 'HYBRID_INVERTER' | 'BATTERY'", dataFormat: undefined})}`;
+        let localVarPath = `/interface/${this.configuration.encodeParam({name: "manufacturerId", value: manufacturerId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/devices/${this.configuration.encodeParam({name: "deviceType", value: deviceType, in: "path", style: "simple", explode: false, dataType: "'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY'", dataFormat: undefined})}`;
         return this.httpClient.request<Array<DeviceYaml>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
