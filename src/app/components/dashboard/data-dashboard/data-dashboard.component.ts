@@ -46,7 +46,6 @@ export class DataDashboardComponent implements AfterViewInit {
       const importedNode = document.importNode(data.documentElement, true);
       const importedSVG = d3.select(importedNode);
 
-      // Positioniere das importierte SVG-Element an den gewünschten Koordinaten (z.B., x=100, y=100)
       importedSVG
         .attr('x', '15.5vw')
         .attr('y', '28vh')
@@ -71,7 +70,7 @@ export class DataDashboardComponent implements AfterViewInit {
 
       this.svg.append('text')
         .attr('x', '6vw')
-        .attr('y', '34vh')
+        .attr('y', '35vh')
         .text('5,51 kW')
         .style('font-size', '2vw')
         .style('fill', '#53c271');

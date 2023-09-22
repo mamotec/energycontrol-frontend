@@ -9,7 +9,7 @@ import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
   styleUrls: ['./device-details.component.scss']
 })
 export class DeviceDetailsComponent implements OnInit {
-  device: Device | undefined
+  device!: Device
   items!: MenuItem[];
 
   constructor(private route: ActivatedRoute,
@@ -30,6 +30,7 @@ export class DeviceDetailsComponent implements OnInit {
     this.deviceService.fetchDevice(id).subscribe({
       next: (res) => {
         this.device = res;
+        console.log(this.device);
       }
     });
   }
