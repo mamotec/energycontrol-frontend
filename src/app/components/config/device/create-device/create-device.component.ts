@@ -1,10 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DeviceControllerService, DeviceYaml, InterfaceConfig, InterfaceControllerService, ManufacturerYaml} from "../../../../api";
+import {
+  DeviceControllerService,
+  DeviceYaml,
+  InterfaceConfig,
+  InterfaceControllerService,
+  ManufacturerYaml
+} from "../../../../api";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 import {InterfaceConfigDao} from "../../../../api/model/interfaceConfigDao";
 import TypeEnum = InterfaceConfigDao.TypeEnum;
+import {LocalStorageService} from "../../../../service/local-storage.service";
 
 @Component({
   selector: 'app-create-device',
@@ -18,14 +25,17 @@ export class CreateDeviceComponent implements OnInit {
   manufacturer: ManufacturerYaml[] = [];
   models: DeviceYaml[] = [];
   deviceTypes: Array<string> = [];
+  mode: any;
 
   constructor(private formBuilder: FormBuilder,
               private interfaceService: InterfaceControllerService,
               private config: DynamicDialogConfig,
               private deviceService: DeviceControllerService,
+              private localStorageService: LocalStorageService,
               public ref: DynamicDialogRef,
               private messageService: MessageService) {
     this.interfaceConfigs = this.config.data.interfaceConfigs;
+    this.mode = this.localStorageService.get('application-mode');
 
     this.deviceForm = this.formBuilder.group({
       interfaceConfig: new FormControl(InterfaceConfig, [Validators.required, Validators.max(3)]),
@@ -37,6 +47,10 @@ export class CreateDeviceComponent implements OnInit {
       host: new FormControl(''),
       port: new FormControl(''),
     })
+
+    if (this.mode == 'HOME') {
+      this.deviceForm.addControl('peakKilowatt', new FormControl('', [Validators.required]));
+    }
   }
 
   ngOnInit(): void {
@@ -70,6 +84,10 @@ export class CreateDeviceComponent implements OnInit {
       req.interfaceType = TypeEnum.Tcp;
     } else if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Rs485) {
       req.interfaceType = TypeEnum.Rs485;
+    }
+
+    if (this.mode == 'HOME') {
+      req.peakKilowatt = this.deviceForm.value.peakKilowatt;
     }
 
     this.deviceService.createDevice(req).subscribe({
