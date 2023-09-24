@@ -1,6 +1,2 @@
-<div class="row">
-  <div class="col">
-    <ng-container #group></ng-container>
-  </div>
-
-</div>
+<app-home-group-dashboard *ngIf="applicationMode === 'HOME'"/>
+<app-plant-group-dashboard *ngIf="applicationMode === 'PLANT'"/>

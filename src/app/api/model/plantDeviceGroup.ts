@@ -18,6 +18,7 @@ export interface PlantDeviceGroup {
     updatedAt?: string;
     name?: string;
     devices?: Array<FetchDevices200ResponseInner>;
+    deleted?: boolean;
     /**
      * Die Gruppen Typen
      */

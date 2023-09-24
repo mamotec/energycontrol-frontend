@@ -57,6 +57,7 @@ import { DeviceGroupDetailsComponent } from './components/config/deviceGroup/dev
 import { BackButtonComponent } from './components/utils/back-button/back-button.component';
 import {MenuModule} from "primeng/menu";
 import { DeviceDetailsComponent } from './components/config/device/device-details/device-details.component';
+import { HomeGroupDashboardComponent } from './components/dashboard/home-group-dashboard/home-group-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { DeviceDetailsComponent } from './components/config/device/device-detail
     DeviceGroupDetailsComponent,
     BackButtonComponent,
     DeviceDetailsComponent,
+    HomeGroupDashboardComponent,
   ],
     imports: [
         ApiModule,

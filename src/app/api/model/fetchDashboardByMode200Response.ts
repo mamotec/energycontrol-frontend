@@ -10,15 +10,13 @@
  * Do not edit the class manually.
  */
 import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
+import { HomeDataRepresentation } from './homeDataRepresentation';
+import { PlantDataRepresentation } from './plantDataRepresentation';
 
 
-export interface PlantDataRepresentation extends DeviceGroupRepresentation { 
-    activePower?: number;
-    directMarketing?: boolean;
-    feedInManagement?: boolean;
-    peakKilowatt?: number;
-}
-export namespace PlantDataRepresentation {
-}
-
+/**
+ * @type FetchDashboardByMode200Response
+ * @export
+ */
+export type FetchDashboardByMode200Response = DeviceGroupRepresentation | HomeDataRepresentation | PlantDataRepresentation;
 

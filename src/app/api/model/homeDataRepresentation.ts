@@ -12,13 +12,16 @@
 import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
 
 
-export interface PlantDataRepresentation extends DeviceGroupRepresentation { 
-    activePower?: number;
-    directMarketing?: boolean;
-    feedInManagement?: boolean;
+export interface HomeDataRepresentation extends DeviceGroupRepresentation { 
     peakKilowatt?: number;
+    activePower?: number;
+    batterySoc?: number;
+    batteryPower?: number;
+    houseHoldPower?: number;
+    heatPumpActive?: boolean;
+    chargingStationPower?: number;
 }
-export namespace PlantDataRepresentation {
+export namespace HomeDataRepresentation {
 }
 
 

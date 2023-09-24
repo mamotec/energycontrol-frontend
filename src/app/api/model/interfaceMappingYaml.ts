@@ -15,6 +15,7 @@ import { RegisterMapping } from './registerMapping';
 export interface InterfaceMappingYaml { 
     power?: RegisterMapping;
     batterySoc?: RegisterMapping;
+    batteryPower?: RegisterMapping;
     powerReduction?: RegisterMapping;
 }
 

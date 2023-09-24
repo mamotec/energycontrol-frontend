@@ -18,6 +18,7 @@ export interface DeviceGroup {
     updatedAt?: string;
     name?: string;
     devices?: Array<FetchDevices200ResponseInner>;
+    deleted?: boolean;
     /**
      * Die Gruppen Typen
      */

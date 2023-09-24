@@ -1,26 +1,5 @@
-<div class="surface-card shadow-2 p-3 border-round mt-3">
-  <div class="flex justify-content-between mb-3">
-    <div>
-      <span class="block text-500 font-medium mb-3">{{deviceGroup.name}}</span>
-      <div class="font-medium text-xl"><span class="text-green-500">{{plantGroupRepresentation.activePower}}</span>
-      </div>
-    </div>
-    <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
-         style="width:2.5rem;height:2.5rem">
-      <i class="pi pi-home text-blue-500 text-xl"></i>
-    </div>
+<div class="row">
+  <div class="col">
+    <ng-container #group></ng-container>
   </div>
-  <div class="grid">
-    <div class="col">
-      <p-chip [image]="plantGroupRepresentation.directMarketing ? 'assets/images/green_dot.png' : 'assets/images/red_dot.png'" label="Direktvermarktung"></p-chip>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="col">
-      <p-chip [image]="plantGroupRepresentation.feedInManagement ? 'assets/images/green_dot.png' : 'assets/images/red_dot.png'" label="Einspeisemanagement"></p-chip>
-    </div>
-  </div>
-
 </div>
-
