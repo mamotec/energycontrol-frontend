@@ -279,7 +279,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       .attr('y2', '58vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
-
+/*
 
     let circleGrid = this.svg
       .append('circle')
@@ -305,7 +305,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
     // Animation
     this.animateCircleY(circleGrid, '24vh', '14vh');
     this.animateCircleY(circleBattery, '42vh', '52vh');
-    this.animateCircleX(circleHaushalt, '27vw', '43vw');
+    this.animateCircleX(circleHaushalt, '27vw', '43vw');*/
 
   }
 
