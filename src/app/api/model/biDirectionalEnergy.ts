@@ -9,14 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RegisterMapping } from './registerMapping';
 
 
-export interface InterfaceMappingYaml { 
-    power?: RegisterMapping;
-    batterySoc?: RegisterMapping;
-    batteryPower?: RegisterMapping;
-    powerReduction?: RegisterMapping;
-    gridPower?: RegisterMapping;
+export interface BiDirectionalEnergy { 
+    value: number;
+    consumption: boolean;
 }
 

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
+import { BiDirectionalEnergy } from './biDirectionalEnergy';
 import { HomeDataRepresentation } from './homeDataRepresentation';
 import { PlantDataRepresentation } from './plantDataRepresentation';
 

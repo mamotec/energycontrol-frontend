@@ -13,6 +13,7 @@ git_push.sh
 index.ts
 model/authenticationRequest.ts
 model/authenticationResponse.ts
+model/biDirectionalEnergy.ts
 model/createDeviceRequest.ts
 model/createGroupRequest.ts
 model/device.ts

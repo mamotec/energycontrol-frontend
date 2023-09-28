@@ -9,16 +9,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BiDirectionalEnergy } from './biDirectionalEnergy';
 
 
 export interface HomeDataRepresentationAllOf { 
-    gridPower?: number;
+    grid?: BiDirectionalEnergy;
     peakKilowatt?: number;
     activePower?: number;
     batterySoc?: number;
-    batteryPower?: number;
+    batteryPower?: BiDirectionalEnergy;
     houseHoldPower?: number;
     heatPumpActive?: boolean;
-    chargingStationPower?: number;
+    chargingStation?: BiDirectionalEnergy;
 }
 

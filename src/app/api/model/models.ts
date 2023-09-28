@@ -1,5 +1,6 @@
 export * from './authenticationRequest';
 export * from './authenticationResponse';
+export * from './biDirectionalEnergy';
 export * from './createDeviceRequest';
 export * from './createGroupRequest';
 export * from './device';
@@ -12,6 +13,7 @@ export * from './deviceLinkRequest';
 export * from './deviceYaml';
 export * from './energyDeviceGroupCreate';
 export * from './energyDeviceGroupCreateAllOf';
+export * from './fetchDeviceGroupData200Response';
 export * from './fetchDevices200ResponseInner';
 export * from './getAllGroups200ResponseInner';
 export * from './homeDataRepresentation';

@@ -10,17 +10,18 @@
  * Do not edit the class manually.
  */
 import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
+import { BiDirectionalEnergy } from './biDirectionalEnergy';
 
 
 export interface HomeDataRepresentation extends DeviceGroupRepresentation { 
-    gridPower: number;
+    grid: BiDirectionalEnergy;
     peakKilowatt: number;
     activePower: number;
     batterySoc: number;
-    batteryPower: number;
+    batteryPower: BiDirectionalEnergy;
     houseHoldPower: number;
     heatPumpActive: boolean;
-    chargingStationPower: number;
+    chargingStation: BiDirectionalEnergy;
 }
 export namespace HomeDataRepresentation {
 }
