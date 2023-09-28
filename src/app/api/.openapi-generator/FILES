@@ -25,7 +25,7 @@ model/deviceLinkRequest.ts
 model/deviceYaml.ts
 model/energyDeviceGroupCreate.ts
 model/energyDeviceGroupCreateAllOf.ts
-model/fetchDashboardByMode200Response.ts
+model/fetchDeviceGroupData200Response.ts
 model/fetchDevices200ResponseInner.ts
 model/getAllGroups200ResponseInner.ts
 model/homeDataRepresentation.ts

@@ -13,13 +13,14 @@ import { DeviceGroupRepresentation } from './deviceGroupRepresentation';
 
 
 export interface HomeDataRepresentation extends DeviceGroupRepresentation { 
-    peakKilowatt?: number;
-    activePower?: number;
-    batterySoc?: number;
-    batteryPower?: number;
-    houseHoldPower?: number;
-    heatPumpActive?: boolean;
-    chargingStationPower?: number;
+    gridPower: number;
+    peakKilowatt: number;
+    activePower: number;
+    batterySoc: number;
+    batteryPower: number;
+    houseHoldPower: number;
+    heatPumpActive: boolean;
+    chargingStationPower: number;
 }
 export namespace HomeDataRepresentation {
 }

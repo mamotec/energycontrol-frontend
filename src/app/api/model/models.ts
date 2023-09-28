@@ -12,7 +12,7 @@ export * from './deviceLinkRequest';
 export * from './deviceYaml';
 export * from './energyDeviceGroupCreate';
 export * from './energyDeviceGroupCreateAllOf';
-export * from './fetchDashboardByMode200Response';
+export * from './fetchDeviceGroupData200Response';
 export * from './fetchDevices200ResponseInner';
 export * from './getAllGroups200ResponseInner';
 export * from './homeDataRepresentation';

@@ -17,20 +17,29 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
   duration = 3500;
   strokeFill = '#d8d8d8';
 
+  intervalId: any;
+
   constructor(private deviceGroupService: DeviceGroupControllerService) {
   }
 
   ngAfterViewInit(): void {
     this.createChart();
+
+    this.intervalId = setInterval(() => {
+      this.loadData();
+    }, 3500);
   }
 
   private async createChart() {
-    await this.loadData()
     const element = this.chartContainer.nativeElement;
     this.svg = d3.select(element).append('svg')
-      .attr('width', '70vw') // Breite auf 100% der übergeordneten Komponente setzen
+      .attr('width', '70vw')
       .attr('height', '70vh')
-      .attr('preserveAspectRatio', 'xMidYMid meet'); // xMidYMid bewirkt, dass das SVG zentriert bleibt
+      .attr('preserveAspectRatio', 'xMidYMid meet');
+
+
+    await this.loadData()
+
 
     // Plant
     d3.xml('assets/svg/grid.svg').then(data => {
@@ -82,9 +91,11 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
       this.svg.append('text')
         .attr('x', '6vw')
         .attr('y', '35vh')
+        .attr('id', 'activePower')
         .text(this.homeData?.activePower + ' kW')
         .style('font-size', '2vw')
         .style('fill', '#53c271');
+
     })
 
     // Pumpe
@@ -336,5 +347,11 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
       .then((data) => {
         this.homeData = data;
       });
+
+    this.updateSvg('activePower', this.homeData?.activePower + ' kW')
+  }
+
+  updateSvg(id: any, value: any) {
+    this.svg.select('#' + id).text(value);
   }
 }

@@ -16,6 +16,7 @@ export interface RegisterMapping {
     unit?: RegisterMapping.UnitEnum;
     type?: string;
     fc?: RegisterMapping.FcEnum;
+    conversionMethod?: string;
 }
 export namespace RegisterMapping {
     export type UnitEnum = 'W' | 'KW' | 'KWH' | 'PERCENT';

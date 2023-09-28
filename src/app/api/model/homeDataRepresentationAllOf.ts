@@ -12,6 +12,7 @@
 
 
 export interface HomeDataRepresentationAllOf { 
+    gridPower?: number;
     peakKilowatt?: number;
     activePower?: number;
     batterySoc?: number;
