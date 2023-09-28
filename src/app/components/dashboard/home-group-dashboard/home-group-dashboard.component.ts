@@ -34,6 +34,20 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
     }, 3500);
   }
 
+  async loadData() {
+    await firstValueFrom(this.deviceGroupService.fetchHomeDashboard())
+      .then((data) => {
+        this.homeData = data;
+
+        this.updateSvg('activePower', this.homeData?.activePower + ' W')
+        this.updateSvg('batteryPower', this.homeData?.batteryPower + ' W')
+        this.updateSvg('batterySoc', this.homeData?.batterySoc + ' %')
+        this.updateSvg('heatPump', this.homeData?.heatPumpActive ? 'Ein' : 'Aus')
+        this.updateSvg('houseHoldPower', this.homeData?.houseHoldPower + ' W', '#a14a4a')
+        this.updateSvg('chargingStationPower', this.homeData?.chargingStationPower + ' W', '#a14a4a')
+      });
+  }
+
   private async createChart() {
     const element = this.chartContainer.nativeElement;
     this.svg = d3.select(element).append('svg')
@@ -44,28 +58,27 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
 
     await this.loadData()
 
+    this.createGrid();
+    this.createPlant()
+    this.createBattery()
+    this.createPump()
+    this.createHousehold()
+    this.createChargingStation()
 
-    // Plant
-    d3.xml('assets/svg/grid.svg').then(data => {
-      const importedNode = document.importNode(data.documentElement, true);
-      const importedSVG = d3.select(importedNode);
+  }
 
-      // Positioniere das importierte SVG-Element an den gewünschten Koordinaten (z.B., x=100, y=100)
-      importedSVG
-        .attr('x', '14vw')
-        .attr('y', '3vh')
-        .attr('width', '6vw')
-        .attr('height', '6vh');
+  updateSvg(id: any, value: any, color?: any) {
+    if (value > 0 && color) {
+      this.svg.select('#' + id)
+        .text(value)
+        .style('fill', color);
+    } else {
+      this.svg.select('#' + id)
+        .text(value);
+    }
+  }
 
-      this.svg.append('text')
-        .attr('x', '15.5vw')
-        .attr('y', '12vh')
-        .text('Netzeinspeisung')
-        .style('font-size', '1vw')
-        .style('fill', '#9c9898');
-
-      this.svg.node().appendChild(importedNode);
-    })
+  createPlant() {
     d3.xml('assets/svg/plant.svg').then(data => {
       const importedNode = document.importNode(data.documentElement, true);
       const importedSVG = d3.select(importedNode);
@@ -101,68 +114,17 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .style('fill', '#53c271');
 
     })
+  }
 
-    // Pumpe
-    d3.xml('assets/svg/pump.svg').then(data => {
-      const importedNode = document.importNode(data.documentElement, true);
-      const importedSVG = d3.select(importedNode);
-
-      importedSVG
-        .attr('x', '45vw')
-        .attr('y', '8vh')
-        .attr('width', '6vw')
-        .attr('height', '6vh');
-
-      this.svg.node().appendChild(importedNode);
-      this.svg.append('text')
-        .attr('x', '46.5vw')
-        .attr('y', '16.5vh')
-        .text('Wärmepumpe')
-        .style('font-size', '1vw')
-        .style('fill', '#9c9898');
-    })
-
-    // Pumpe
-    d3.xml('assets/svg/home.svg').then(data => {
-      const importedNode = document.importNode(data.documentElement, true);
-      const importedSVG = d3.select(importedNode);
-
-      importedSVG
-        .attr('x', '45vw')
-        .attr('y', '30vh')
-        .attr('width', '6vw')
-        .attr('height', '6vh');
-
-      this.svg.node().appendChild(importedNode);
-
-      this.svg.append('text')
-        .attr('x', '46.5vw')
-        .attr('y', '38.5vh')
-        .text('Haushaltsverbrauch')
-        .style('font-size', '1vw')
-        .style('fill', '#9c9898');
-    })
-
-    // Auto
-    d3.xml('assets/svg/car.svg').then(data => {
-      const importedNode = document.importNode(data.documentElement, true);
-      const importedSVG = d3.select(importedNode);
-
-      importedSVG
-        .attr('x', '45vw')
-        .attr('y', '50vh')
-        .attr('width', '6vw')
-        .attr('height', '6vh');
-
-      this.svg.node().appendChild(importedNode);
-
-      this.svg.append('text')
-        .attr('x', '46.5vw')
-        .attr('y', '58.5vh')
-        .text('E-Auto')
-        .style('font-size', '1vw')
-        .style('fill', '#9c9898');
-    })
+  createBattery() {
+    this.svg
+      .append('line')
+      .attr('x1', '20vw')
+      .attr('y1', '42vh')
+      .attr('x2', '20vw')
+      .attr('y2', '52vh')
+      .attr('stroke', this.strokeFill)
+      .attr('stroke-width', this.strokeWidth)
 
     // Batterie
     d3.xml('assets/svg/battery.svg').then(data => {
@@ -190,7 +152,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
         .style('font-size', '1vw')
-        .style('fill', '#9c9898');
+        .style('fill', '#53c271');
 
       this.svg.append('text')
         .attr('x', '23vw')
@@ -201,35 +163,9 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .style('fill', '#9c9898');
     })
 
-    this.svg
-      .append('line')
-      .attr('x1', '20vw')
-      .attr('y1', '14vh')
-      .attr('x2', '20vw')
-      .attr('y2', '24vh')
-      .attr('stroke', this.strokeFill)
-      .attr('stroke-width', this.strokeWidth)
+  }
 
-    this.svg
-      .append('line')
-      .attr('x1', '20vw')
-      .attr('y1', '42vh')
-      .attr('x2', '20vw')
-      .attr('y2', '52vh')
-      .attr('stroke', this.strokeFill)
-      .attr('stroke-width', this.strokeWidth)
-
-
-    // Haushalt
-    this.svg
-      .append('line')
-      .attr('x1', '27vw')
-      .attr('y1', '32vh')
-      .attr('x2', '43vw')
-      .attr('y2', '32vh')
-      .attr('stroke', this.strokeFill)
-      .attr('stroke-width', this.strokeWidth)
-
+  createPump() {
     // Wärmepumpe
     this.svg
       .append('line')
@@ -249,14 +185,42 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
+    d3.xml('assets/svg/pump.svg').then(data => {
+      const importedNode = document.importNode(data.documentElement, true);
+      const importedSVG = d3.select(importedNode);
 
-    // Haushaltverbrauch & E-Auto
+      importedSVG
+        .attr('x', '45vw')
+        .attr('y', '8vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
+
+      this.svg.node().appendChild(importedNode);
+      this.svg.append('text')
+        .attr('x', '46.5vw')
+        .attr('y', '16.5vh')
+        .text('Wärmepumpe')
+        .style('font-size', '1vw')
+        .style('fill', '#9c9898');
+
+      this.svg.append('text')
+        .attr('x', '54.5vw')
+        .attr('y', '11.5vh')
+        .attr('id', 'heatPump')
+        .text('Aus')
+        .style('font-size', '2vw')
+        .style('fill', '#9c9898');
+    })
+  }
+
+  createHousehold() {
+    // Haushalt
     this.svg
       .append('line')
-      .attr('x1', '43vw')
+      .attr('x1', '27vw')
       .attr('y1', '32vh')
       .attr('x2', '43vw')
-      .attr('y2', '58vh')
+      .attr('y2', '32vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
@@ -270,6 +234,47 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
 
+    // Haushalt
+    d3.xml('assets/svg/home.svg').then(data => {
+      const importedNode = document.importNode(data.documentElement, true);
+      const importedSVG = d3.select(importedNode);
+
+      importedSVG
+        .attr('x', '45vw')
+        .attr('y', '30vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
+
+      this.svg.node().appendChild(importedNode);
+
+      this.svg.append('text')
+        .attr('x', '46.5vw')
+        .attr('y', '38.5vh')
+        .text('Haushaltsverbrauch')
+        .style('font-size', '1vw')
+        .style('fill', '#9c9898');
+
+      this.svg.append('text')
+        .attr('x', '54.5vw')
+        .attr('y', '33.5vh')
+        .attr('id', 'houseHoldPower')
+        .text(this.homeData?.houseHoldPower + ' W')
+        .style('font-size', '2vw')
+        .style('fill', '#9c9898');
+    })
+  }
+
+  createChargingStation() {
+    // Haushaltverbrauch & E-Auto
+    this.svg
+      .append('line')
+      .attr('x1', '43vw')
+      .attr('y1', '32vh')
+      .attr('x2', '43vw')
+      .attr('y2', '58vh')
+      .attr('stroke', this.strokeFill)
+      .attr('stroke-width', this.strokeWidth)
+
     // E-Auto
     this.svg
       .append('line')
@@ -279,88 +284,65 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       .attr('y2', '58vh')
       .attr('stroke', this.strokeFill)
       .attr('stroke-width', this.strokeWidth)
-/*
 
-    let circleGrid = this.svg
-      .append('circle')
-      .attr('cx', '20vw')
-      .attr('cy', '24vh')
-      .attr('r', 7)
-      .attr('fill', 'yellow');
+    // Auto
+    d3.xml('assets/svg/car.svg').then(data => {
+      const importedNode = document.importNode(data.documentElement, true);
+      const importedSVG = d3.select(importedNode);
 
-    let circleBattery = this.svg
-      .append('circle')
-      .attr('cx', '20vw')
-      .attr('cy', '42vh')
-      .attr('r', 7)
-      .attr('fill', '#53c271');
+      importedSVG
+        .attr('x', '45vw')
+        .attr('y', '50vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
 
-    let circleHaushalt = this.svg
-      .append('circle')
-      .attr('cx', '27vw')
-      .attr('cy', '32vh')
-      .attr('r', 7)
-      .attr('fill', 'red');
+      this.svg.node().appendChild(importedNode);
 
-    // Animation
-    this.animateCircleY(circleGrid, '24vh', '14vh');
-    this.animateCircleY(circleBattery, '42vh', '52vh');
-    this.animateCircleX(circleHaushalt, '27vw', '43vw');*/
+      this.svg.append('text')
+        .attr('x', '46.5vw')
+        .attr('y', '58.5vh')
+        .text('E-Auto')
+        .style('font-size', '1vw')
+        .style('fill', '#9c9898');
 
+      this.svg.append('text')
+        .attr('x', '54.5vw')
+        .attr('y', '54vh')
+        .attr('id', 'chargingStationPower')
+        .text(this.homeData?.chargingStationPower + ' W')
+        .style('font-size', '2vw')
+        .style('fill', '#9c9898');
+    })
   }
 
-  private animateCircleY(circle: any, start: any, end: any): void {
+  createGrid() {
+    this.svg
+      .append('line')
+      .attr('x1', '20vw')
+      .attr('y1', '14vh')
+      .attr('x2', '20vw')
+      .attr('y2', '24vh')
+      .attr('stroke', this.strokeFill)
+      .attr('stroke-width', this.strokeWidth)
 
-    circle
-      .transition()
-      .duration(this.duration)
-      .attr('cy', end)
-      .on('end', () => {
-        circle
-          .style('opacity', 0)
-          .transition()
-          .duration(0)
-          .attr('cy', start)
-          .style('opacity', 1)
-          .on('end', () => {
-            this.animateCircleY(circle, start, end);
-          });
-      });
-  }
+    d3.xml('assets/svg/grid.svg').then(data => {
+      const importedNode = document.importNode(data.documentElement, true);
+      const importedSVG = d3.select(importedNode);
 
-  private animateCircleX(circle: any, start: any, end: any): void {
+      importedSVG
+        .attr('x', '14vw')
+        .attr('y', '3vh')
+        .attr('width', '6vw')
+        .attr('height', '6vh');
 
-    circle
-      .transition()
-      .duration(this.duration)
-      .attr('cx', end)
-      .on('end', () => {
-        circle
-          .style('opacity', 0)
-          .transition()
-          .duration(0)
-          .attr('cx', start)
-          .style('opacity', 1)
-          .on('end', () => {
-            this.animateCircleX(circle, start, end);
-          });
-      });
-  }
+      this.svg.append('text')
+        .attr('x', '15.5vw')
+        .attr('y', '12vh')
+        .text('Netzeinspeisung')
+        .style('font-size', '1vw')
+        .style('fill', '#9c9898');
 
-
-  async loadData() {
-    await firstValueFrom(this.deviceGroupService.fetchHomeDashboard())
-      .then((data) => {
-        this.homeData = data;
-
-        this.updateSvg('activePower', this.homeData?.activePower + ' W')
-        this.updateSvg('batteryPower', this.homeData?.batteryPower + ' W')
-        this.updateSvg('batterySoc', this.homeData?.batterySoc + ' %')
-      });
-
-  }
-
-  updateSvg(id: any, value: any) {
-    this.svg.select('#' + id).text(value);
+      this.svg.node().appendChild(importedNode);
+    })
   }
 }
