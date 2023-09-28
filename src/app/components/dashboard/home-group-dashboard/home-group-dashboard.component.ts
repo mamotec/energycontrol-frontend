@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import * as d3 from "d3";
 import {DeviceGroupControllerService, HomeDataRepresentation} from "../../../api";
 import {firstValueFrom} from "rxjs";
@@ -8,18 +8,22 @@ import {firstValueFrom} from "rxjs";
   templateUrl: './home-group-dashboard.component.html',
   styleUrls: ['./home-group-dashboard.component.scss']
 })
-export class HomeGroupDashboardComponent implements AfterViewInit {
+export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
   @ViewChild('chart') private chartContainer!: ElementRef;
   private svg: any;
   homeData: HomeDataRepresentation | undefined;
 
   strokeWidth = 3;
-  duration = 3500;
+  duration = 4200;
   strokeFill = '#d8d8d8';
 
   intervalId: any;
 
   constructor(private deviceGroupService: DeviceGroupControllerService) {
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
   }
 
   ngAfterViewInit(): void {
@@ -92,7 +96,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
         .attr('x', '6vw')
         .attr('y', '35vh')
         .attr('id', 'activePower')
-        .text(this.homeData?.activePower + ' kW')
+        .text(this.homeData?.activePower + ' W')
         .style('font-size', '2vw')
         .style('fill', '#53c271');
 
@@ -183,6 +187,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
       this.svg.append('text')
         .attr('x', '23vw')
         .attr('y', '60vh')
+        .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
         .style('font-size', '1vw')
         .style('fill', '#9c9898');
@@ -190,6 +195,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
       this.svg.append('text')
         .attr('x', '23vw')
         .attr('y', '57vh')
+        .attr('id', 'batteryPower')
         .text(this.homeData?.batteryPower + ' W')
         .style('font-size', '1vw')
         .style('fill', '#9c9898');
@@ -287,7 +293,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
       .attr('cx', '20vw')
       .attr('cy', '42vh')
       .attr('r', 7)
-      .attr('fill', 'yellow');
+      .attr('fill', '#53c271');
 
     let circleHaushalt = this.svg
       .append('circle')
@@ -346,9 +352,12 @@ export class HomeGroupDashboardComponent implements AfterViewInit {
     await firstValueFrom(this.deviceGroupService.fetchHomeDashboard())
       .then((data) => {
         this.homeData = data;
+
+        this.updateSvg('activePower', this.homeData?.activePower + ' W')
+        this.updateSvg('batteryPower', this.homeData?.batteryPower + ' W')
+        this.updateSvg('batterySoc', this.homeData?.batterySoc + ' %')
       });
 
-    this.updateSvg('activePower', this.homeData?.activePower + ' kW')
   }
 
   updateSvg(id: any, value: any) {
