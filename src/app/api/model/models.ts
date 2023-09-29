@@ -10,6 +10,7 @@ export * from './deviceGroupCreate';
 export * from './deviceGroupRepresentation';
 export * from './deviceGroupUpdate';
 export * from './deviceLinkRequest';
+export * from './deviceTypeResponse';
 export * from './deviceYaml';
 export * from './energyDeviceGroupCreate';
 export * from './energyDeviceGroupCreateAllOf';

@@ -23,6 +23,7 @@ model/deviceGroupCreate.ts
 model/deviceGroupRepresentation.ts
 model/deviceGroupUpdate.ts
 model/deviceLinkRequest.ts
+model/deviceTypeResponse.ts
 model/deviceYaml.ts
 model/energyDeviceGroupCreate.ts
 model/energyDeviceGroupCreateAllOf.ts

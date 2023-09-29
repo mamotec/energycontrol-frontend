@@ -1,7 +1,7 @@
 import {Component, OnInit, Type} from '@angular/core';
-import {Device, DeviceControllerService, InterfaceConfig, InterfaceControllerService} from "../../../../api";
+import {Device, DeviceControllerService, DeviceTypeResponse, InterfaceConfig, InterfaceControllerService} from "../../../../api";
 import {DialogService} from "primeng/dynamicdialog";
-import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
+import {MenuItem} from "primeng/api";
 import {CreateHybridInverterComponent} from "../create-device/create-hybrid-inverter/create-hybrid-inverter.component";
 
 @Component({
@@ -12,12 +12,10 @@ import {CreateHybridInverterComponent} from "../create-device/create-hybrid-inve
 export class DeviceComponent implements OnInit {
   devices: Device[] = [];
   interfaceConfigs: InterfaceConfig[] = [];
-  deviceTypes: Array<string> = [];
+  deviceTypes: DeviceTypeResponse[] = [];
   buttonItems: MenuItem[] = [];
 
   constructor(private dialogRef: DialogService,
-              private confirmationService: ConfirmationService,
-              private messageService: MessageService,
               private interfaceConfigService: InterfaceControllerService,
               private deviceControllerService: DeviceControllerService) {
   }
@@ -26,7 +24,6 @@ export class DeviceComponent implements OnInit {
     this.loadDevices();
     this.loadInterfaces();
     this.loadDeviceTypes()
-
   }
 
   loadInterfaces() {
@@ -47,18 +44,19 @@ export class DeviceComponent implements OnInit {
 
   private loadDeviceTypes() {
     this.deviceControllerService.fetchDeviceTypes().subscribe({
-      next: (res) => {
+      next: (res: DeviceTypeResponse[]) => {
         this.deviceTypes = res;
-        for (let deviceType of this.deviceTypes) {
+        for (const deviceType of this.deviceTypes) {
           this.buttonItems.push({
-            label: deviceType,
+            label: deviceType.label,
             command: () => {
-              this.createDevice(deviceType)
+              this.createDevice(deviceType.deviceType!)
             }
           })
         }
       }
-    });
+    })
+
   }
 
   createDevice(deviceType: string) {

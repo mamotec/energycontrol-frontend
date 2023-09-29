@@ -23,6 +23,8 @@ import { CreateDeviceRequest } from '../model/createDeviceRequest';
 // @ts-ignore
 import { DeviceCreateRequest } from '../model/deviceCreateRequest';
 // @ts-ignore
+import { DeviceTypeResponse } from '../model/deviceTypeResponse';
+// @ts-ignore
 import { FetchDevices200ResponseInner } from '../model/fetchDevices200ResponseInner';
 // @ts-ignore
 import { SerialDeviceCreateRequest } from '../model/serialDeviceCreateRequest';
@@ -307,9 +309,9 @@ export class DeviceControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fetchDeviceTypes(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<string>>;
-    public fetchDeviceTypes(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<string>>>;
-    public fetchDeviceTypes(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<string>>>;
+    public fetchDeviceTypes(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DeviceTypeResponse>>;
+    public fetchDeviceTypes(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DeviceTypeResponse>>>;
+    public fetchDeviceTypes(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DeviceTypeResponse>>>;
     public fetchDeviceTypes(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -351,7 +353,7 @@ export class DeviceControllerService {
         }
 
         let localVarPath = `/device/types`;
-        return this.httpClient.request<Array<string>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Array<DeviceTypeResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
