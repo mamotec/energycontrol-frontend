@@ -1,139 +1,61 @@
-<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
-  <p-messages severity="info">
-    <ng-template pTemplate>
-      <i class="pi pi-info-circle"></i>
-      <div class="ml-2">Das Gerät wird erst als erreichbar eingestuft, wenn Daten empfangen sowie gespeichert werden können.</div>
-    </ng-template>
-  </p-messages>
-
-  <!-- Beschreibung -->
-  <div class="field">
-    <label for="name" class="block text-900 font-light mb-2">Name des Geräts</label>
-    <input id="name" type="text" pInputText formControlName="name" class="w-full">
-    <div class="p-error"
-         *ngIf="deviceForm.controls['name'].touched && deviceForm.controls['name'].errors?.['required']">
-      Bitte gebe einen Namen für das Gerät ein.
-    </div>
+<!-- Beschreibung -->
+<div class="field">
+  <label for="name" class="block text-900 font-light mb-2">Name des Geräts</label>
+  <input id="name" type="text" pInputText [formControl]="deviceForm.controls['name']" class="w-full" (change)="emitFormValue()">
+  <div class="p-error"
+       *ngIf="deviceForm.controls['name'].touched && deviceForm.controls['name'].errors?.['required']">
+    Bitte gebe einen Namen für das Gerät ein.
   </div>
+</div>
 
-  <div class="grid">
-    <div class="col">
-      <!-- Geräte-Typ -->
-      <div class="field">
-        <label for="deviceType" class="block text-900 font-light mb-2">Typ des Gerätes</label>
-        <p-dropdown id="deviceType" placeholder="Gerätetyp"
-                    [style]="{'width':'100%'}"
-                    [options]="deviceTypes | keyvalue"
-                    optionLabel="value"
-                    (onChange)="loadManufacturers()"
-                    formControlName="deviceType"></p-dropdown>
-        <div class="p-error"
-             *ngIf="deviceForm.controls['deviceType'].touched && deviceForm.controls['deviceType'].errors?.['required']">
-          Bitte wählen Sie einen Gerätetypen aus.
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="mode == 'HOME'">
-      <div class="col">
-        <!-- Slave-Id -->
-        <label for="peakKilowatt" class="block text-900 font-light mb-2">Leistung PV-Module</label>
-        <p-inputNumber suffix=" kWp" id="peakKilowatt" formControlName="peakKilowatt" mode="decimal"></p-inputNumber>
-
-        <div class="p-error"
-             *ngIf="deviceForm.controls['peakKilowatt'].touched && deviceForm.controls['peakKilowatt'].errors?.['required']">
-          Bitte geben Sie eine Zahl ein.
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <!-- Slave-Id -->
-      <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
-      <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [min]="0" [max]="255"></p-inputNumber>
-
+<div class="grid">
+  <div class="col">
+    <!-- Hersteller -->
+    <div class="field">
+      <label for="manufacturerId" class="block text-900 font-light mb-2">Hersteller</label>
+      <p-dropdown id="manufacturerId" placeholder="Hersteller auswählen" [options]="manufacturer" optionLabel="manufacturer" optionValue="manufacturerId"
+                  [style]="{'width':'100%'}"
+                  (onChange)="loadModelsByManufacturer()"
+                  [formControl]="deviceForm.controls['manufacturerId']" class="w-full"></p-dropdown>
       <div class="p-error"
-           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">
-        Bitte geben Sie eine Slave-ID ein.
+           *ngIf="deviceForm.controls['manufacturerId'].touched && deviceForm.controls['manufacturerId'].errors?.['required']">
+        Bitte wählen Sie einen Hersteller aus.
       </div>
-
+    </div>
+  </div>
+  <div class="col">
+    <!-- Modell -->
+    <div class="field">
+      <label for="deviceId" class="block text-900 font-light mb-2">Modell</label>
+      <p-dropdown id="deviceId" placeholder="Modell auswählen"
+                  [options]="models"
+                  optionLabel="name"
+                  optionValue="deviceId"
+                  emptyMessage="Nichts gefunden"
+                  (onChange)="emitFormValue()"
+                  [style]="{'width':'100%'}"
+                  [formControl]="deviceForm.controls['deviceId']"
+                  class="w-full"></p-dropdown>
       <div class="p-error"
-           *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['max']">
-        Slave-ID darf nicht mehr als 3 Zeichen haben.
-      </div>
-    </div>
-
-  </div>
-
-  <div class="grid">
-    <div class="col">
-      <!-- Hersteller -->
-      <div class="field">
-        <label for="manufacturerId" class="block text-900 font-light mb-2">Hersteller</label>
-        <p-dropdown id="manufacturerId" placeholder="Hersteller auswählen" [options]="manufacturer" optionLabel="manufacturer" optionValue="manufacturerId"
-                    [style]="{'width':'100%'}"
-                    (onChange)="loadModelsByManufacturer()"
-                    formControlName="manufacturerId" class="w-full"></p-dropdown>
-        <div class="p-error"
-             *ngIf="deviceForm.controls['manufacturerId'].touched && deviceForm.controls['manufacturerId'].errors?.['required']">
-          Bitte wählen Sie einen Hersteller aus.
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <!-- Modell -->
-      <div class="field">
-        <label for="deviceId" class="block text-900 font-light mb-2">Modell</label>
-        <p-dropdown id="deviceId" placeholder="Modell auswählen" [options]="models" optionLabel="name" optionValue="deviceId" emptyMessage="Nichts gefunden"
-                    [style]="{'width':'100%'}"
-                    formControlName="deviceId" class="w-full"></p-dropdown>
-        <div class="p-error"
-             *ngIf="deviceForm.controls['deviceId'].touched && deviceForm.controls['deviceId'].errors?.['required']">
-          Bitte wählen Sie ein Modell aus.
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <!-- Schnittstellen Konfiguration -->
-      <div class="field">
-        <label for="interfaceConfig" class="block text-900 font-light mb-2">Schnittstelle</label>
-        <p-dropdown id="interfaceConfig" optionGroupLabel="e" optionLabel="description" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs"
-                    [style]="{'width':'100%'}" formControlName="interfaceConfig" class="w-full">
-        </p-dropdown>
-        <div class="p-error"
-             *ngIf="deviceForm.controls['interfaceConfig'].touched && deviceForm.controls['interfaceConfig'].errors?.['required']">
-          Bitte wählen Sie eine Schnittstellen typen aus.
-        </div>
+           *ngIf="deviceForm.controls['deviceId'].touched && deviceForm.controls['deviceId'].errors?.['required']">
+        Bitte wählen Sie ein Modell aus.
       </div>
     </div>
   </div>
-
-  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Tcp">
-    <hr>
-      <!-- Host -->
-    <div class="col">
-        <label for="host" class="block text-900 font-light mb-2">IP-Adresse des Gerätes</label>
-      <input id="host" [style]="{'width':'100%'}" required type="text" pInputText formControlName="host" class="w-full">
-        <div class="p-error"
-             *ngIf="deviceForm.controls['host'].touched && deviceForm.controls['host'].errors?.['required']">
-          Bitte gebe Sie die IP-Addresse des Gerätes an.
-        </div>
-    </div>
-
-      <!-- port -->
-    <div class="col">
-        <label for="port" class="block text-900 font-light mb-2">Port des Gerätes</label>
-      <input [style]="{'width':'100%'}" id="port" required type="text" pInputText formControlName="port" class="w-full">
-        <div class="p-error"
-             *ngIf="deviceForm.controls['port'].touched && deviceForm.controls['port'].errors?.['required']">
-          Bitte gebe Sie den Port des Gerätes an.
-        </div>
+  <div class="col">
+    <!-- Schnittstellen Konfiguration -->
+    <div class="field">
+      <label for="interfaceConfig" class="block text-900 font-light mb-2">Schnittstelle</label>
+      <p-dropdown id="interfaceConfig" optionGroupLabel="e" optionLabel="description" placeholder="Schnittstelle auswählen" [options]="interfaceConfigs"
+                  (onChange)="emitFormValue()"
+                  [style]="{'width':'100%'}"
+                  [formControl]="deviceForm.controls['interfaceConfig']" class="w-full">
+      </p-dropdown>
+      <div class="p-error"
+           *ngIf="deviceForm.controls['interfaceConfig'].touched && deviceForm.controls['interfaceConfig'].errors?.['required']">
+        Bitte wählen Sie eine Schnittstellen typen aus.
       </div>
+    </div>
   </div>
-
-
-  <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">
-    <button pButton type="submit" label="Speichern" class="w-full" [disabled]="deviceForm.invalid"></button>
-  </div>
-
-</form>
+</div>
+<hr>

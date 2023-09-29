@@ -1,11 +1,8 @@
 <div class="card">
   <div class="flex">
     <h2>Geräte konfigurieren</h2>
-    <i pTooltip="Hier können Sie ihre Geräte erstellen. Ab den Zeitpunkt wo diese erreichbar sind, werden Metriken aufgenommen." class="pi pi-info-circle"></i>
-    <button *ngIf="interfaceConfigs.length > 0" pButton type="button" icon="pi pi-plus" (click)="createDevice()"
-            tooltipPosition="bottom"
-            pTooltip="Hinzfügen" style="margin-left: auto; order: 2"
-            class="p-button-rounded p-button-outlined "></button>
+    <p-splitButton [style.margin-left]="'auto'" [model]="buttonItems" label="Hinzufügen"></p-splitButton>
+
   </div>
 
   <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">

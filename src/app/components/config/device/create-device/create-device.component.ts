@@ -1,17 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {
-  DeviceControllerService,
-  DeviceYaml,
-  InterfaceConfig,
-  InterfaceControllerService,
-  ManufacturerYaml
-} from "../../../../api";
-import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
-import {MessageService} from "primeng/api";
-import {InterfaceConfigDao} from "../../../../api/model/interfaceConfigDao";
-import TypeEnum = InterfaceConfigDao.TypeEnum;
-import {LocalStorageService} from "../../../../service/local-storage.service";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {DeviceYaml, InterfaceConfig, InterfaceControllerService, ManufacturerYaml} from "../../../../api";
+import {DynamicDialogConfig} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-create-device',
@@ -20,90 +9,39 @@ import {LocalStorageService} from "../../../../service/local-storage.service";
 })
 export class CreateDeviceComponent implements OnInit {
 
-  deviceForm: FormGroup;
+  @Input()
+  deviceForm: any;
+  @Input()
+  deviceType: any;
+  @Output()
+  formChange = new EventEmitter<any>();
+
   interfaceConfigs: InterfaceConfig[] = [];
   manufacturer: ManufacturerYaml[] = [];
   models: DeviceYaml[] = [];
-  deviceTypes: Array<string> = [];
-  mode: any;
 
-  constructor(private formBuilder: FormBuilder,
-              private interfaceService: InterfaceControllerService,
-              private config: DynamicDialogConfig,
-              private deviceService: DeviceControllerService,
-              private localStorageService: LocalStorageService,
-              public ref: DynamicDialogRef,
-              private messageService: MessageService) {
+  constructor(private interfaceService: InterfaceControllerService,
+              private config: DynamicDialogConfig) {
     this.interfaceConfigs = this.config.data.interfaceConfigs;
-    this.mode = this.localStorageService.get('application-mode');
-
-    this.deviceForm = this.formBuilder.group({
-      interfaceConfig: new FormControl(InterfaceConfig, [Validators.required, Validators.max(3)]),
-      unitId: new FormControl(''),
-      manufacturerId: new FormControl('', [Validators.required]),
-      deviceType: new FormControl('', [Validators.required]),
-      deviceId: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required]),
-      host: new FormControl(''),
-      port: new FormControl(''),
-    })
-
-    if (this.mode == 'HOME') {
-      this.deviceForm.addControl('peakKilowatt', new FormControl('', [Validators.required]));
-    }
   }
 
   ngOnInit(): void {
-    this.loadDeviceTypes()
+    this.loadManufacturers()
   }
 
   loadManufacturers() {
-    this.interfaceService.fetchManufactures(this.deviceForm.value.deviceType.value).subscribe({
+    this.interfaceService.fetchManufactures(this.deviceType).subscribe({
       next: (res) => {
         this.manufacturer = res;
       }
     })
   }
 
-  onSubmit() {
-    if (this.deviceForm.invalid) {
-      return;
-    }
-
-    let req: any = {
-      interfaceConfig: this.deviceForm.value.interfaceConfig,
-      manufacturerId: this.deviceForm.value.manufacturerId,
-      deviceType: this.deviceForm.value.deviceType.value,
-      name: this.deviceForm.value.name,
-      deviceId: this.deviceForm.value.deviceId,
-      unitId: this.deviceForm.value.unitId,
-    }
-    if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
-      req.host = this.deviceForm.value.host;
-      req.port = this.deviceForm.value.port;
-      req.interfaceType = TypeEnum.Tcp;
-    } else if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Rs485) {
-      req.interfaceType = TypeEnum.Rs485;
-    }
-
-    if (this.mode == 'HOME') {
-      req.peakKilowatt = this.deviceForm.value.peakKilowatt;
-    }
-
-    this.deviceService.createDevice(req).subscribe({
-      next: () => {
-        this.ref.close();
-        this.messageService.add({severity: 'success', summary: 'Erfolgreich'});
-      }, error: (err) => {
-        this.messageService.add({severity: 'error', summary: 'Fehler', detail: err.error});
-      }
-    })
-  }
-
   loadModelsByManufacturer() {
+    this.emitFormValue()
     if (this.deviceForm.value.manufacturerId != null && this.deviceForm.value.manufacturerId != "" &&
-      this.deviceForm.value.deviceType.value != null) {
-      this.interfaceService.fetchDevicesForManufacturer(this.deviceForm.value.manufacturerId, this.deviceForm.value.deviceType.value).subscribe({
+      this.deviceType != null) {
+      this.interfaceService.fetchDevicesForManufacturer(this.deviceForm.value.manufacturerId, this.deviceType).subscribe({
         next: (res) => {
           this.models = res;
         }
@@ -111,13 +49,7 @@ export class CreateDeviceComponent implements OnInit {
     }
   }
 
-  protected readonly InterfaceConfig = InterfaceConfig;
-
-  private loadDeviceTypes() {
-    this.deviceService.fetchDeviceTypes().subscribe({
-      next: (res) => {
-        this.deviceTypes = res;
-      }
-    });
+  emitFormValue() {
+    this.formChange.emit(this.deviceForm.value)
   }
 }
