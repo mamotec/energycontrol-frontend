@@ -17,6 +17,8 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
   duration = 4200;
   strokeFill = '#a8a7a7';
 
+  arrowDownGrid: any;
+
   intervalId: any;
 
   constructor(private deviceGroupService: DeviceGroupControllerService) {
@@ -72,6 +74,11 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       this.svg.select('#' + id)
         .text(value + unit)
     }
+  }
+
+  updateSvgVisibility(id: any, value: any) {
+    this.svg.select('#' + id)
+      .attr('visibility', value ? 'visible' : 'hidden')
   }
 
   createPlant() {
@@ -165,6 +172,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '50vh')
+        .attr('id', 'arrowDownBattery')
         .attr('visibility', this.homeData?.batteryPower.value == 0 ? 'hidden' : this.homeData?.batteryPower.consumption ? 'visible' : 'hidden')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
@@ -178,6 +186,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '40vh')
+        .attr('id', 'arrowUpBattery')
         .attr('visibility', this.homeData?.batteryPower.value == 0 ? 'hidden' : this.homeData?.batteryPower.consumption ? 'hidden' : 'visible')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
@@ -381,6 +390,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '22vh')
+        .attr('id', 'arrowDownGrid')
         .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'hidden' : 'visible')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
@@ -394,6 +404,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '12vh')
+        .attr('id', 'arrowUpGrid')
         .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'visible' : 'hidden')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
@@ -410,5 +421,9 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
     this.updateSvg('heatPump', this.homeData?.heatPumpActive ? 'Ein' : 'Aus', '')
     this.updateSvg('houseHoldPower', this.homeData?.houseHoldPower, ' W')
     this.updateSvg('chargingStationPower', this.homeData?.chargingStation.value, ' W')
+    this.updateSvgVisibility('arrowDownGrid', this.homeData?.grid.value != 0 && !this.homeData?.grid.consumption)
+    this.updateSvgVisibility('arrowUpGrid', this.homeData?.grid.value != 0 && this.homeData?.grid.consumption)
+    this.updateSvgVisibility('arrowDownBattery', this.homeData?.batteryPower.value != 0 && this.homeData?.batteryPower.consumption)
+    this.updateSvgVisibility('arrowUpBattery', this.homeData?.batteryPower.value != 0 && !this.homeData?.batteryPower.consumption)
   }
 }
