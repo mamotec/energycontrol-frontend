@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {LayoutService} from "./service/app.layout.service";
+import {LocalStorageService} from "../service/local-storage.service";
 
 @Component({
   selector: 'app-topbar',
@@ -9,6 +10,7 @@ import {LayoutService} from "./service/app.layout.service";
 export class AppTopBarComponent {
 
   items!: MenuItem[];
+  mode: any;
 
   @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -16,7 +18,8 @@ export class AppTopBarComponent {
 
   @ViewChild('topbarmenu') menu!: ElementRef;
 
-  constructor(public layoutService: LayoutService) {
+  constructor(public layoutService: LayoutService, private localeStorageService: LocalStorageService) {
+    this.mode = this.localeStorageService.get("application-mode");
   }
 
   public logout(): void {

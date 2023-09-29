@@ -15,7 +15,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
 
   strokeWidth = 3;
   duration = 4200;
-  strokeFill = '#d8d8d8';
+  strokeFill = '#a8a7a7';
 
   intervalId: any;
 
@@ -381,7 +381,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '22vh')
-        .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'visible' : 'hidden')
+        .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'hidden' : 'visible')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
 
@@ -394,7 +394,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '18.25vw')
         .attr('y', '12vh')
-        .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'hidden' : 'visible')
+        .attr('visibility', this.homeData?.grid.value == 0 ? 'hidden' : this.homeData?.grid.consumption ? 'visible' : 'hidden')
         .attr('width', '3.5vw')
         .attr('height', '3.5vh');
 
