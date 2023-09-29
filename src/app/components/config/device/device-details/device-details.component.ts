@@ -23,7 +23,6 @@ export class DeviceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.loadDevice();
     this.injectItems();
-
   }
 
   loadDevice() {

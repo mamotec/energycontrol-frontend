@@ -1,4 +1,4 @@
-<div class="card" pBadge [severity]="device ? device.active ? 'success' : 'danger': 'danger'" size="large">
+<div class="card">
   <div class="grid">
     <div class="col">
       <label for="name" class="block font-medium mb-2">Name des Gerätes</label>
@@ -12,6 +12,13 @@
     <div class="col">
       <label for="model" class="block font-medium mb-2">Modell</label>
       <span id="model" class="text-500">{{device ? device.model : ''}}</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <label for="status" class="block font-medium mb-2">Status</label>
+      <span id="status" class="text-500">{{device?.active ? 'Aktiv' : 'Nicht aktiv'}}</span>
     </div>
   </div>
 
