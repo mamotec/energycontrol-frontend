@@ -3,6 +3,7 @@ import {Device, DeviceControllerService, DeviceTypeResponse, InterfaceConfig, In
 import {DialogService} from "primeng/dynamicdialog";
 import {MenuItem} from "primeng/api";
 import {CreateHybridInverterComponent} from "../create-device/create-hybrid-inverter/create-hybrid-inverter.component";
+import {CreateChargingStationComponent} from "../create-device/create-charging-station/create-charging-station.component";
 
 @Component({
   selector: 'app-device',
@@ -50,7 +51,7 @@ export class DeviceComponent implements OnInit {
           this.buttonItems.push({
             label: deviceType.label,
             command: () => {
-              this.createDevice(deviceType.deviceType!)
+              this.createDevice(deviceType)
             }
           })
         }
@@ -59,18 +60,16 @@ export class DeviceComponent implements OnInit {
 
   }
 
-  createDevice(deviceType: string) {
-    const createDialog = this.dialogRef.open(this.getDialogByDeviceType(deviceType), {
+  createDevice(deviceType: DeviceTypeResponse) {
+    const createDialog = this.dialogRef.open(this.getDialogByDeviceType(deviceType.deviceType!), {
       data: {
         interfaceConfigs: this.interfaceConfigs,
         deviceType
       },
       styleClass: 'card',
       maximizable: true,
-      header: 'Gerät definieren',
+      header: deviceType.label + ' definieren',
     })
-
-    createDialog.maximize(true)
 
     createDialog.onClose.subscribe(() => {
       this.loadDevices();
@@ -81,6 +80,8 @@ export class DeviceComponent implements OnInit {
     switch (deviceType) {
       case 'HYBRID_INVERTER':
         return CreateHybridInverterComponent;
+      case 'CHARGING_STATION':
+        return CreateChargingStationComponent;
       default:
         return CreateHybridInverterComponent;
     }

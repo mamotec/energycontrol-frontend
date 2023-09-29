@@ -60,6 +60,7 @@ import { DeviceDetailsComponent } from './components/config/device/device-detail
 import { HomeGroupDashboardComponent } from './components/dashboard/home-group-dashboard/home-group-dashboard.component';
 import {CreateHybridInverterComponent} from "./components/config/device/create-device/create-hybrid-inverter/create-hybrid-inverter.component";
 import {SplitButtonModule} from "primeng/splitbutton";
+import { CreateChargingStationComponent } from './components/config/device/create-device/create-charging-station/create-charging-station.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import {SplitButtonModule} from "primeng/splitbutton";
     DeviceDetailsComponent,
     HomeGroupDashboardComponent,
     CreateHybridInverterComponent,
+    CreateChargingStationComponent,
   ],
   imports: [
     ApiModule,

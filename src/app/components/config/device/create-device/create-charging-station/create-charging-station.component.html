@@ -1,0 +1,22 @@
+<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+  <app-create-device [deviceForm]="deviceForm" (formChange)="onFormValue($event)" [deviceType]="deviceType"/>
+
+    <div class="grid">
+      <!-- device id -->
+      <div class="col">
+        <label for="deviceIdCharger" class="block text-900 font-light mb-2">Geräte-Id der Ladesäule</label>
+        <p-inputNumber id="deviceIdCharger" [style]="{'width':'100%'}" class="w-full"
+               formControlName="deviceIdCharger" />
+        <div class="p-error"
+             *ngIf="deviceForm.controls['deviceIdCharger'].touched && deviceForm.controls['deviceIdCharger'].errors?.['required']">
+          Bitte gebe Sie die Geräte-Id der Ladesäule an.
+        </div>
+      </div>
+    </div>
+
+
+  <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">
+    <button pButton type="submit" label="Speichern" class="w-full" [disabled]="deviceForm.invalid"></button>
+  </div>
+
+</form>

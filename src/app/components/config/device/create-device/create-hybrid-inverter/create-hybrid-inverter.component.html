@@ -33,19 +33,17 @@
     <div *ngIf="mode == 'HOME'" class="col">
       <!-- Peak Kilowatt -->
       <label for="peakKilowatt" class="block text-900 font-light mb-2">Leistung PV-Module</label>
-      <p-inputNumber inputStyleClass="width-100" styleClass="width-100" suffix=" kWp" id="peakKilowatt" formControlName="peakKilowatt" mode="decimal"></p-inputNumber>
+      <p-inputNumber [style]="{'width':'100%'}" class="w-full" suffix=" kWp" id="peakKilowatt" formControlName="peakKilowatt" mode="decimal"></p-inputNumber>
 
       <div class="p-error"
            *ngIf="deviceForm.controls['peakKilowatt'].touched && deviceForm.controls['peakKilowatt'].errors?.['required']">
         Bitte geben Sie eine Zahl ein.
       </div>
     </div>
-  </div>
-  <div class="grid">
     <div class="col">
       <!-- Slave-Id -->
       <label for="unitId" class="block text-900 font-light mb-2">Slave-ID</label>
-      <p-inputNumber id="unitId" formControlName="unitId" mode="decimal" [min]="0" [max]="255"></p-inputNumber>
+      <p-inputNumber [style]="{'width':'100%'}" class="w-full" id="unitId" formControlName="unitId" mode="decimal" [min]="0" [max]="255"></p-inputNumber>
 
       <div class="p-error"
            *ngIf="deviceForm.controls['unitId'].touched && deviceForm.controls['unitId'].errors?.['required']">

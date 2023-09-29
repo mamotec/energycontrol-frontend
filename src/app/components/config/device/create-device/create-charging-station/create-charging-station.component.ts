@@ -1,18 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DeviceControllerService, InterfaceConfig} from "../../../../../api";
-import TypeEnum = InterfaceConfig.TypeEnum;
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
-import {MessageService} from "primeng/api";
 import {LocalStorageService} from "../../../../../service/local-storage.service";
+import {MessageService} from "primeng/api";
+import TypeEnum = InterfaceConfig.TypeEnum;
 
 @Component({
-  selector: 'app-create-hybrid-inverter',
-  templateUrl: './create-hybrid-inverter.component.html',
-  styleUrls: ['./create-hybrid-inverter.component.scss']
+  selector: 'app-create-charging-station',
+  templateUrl: './create-charging-station.component.html',
+  styleUrls: ['./create-charging-station.component.scss']
 })
-export class CreateHybridInverterComponent implements OnInit {
-
+export class CreateChargingStationComponent implements OnInit {
   deviceForm!: FormGroup
   deviceType: any;
   mode: any;
@@ -36,13 +35,9 @@ export class CreateHybridInverterComponent implements OnInit {
       deviceType: this.deviceType,
       deviceId: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
-      host: new FormControl(''),
-      port: new FormControl(''),
+      deviceIdCharger: new FormControl('', [Validators.required]),
     })
 
-    if (this.mode == 'HOME') {
-      this.deviceForm.addControl('peakKilowatt', new FormControl('', [Validators.required]));
-    }
   }
 
   onSubmit() {
@@ -57,6 +52,7 @@ export class CreateHybridInverterComponent implements OnInit {
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
       unitId: this.deviceForm.value.unitId,
+      deviceIdCharger: this.deviceForm.value.deviceIdCharger,
     }
     if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
       req.host = this.deviceForm.value.host;
@@ -64,10 +60,6 @@ export class CreateHybridInverterComponent implements OnInit {
       req.interfaceType = TypeEnum.Tcp;
     } else if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Rs485) {
       req.interfaceType = TypeEnum.Rs485;
-    }
-
-    if (this.mode == 'HOME') {
-      req.peakKilowatt = this.deviceForm.value.peakKilowatt;
     }
 
     this.deviceService.createDevice(req).subscribe({
