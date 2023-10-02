@@ -26,10 +26,8 @@ export interface Device {
     deviceId?: number;
     deleted?: boolean;
     unitId?: number;
-    /**
-     * Die Schnittstellen Typen
-     */
-    interfaceType?: Device.InterfaceTypeEnum;
+    host?: string;
+    port?: string;
 }
 export namespace Device {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
@@ -39,11 +37,6 @@ export namespace Device {
         ChargingStation: 'CHARGING_STATION' as DeviceTypeEnum,
         HeatPump: 'HEAT_PUMP' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
-    };
-    export type InterfaceTypeEnum = 'RS485' | 'TCP';
-    export const InterfaceTypeEnum = {
-        Rs485: 'RS485' as InterfaceTypeEnum,
-        Tcp: 'TCP' as InterfaceTypeEnum
     };
 }
 

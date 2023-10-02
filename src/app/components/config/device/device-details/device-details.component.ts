@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Device, DeviceControllerService, InterfaceConfig, TcpDevice} from "../../../../api";
+import {Device, DeviceControllerService, InterfaceConfig} from "../../../../api";
 import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
 
 @Component({
@@ -33,10 +33,6 @@ export class DeviceDetailsComponent implements OnInit {
         console.log(this.device);
       }
     });
-  }
-
-  asTcpDevice(device: Device): TcpDevice {
-    return device as TcpDevice;
   }
 
   deleteDevice(device: Device) {

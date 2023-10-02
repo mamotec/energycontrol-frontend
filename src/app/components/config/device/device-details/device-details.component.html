@@ -25,7 +25,7 @@
   <div class="grid">
     <div class="col">
       <label for="deviceType" class="block font-medium mb-2">Schnittstelle</label>
-      <span id="deviceType" class="text-500">{{device ? device.interfaceType : ''}}</span>
+      <span id="deviceType" class="text-500">{{device ? device.interfaceConfig?.type : ''}}</span>
     </div>
   </div>
 
@@ -52,21 +52,19 @@
 
   <hr>
 
-  <div *ngIf="device?.interfaceType === InterfaceConfig.TypeEnum.Tcp">
 
-    <div class="grid">
+  <div class="grid" *ngIf="device?.host">
       <div class="col">
         <label for="host" class="block font-medium mb-2">IP-Adresse des Gerätes</label>
-        <span id="host" class="text-500">{{asTcpDevice(device!).host}}</span>
+        <span id="host" class="text-500">{{device?.host}}</span>
       </div>
     </div>
 
-    <div class="grid">
+  <div class="grid" *ngIf="device?.port">
       <div class="col">
         <label for="port" class="block font-medium mb-2">Port</label>
-        <span id="port" class="text-500">{{asTcpDevice(device!).port}}</span>
+        <span id="port" class="text-500">{{device?.port}}</span>
       </div>
     </div>
   </div>
-</div>
 <app-delete-dialog></app-delete-dialog>

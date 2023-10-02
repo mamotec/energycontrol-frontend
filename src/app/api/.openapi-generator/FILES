@@ -14,6 +14,9 @@ index.ts
 model/authenticationRequest.ts
 model/authenticationResponse.ts
 model/biDirectionalEnergy.ts
+model/chargingStationDevice.ts
+model/chargingStationDeviceAllOf.ts
+model/chargingStationDeviceCreateRequest.ts
 model/createDeviceRequest.ts
 model/createGroupRequest.ts
 model/device.ts
@@ -32,6 +35,8 @@ model/fetchDevices200ResponseInner.ts
 model/getAllGroups200ResponseInner.ts
 model/homeDataRepresentation.ts
 model/homeDataRepresentationAllOf.ts
+model/hybridInverterDevice.ts
+model/hybridInverterDeviceCreateRequest.ts
 model/interfaceConfig.ts
 model/interfaceConnectionYaml.ts
 model/interfaceMappingYaml.ts
@@ -47,12 +52,7 @@ model/plantDeviceGroupUpdate.ts
 model/plantDeviceGroupUpdateAllOf.ts
 model/registerMapping.ts
 model/registerRequest.ts
-model/serialDevice.ts
-model/serialDeviceCreateRequest.ts
 model/systemConfiguration.ts
-model/tcpDevice.ts
-model/tcpDeviceAllOf.ts
-model/tcpDeviceCreateRequest.ts
 model/updateGroupRequest.ts
 param.ts
 variables.ts

@@ -5,13 +5,6 @@
 
   </div>
 
-  <p-messages *ngIf="interfaceConfigs.length === 0" severity="info">
-    <ng-template pTemplate>
-      <i class="pi pi-info-circle"></i>
-      <div class="ml-2">Bitte mindestens eine Schnittstelle konfigurieren, damit Geräte erstellt werden können.</div>
-    </ng-template>
-  </p-messages>
-
   <div class="grid mt-3">
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let device of devices">
       <div class="card cursor-pointer" [routerLink]="['/device', device.id]" pBadge size="large" [severity]="device.active ? 'success' : 'danger'" >
@@ -26,13 +19,6 @@
           <div class="col">
             <label for="model" class="block font-medium mb-2">Modell</label>
             <span id="model" class="text-500">{{device.model}}</span>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="col">
-            <label for="deviceType" class="block font-medium mb-2">Schnittstelle</label>
-            <span id="deviceType" class="text-500">{{device.interfaceType}}</span>
           </div>
         </div>
 

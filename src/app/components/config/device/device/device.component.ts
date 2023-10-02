@@ -1,16 +1,9 @@
 import {Component, OnInit, Type} from '@angular/core';
-import {
-  Device,
-  DeviceControllerService, DeviceTypeResponse,
-  InterfaceConfig,
-  InterfaceControllerService
-} from "../../../../api";
+import {Device, DeviceControllerService, DeviceTypeResponse, InterfaceConfig, InterfaceControllerService} from "../../../../api";
 import {DialogService} from "primeng/dynamicdialog";
 import {MenuItem} from "primeng/api";
 import {CreateHybridInverterComponent} from "../create-device/create-hybrid-inverter/create-hybrid-inverter.component";
-import {
-  CreateChargingStationComponent
-} from "../create-device/create-charging-station/create-charging-station.component";
+import {CreateChargingStationComponent} from "../create-device/create-charging-station/create-charging-station.component";
 
 @Component({
   selector: 'app-device',
@@ -95,4 +88,5 @@ export class DeviceComponent implements OnInit {
         return CreateHybridInverterComponent;
     }
   }
+
 }

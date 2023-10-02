@@ -19,6 +19,8 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { ChargingStationDeviceCreateRequest } from '../model/chargingStationDeviceCreateRequest';
+// @ts-ignore
 import { CreateDeviceRequest } from '../model/createDeviceRequest';
 // @ts-ignore
 import { DeviceCreateRequest } from '../model/deviceCreateRequest';
@@ -27,9 +29,7 @@ import { DeviceTypeResponse } from '../model/deviceTypeResponse';
 // @ts-ignore
 import { FetchDevices200ResponseInner } from '../model/fetchDevices200ResponseInner';
 // @ts-ignore
-import { SerialDeviceCreateRequest } from '../model/serialDeviceCreateRequest';
-// @ts-ignore
-import { TcpDeviceCreateRequest } from '../model/tcpDeviceCreateRequest';
+import { HybridInverterDeviceCreateRequest } from '../model/hybridInverterDeviceCreateRequest';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -103,16 +103,16 @@ export class DeviceControllerService {
 
     /**
      * Erstelle ein neues Gerät
-     * @param deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest 
+     * @param deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpResponse<any>>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpEvent<any>>;
-    public createDevice(deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest: DeviceCreateRequest | SerialDeviceCreateRequest | TcpDeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any> {
-        if (deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === null || deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest === undefined) {
-            throw new Error('Required parameter deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest was null or undefined when calling createDevice.');
+    public createDevice(deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest: DeviceCreateRequest | ChargingStationDeviceCreateRequest | HybridInverterDeviceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any>;
+    public createDevice(deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest: DeviceCreateRequest | ChargingStationDeviceCreateRequest | HybridInverterDeviceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpResponse<any>>;
+    public createDevice(deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest: DeviceCreateRequest | ChargingStationDeviceCreateRequest | HybridInverterDeviceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpEvent<any>>;
+    public createDevice(deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest: DeviceCreateRequest | ChargingStationDeviceCreateRequest | HybridInverterDeviceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any> {
+        if (deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest === null || deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest === undefined) {
+            throw new Error('Required parameter deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest was null or undefined when calling createDevice.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -165,7 +165,7 @@ export class DeviceControllerService {
         return this.httpClient.request<any>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deviceCreateRequestSerialDeviceCreateRequestTcpDeviceCreateRequest,
+                body: deviceCreateRequestChargingStationDeviceCreateRequestHybridInverterDeviceCreateRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

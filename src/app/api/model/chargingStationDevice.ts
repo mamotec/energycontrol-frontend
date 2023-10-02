@@ -12,23 +12,25 @@
 import { InterfaceConfig } from './interfaceConfig';
 
 
-export interface DeviceCreateRequest { 
-    interfaceConfig?: InterfaceConfig;
-    deviceType?: DeviceCreateRequest.DeviceTypeEnum;
+export interface ChargingStationDevice { 
+    id?: number;
+    createdAt?: string;
+    updatedAt?: string;
     name?: string;
-    /**
-     * Die Schnittstellen Typen
-     */
-    interfaceType?: DeviceCreateRequest.InterfaceTypeEnum;
+    interfaceConfig?: InterfaceConfig;
+    deviceType?: ChargingStationDevice.DeviceTypeEnum;
+    active: boolean;
+    groupId?: number;
+    model?: string;
     manufacturerId?: number;
     deviceId?: number;
+    deleted?: boolean;
     unitId?: number;
-    peakKilowatt?: number;
-    deviceIdCharger?: number;
     host?: string;
     port?: string;
+    deviceIdCharger?: number;
 }
-export namespace DeviceCreateRequest {
+export namespace ChargingStationDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum,
@@ -36,11 +38,6 @@ export namespace DeviceCreateRequest {
         ChargingStation: 'CHARGING_STATION' as DeviceTypeEnum,
         HeatPump: 'HEAT_PUMP' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
-    };
-    export type InterfaceTypeEnum = 'RS485' | 'TCP';
-    export const InterfaceTypeEnum = {
-        Rs485: 'RS485' as InterfaceTypeEnum,
-        Tcp: 'TCP' as InterfaceTypeEnum
     };
 }
 

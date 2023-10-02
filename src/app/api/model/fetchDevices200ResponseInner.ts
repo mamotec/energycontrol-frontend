@@ -10,13 +10,14 @@
  * Do not edit the class manually.
  */
 import { InterfaceConfig } from './interfaceConfig';
-import { TcpDevice } from './tcpDevice';
-import { SerialDevice } from './serialDevice';
+import { Device } from './device';
+import { HybridInverterDevice } from './hybridInverterDevice';
+import { ChargingStationDevice } from './chargingStationDevice';
 
 
 /**
  * @type FetchDevices200ResponseInner
  * @export
  */
-export type FetchDevices200ResponseInner = SerialDevice | TcpDevice;
+export type FetchDevices200ResponseInner = ChargingStationDevice | Device | HybridInverterDevice;
 
