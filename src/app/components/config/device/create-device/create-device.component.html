@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div class="col">
+  <div class="col" *ngIf="mode === ApplicationModeEnum.Plant">
     <!-- Schnittstellen Konfiguration -->
     <div class="field">
       <label for="interfaceConfig" class="block text-900 font-light mb-2">Schnittstelle</label>

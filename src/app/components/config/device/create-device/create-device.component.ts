@@ -1,6 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {DeviceYaml, InterfaceConfig, InterfaceControllerService, ManufacturerYaml} from "../../../../api";
+import {
+  AuthenticationResponse,
+  DeviceYaml,
+  InterfaceConfig,
+  InterfaceControllerService,
+  ManufacturerYaml
+} from "../../../../api";
 import {DynamicDialogConfig} from "primeng/dynamicdialog";
+import {LocalStorageService} from "../../../../service/local-storage.service";
+import ApplicationModeEnum = AuthenticationResponse.ApplicationModeEnum;
 
 @Component({
   selector: 'app-create-device',
@@ -19,10 +27,13 @@ export class CreateDeviceComponent implements OnInit {
   interfaceConfigs: InterfaceConfig[] = [];
   manufacturer: ManufacturerYaml[] = [];
   models: DeviceYaml[] = [];
+  mode: any;
 
   constructor(private interfaceService: InterfaceControllerService,
+              private localStorageService: LocalStorageService,
               private config: DynamicDialogConfig) {
     this.interfaceConfigs = this.config.data.interfaceConfigs;
+    this.mode = this.localStorageService.get('application-mode');
   }
 
   ngOnInit(): void {
@@ -41,7 +52,7 @@ export class CreateDeviceComponent implements OnInit {
     this.emitFormValue()
     if (this.deviceForm.value.manufacturerId != null && this.deviceForm.value.manufacturerId != "" &&
       this.deviceType != null) {
-      this.interfaceService.fetchDevicesForManufacturer(this.deviceForm.value.manufacturerId, this.deviceType).subscribe({
+      this.interfaceService.fetchDevicesForManufacturer(this.deviceForm.value.manufacturerId, this.deviceType.deviceType).subscribe({
         next: (res) => {
           this.models = res;
         }
@@ -52,4 +63,6 @@ export class CreateDeviceComponent implements OnInit {
   emitFormValue() {
     this.formChange.emit(this.deviceForm.value)
   }
+
+  protected readonly ApplicationModeEnum = ApplicationModeEnum;
 }

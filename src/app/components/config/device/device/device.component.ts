@@ -1,8 +1,7 @@
 import {Component, OnInit, Type} from '@angular/core';
 import {
   Device,
-  DeviceControllerService,
-  DeviceTypeResponse,
+  DeviceControllerService, DeviceTypeResponse,
   InterfaceConfig,
   InterfaceControllerService
 } from "../../../../api";

@@ -1,7 +1,7 @@
 <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
   <app-create-device [deviceForm]="deviceForm" (formChange)="onFormValue($event)" [deviceType]="deviceType"/>
 
-  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Tcp">
+  <div *ngIf="deviceForm.controls['interfaceConfig'].value?.type == InterfaceConfig.TypeEnum.Tcp || mode === ApplicationModeEnum.Home">
     <div class="grid">
       <!-- Host -->
       <div class="col">

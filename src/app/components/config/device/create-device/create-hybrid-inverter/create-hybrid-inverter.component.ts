@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DeviceControllerService, InterfaceConfig} from "../../../../../api";
-import TypeEnum = InterfaceConfig.TypeEnum;
+import {AuthenticationResponse, DeviceControllerService, InterfaceConfig} from "../../../../../api";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 import {LocalStorageService} from "../../../../../service/local-storage.service";
+import TypeEnum = InterfaceConfig.TypeEnum;
+import ApplicationModeEnum = AuthenticationResponse.ApplicationModeEnum;
 
 @Component({
   selector: 'app-create-hybrid-inverter',
@@ -30,10 +31,10 @@ export class CreateHybridInverterComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceForm = this.formBuilder.group({
-      interfaceConfig: new FormControl(InterfaceConfig, [Validators.required, Validators.max(3)]),
+      interfaceConfig: new FormControl({}, [Validators.max(3)]),
       unitId: new FormControl(''),
       manufacturerId: new FormControl('', [Validators.required]),
-      deviceType: this.deviceType,
+      deviceType: this.deviceType.deviceType,
       deviceId: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
       host: new FormControl(''),
@@ -53,12 +54,12 @@ export class CreateHybridInverterComponent implements OnInit {
     let req: any = {
       interfaceConfig: this.deviceForm.value.interfaceConfig,
       manufacturerId: this.deviceForm.value.manufacturerId,
-      deviceType: this.deviceType,
+      deviceType: this.deviceType.deviceType,
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
       unitId: this.deviceForm.value.unitId,
     }
-    if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
+    if (this.mode == ApplicationModeEnum.Home || this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp ) {
       req.host = this.deviceForm.value.host;
       req.port = this.deviceForm.value.port;
       req.interfaceType = TypeEnum.Tcp;
@@ -85,4 +86,7 @@ export class CreateHybridInverterComponent implements OnInit {
   onFormValue($event: any) {
     this.deviceForm.patchValue($event);
   }
+
+  protected readonly AuthenticationResponse = AuthenticationResponse;
+  protected readonly ApplicationModeEnum = ApplicationModeEnum;
 }
