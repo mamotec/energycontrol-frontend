@@ -337,7 +337,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       this.svg.append('text')
         .attr('x', '46.5vw')
         .attr('y', '58.5vh')
-        .text('E-Auto')
+        .text('Ladestation')
         .style('font-size', '1vw')
         .style('fill', '#9c9898');
 
