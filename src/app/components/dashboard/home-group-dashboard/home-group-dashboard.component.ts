@@ -81,6 +81,11 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       .attr('visibility', value ? 'visible' : 'hidden')
   }
 
+  updateSvgFill(id: any, value: any) {
+    this.svg.select('#' + id)
+      .style('fill', value)
+  }
+
   createPlant() {
     d3.xml('assets/svg/plant.svg').then(data => {
       const importedNode = document.importNode(data.documentElement, true);
@@ -155,7 +160,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
         .style('font-size', '1vw')
-        .style('fill', '#53c271');
+        .style('fill', this.getBatteryColor());
 
       this.svg.append('text')
         .attr('x', '23vw')
@@ -421,9 +426,23 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
     this.updateSvg('heatPump', this.homeData?.heatPumpActive ? 'Ein' : 'Aus', '')
     this.updateSvg('houseHoldPower', this.homeData?.houseHoldPower, ' W')
     this.updateSvg('chargingStationPower', this.homeData?.chargingStation.value, ' W')
+    this.updateSvgFill('batterySoc', this.getBatteryColor())
     this.updateSvgVisibility('arrowDownGrid', this.homeData?.grid.value != 0 && !this.homeData?.grid.consumption)
     this.updateSvgVisibility('arrowUpGrid', this.homeData?.grid.value != 0 && this.homeData?.grid.consumption)
     this.updateSvgVisibility('arrowDownBattery', this.homeData?.batteryPower.value != 0 && this.homeData?.batteryPower.consumption)
     this.updateSvgVisibility('arrowUpBattery', this.homeData?.batteryPower.value != 0 && !this.homeData?.batteryPower.consumption)
+  }
+
+  private getBatteryColor() {
+    if (this.homeData == undefined) {
+      return this.strokeFill;
+    }
+    if (this.homeData?.batterySoc < 30) {
+      return '#b03434';
+    } else if (this.homeData?.batterySoc < 70) {
+      return '#dada29';
+    } else {
+      return '#53c271';
+    }
   }
 }
