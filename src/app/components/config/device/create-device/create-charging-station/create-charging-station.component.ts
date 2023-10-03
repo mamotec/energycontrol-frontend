@@ -52,9 +52,9 @@ export class CreateChargingStationComponent implements OnInit {
       deviceType: this.deviceType.deviceType,
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
-      unitId: this.deviceForm.value.unitId,
+      unitId: null,
       deviceIdCharger: this.deviceForm.value.deviceIdCharger,
-      occpAvailable: this.deviceForm.value.ocppAvailable,
+      ocppAvailable: this.deviceForm.value.ocppAvailable,
     }
     if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
       req.host = this.deviceForm.value.host;

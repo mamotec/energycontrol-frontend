@@ -9,8 +9,7 @@ import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
   styleUrls: ['./device-details.component.scss']
 })
 export class DeviceDetailsComponent implements OnInit {
-  // @ts-ignore
-  device: Device | undefined;
+  device!: Device;
   items!: MenuItem[];
 
   constructor(private route: ActivatedRoute,
@@ -71,4 +70,5 @@ export class DeviceDetailsComponent implements OnInit {
   }
 
   protected readonly InterfaceConfig = InterfaceConfig;
+  protected readonly Device = Device;
 }

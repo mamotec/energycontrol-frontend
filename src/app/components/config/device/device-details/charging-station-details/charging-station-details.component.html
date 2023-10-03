@@ -1,0 +1,14 @@
+<div class="grid">
+  <div class="col">
+    <label for="port" class="block font-medium mb-2">Geräte-Id der Ladestation</label>
+    <span id="port" class="text-500">{{device?.deviceIdCharger}}</span>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col">
+    <label for="ocppAvailable" class="block font-medium mb-2">OCPP (Open Charge Point Protocol)
+      Unterstützung?</label>
+    <span id="ocppAvailable" class="text-500"> {{ device.ocppAvailable ? 'Ja' : 'Nein'}}</span>
+  </div>
+</div>
