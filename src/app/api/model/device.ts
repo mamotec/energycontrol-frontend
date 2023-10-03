@@ -18,7 +18,6 @@ export interface Device {
     updatedAt?: string;
     name?: string;
     interfaceConfig?: InterfaceConfig;
-    deviceType?: Device.DeviceTypeEnum;
     active: boolean;
     groupId?: number;
     model?: string;
@@ -28,6 +27,7 @@ export interface Device {
     unitId?: number;
     host?: string;
     port?: string;
+    deviceType?: Device.DeviceTypeEnum;
 }
 export namespace Device {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';

@@ -15,9 +15,6 @@ export interface InterfaceConfig {
     id?: number;
     createdAt?: string;
     updatedAt?: string;
-    /**
-     * Die Schnittstellen Typen
-     */
     type?: InterfaceConfig.TypeEnum;
     description?: string;
 }

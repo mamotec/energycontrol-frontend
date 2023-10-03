@@ -31,11 +31,12 @@ export class CreateChargingStationComponent implements OnInit {
     this.deviceForm = this.formBuilder.group({
       interfaceConfig: new FormControl(InterfaceConfig, [Validators.required, Validators.max(3)]),
       unitId: new FormControl(''),
-      manufacturerId: new FormControl('', [Validators.required]),
-      deviceType: this.deviceType,
-      deviceId: new FormControl('', [Validators.required]),
+      manufacturerId: new FormControl(''),
+      deviceType: this.deviceType.deviceType,
+      deviceId: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       deviceIdCharger: new FormControl('', [Validators.required]),
+      ocppAvailable: new FormControl<boolean>(false, [Validators.required]),
     })
 
   }
@@ -48,11 +49,12 @@ export class CreateChargingStationComponent implements OnInit {
     let req: any = {
       interfaceConfig: this.deviceForm.value.interfaceConfig,
       manufacturerId: this.deviceForm.value.manufacturerId,
-      deviceType: this.deviceType,
+      deviceType: this.deviceType.deviceType,
       name: this.deviceForm.value.name,
       deviceId: this.deviceForm.value.deviceId,
       unitId: this.deviceForm.value.unitId,
       deviceIdCharger: this.deviceForm.value.deviceIdCharger,
+      occpAvailable: this.deviceForm.value.ocppAvailable,
     }
     if (this.deviceForm.value.interfaceConfig.type == TypeEnum.Tcp) {
       req.host = this.deviceForm.value.host;

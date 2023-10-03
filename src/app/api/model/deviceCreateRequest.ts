@@ -16,15 +16,11 @@ export interface DeviceCreateRequest {
     interfaceConfig?: InterfaceConfig;
     deviceType?: DeviceCreateRequest.DeviceTypeEnum;
     name?: string;
-    /**
-     * Die Schnittstellen Typen
-     */
     interfaceType?: DeviceCreateRequest.InterfaceTypeEnum;
     manufacturerId?: number;
     deviceId?: number;
     unitId?: number;
     peakKilowatt?: number;
-    deviceIdCharger?: number;
     host?: string;
     port?: string;
 }

@@ -21,6 +21,8 @@ export class CreateDeviceComponent implements OnInit {
   deviceForm: any;
   @Input()
   deviceType: any;
+  @Input()
+  visible: boolean = true;
   @Output()
   formChange = new EventEmitter<any>();
 

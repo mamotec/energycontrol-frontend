@@ -70,7 +70,7 @@ export class DeviceComponent implements OnInit {
       height: '100%',
       styleClass: 'card',
       maximizable: true,
-      header: deviceType.label + ' definieren',
+      header: deviceType.label + ' hinzufügen',
     })
 
     createDialog.onClose.subscribe(() => {

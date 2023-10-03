@@ -13,5 +13,6 @@
 
 export interface ChargingStationDeviceAllOf { 
     deviceIdCharger?: number;
+    ocppAvailable?: boolean;
 }
 

@@ -18,7 +18,6 @@ export interface HybridInverterDevice {
     updatedAt?: string;
     name?: string;
     interfaceConfig?: InterfaceConfig;
-    deviceType?: HybridInverterDevice.DeviceTypeEnum;
     active: boolean;
     groupId?: number;
     model?: string;
@@ -28,6 +27,7 @@ export interface HybridInverterDevice {
     unitId?: number;
     host?: string;
     port?: string;
+    deviceType?: HybridInverterDevice.DeviceTypeEnum;
 }
 export namespace HybridInverterDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';

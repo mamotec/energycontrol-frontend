@@ -18,7 +18,6 @@ export interface ChargingStationDevice {
     updatedAt?: string;
     name?: string;
     interfaceConfig?: InterfaceConfig;
-    deviceType?: ChargingStationDevice.DeviceTypeEnum;
     active: boolean;
     groupId?: number;
     model?: string;
@@ -28,7 +27,9 @@ export interface ChargingStationDevice {
     unitId?: number;
     host?: string;
     port?: string;
+    deviceType?: ChargingStationDevice.DeviceTypeEnum;
     deviceIdCharger?: number;
+    ocppAvailable?: boolean;
 }
 export namespace ChargingStationDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';

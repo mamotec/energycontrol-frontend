@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import { InterfaceConfig } from './interfaceConfig';
-import { Device } from './device';
 import { HybridInverterDevice } from './hybridInverterDevice';
 import { ChargingStationDevice } from './chargingStationDevice';
 
@@ -19,5 +18,5 @@ import { ChargingStationDevice } from './chargingStationDevice';
  * @type FetchDevices200ResponseInner
  * @export
  */
-export type FetchDevices200ResponseInner = ChargingStationDevice | Device | HybridInverterDevice;
+export type FetchDevices200ResponseInner = ChargingStationDevice | HybridInverterDevice;
 

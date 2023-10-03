@@ -10,14 +10,14 @@
  * Do not edit the class manually.
  */
 import { InterfaceConfig } from './interfaceConfig';
-import { HybridInverterCreateRequest } from './hybridInverterCreateRequest';
-import { ChargingStationCreateRequest } from './chargingStationCreateRequest';
 import { DeviceCreateRequest } from './deviceCreateRequest';
 
 
-/**
- * @type CreateDeviceRequest
- * @export
- */
-export type CreateDeviceRequest = ChargingStationCreateRequest | DeviceCreateRequest | HybridInverterCreateRequest;
+export interface ChargingStationCreateRequest extends DeviceCreateRequest { 
+    deviceIdCharger?: number;
+    ocppAvailable?: boolean;
+}
+export namespace ChargingStationCreateRequest {
+}
+
 
