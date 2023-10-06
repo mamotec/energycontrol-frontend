@@ -16,8 +16,22 @@ import { DeviceCreateRequest } from './deviceCreateRequest';
 export interface ChargingStationCreateRequest extends DeviceCreateRequest { 
     deviceIdCharger?: number;
     ocppAvailable?: boolean;
+    uuid?: string;
+    chargePointStatus?: ChargingStationCreateRequest.ChargePointStatusEnum;
 }
 export namespace ChargingStationCreateRequest {
+    export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';
+    export const ChargePointStatusEnum = {
+        Available: 'Available' as ChargePointStatusEnum,
+        Preparing: 'Preparing' as ChargePointStatusEnum,
+        Charging: 'Charging' as ChargePointStatusEnum,
+        SuspendedEvse: 'SuspendedEVSE' as ChargePointStatusEnum,
+        SuspendedEv: 'SuspendedEV' as ChargePointStatusEnum,
+        Finishing: 'Finishing' as ChargePointStatusEnum,
+        Reserved: 'Reserved' as ChargePointStatusEnum,
+        Unavailable: 'Unavailable' as ChargePointStatusEnum,
+        Faulted: 'Faulted' as ChargePointStatusEnum
+    };
 }
 
 

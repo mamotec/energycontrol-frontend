@@ -31,6 +31,7 @@ export class AppMenuComponent implements OnInit {
         items: [
           {label: 'Schnittstellen', routerLink: ['/interface'], show: isPlantMode},
           {label: 'Geräte', routerLink: ['/device'], show: isHomeMode || isPlantMode},
+          {label: 'Energiemanagement', routerLink: ['/energy-management'], show: isHomeMode || isPlantMode},
           {label: 'Gruppen', routerLink: ['/group'], show: isPlantMode},
           {label: "Direktvermarktung", routerLink: ['/direct-marketing'], show: isPlantMode},
           {label: "Einspeisemanagement", routerLink: ['/feed-in-management'], show: isPlantMode},

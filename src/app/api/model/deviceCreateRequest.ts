@@ -21,6 +21,7 @@ export interface DeviceCreateRequest {
     deviceId?: number;
     unitId?: number;
     peakKilowatt?: number;
+    active?: boolean;
     host?: string;
     port?: string;
 }

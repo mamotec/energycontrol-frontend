@@ -13,6 +13,23 @@
 
 export interface ChargingStationDeviceAllOf { 
     deviceIdCharger?: number;
+    uuid?: string;
     ocppAvailable?: boolean;
+    chargePointStatus?: ChargingStationDeviceAllOf.ChargePointStatusEnum;
 }
+export namespace ChargingStationDeviceAllOf {
+    export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';
+    export const ChargePointStatusEnum = {
+        Available: 'Available' as ChargePointStatusEnum,
+        Preparing: 'Preparing' as ChargePointStatusEnum,
+        Charging: 'Charging' as ChargePointStatusEnum,
+        SuspendedEvse: 'SuspendedEVSE' as ChargePointStatusEnum,
+        SuspendedEv: 'SuspendedEV' as ChargePointStatusEnum,
+        Finishing: 'Finishing' as ChargePointStatusEnum,
+        Reserved: 'Reserved' as ChargePointStatusEnum,
+        Unavailable: 'Unavailable' as ChargePointStatusEnum,
+        Faulted: 'Faulted' as ChargePointStatusEnum
+    };
+}
+
 

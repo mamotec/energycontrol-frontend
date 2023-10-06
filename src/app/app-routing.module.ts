@@ -13,6 +13,7 @@ import {DataDashboardComponent} from "./components/dashboard/data-dashboard/data
 import {FeedInManagementComponent} from "./components/config/feedInManagement/feed-in-management/feed-in-management.component";
 import {DeviceGroupDetailsComponent} from "./components/config/deviceGroup/device-group-details/device-group-details.component";
 import {DeviceDetailsComponent} from "./components/config/device/device-details/device-details.component";
+import {EnergyManagementComponent} from "./components/config/energy-management/energy-management.component";
 
 const routes: Routes = [
   // App routes
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path: 'feed-in-management',
         component: FeedInManagementComponent,
+      },
+      {
+        path: 'energy-management',
+        component: EnergyManagementComponent
       },
       {
         path: 'dashboard',

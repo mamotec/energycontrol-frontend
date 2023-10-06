@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
+import { FetchDevice200Response } from './fetchDevice200Response';
 
 
 export interface PlantDeviceGroup { 
@@ -17,7 +17,7 @@ export interface PlantDeviceGroup {
     createdAt?: string;
     updatedAt?: string;
     name?: string;
-    devices?: Array<FetchDevices200ResponseInner>;
+    devices?: Array<FetchDevice200Response>;
     deleted?: boolean;
     /**
      * Die Gruppen Typen

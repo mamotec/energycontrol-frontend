@@ -27,6 +27,7 @@ export interface HybridInverterDevice {
     unitId?: number;
     host?: string;
     port?: string;
+    priority?: number;
     deviceType?: HybridInverterDevice.DeviceTypeEnum;
 }
 export namespace HybridInverterDevice {

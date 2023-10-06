@@ -9,6 +9,16 @@
     <div class="col-12 md:col-6 lg:col-4" *ngFor="let device of devices">
       <div class="card cursor-pointer" [routerLink]="['/device', device.id]" pBadge size="large" [severity]="device.active ? 'success' : 'danger'" >
         <div class="grid">
+          <div class="col" style="text-align: center">
+            <img *ngIf="device.deviceType === Device.DeviceTypeEnum.HybridInverter" class="cursor-pointer" src="assets/svg/plant.svg" width="70vh" height="70vh" alt="battery">
+            <img *ngIf="device.deviceType === Device.DeviceTypeEnum.ChargingStation" class="cursor-pointer" src="assets/svg/car.svg" width="60vh" height="60vh"
+                 alt="charging station">
+            <img *ngIf="device.deviceType === Device.DeviceTypeEnum.HeatPump" class="cursor-pointer" src="assets/svg/pump.svg" width="60vh" height="60vh" alt="heat pump">
+
+          </div>
+        </div>
+        <hr>
+        <div class="grid">
           <div class="col">
             <label for="name" class="block font-medium mb-2">Name des Gerätes</label>
             <span id="name" class="text-500">{{device.name}}</span>

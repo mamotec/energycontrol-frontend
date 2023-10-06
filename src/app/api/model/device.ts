@@ -27,6 +27,7 @@ export interface Device {
     unitId?: number;
     host?: string;
     port?: string;
+    priority?: number;
     deviceType?: Device.DeviceTypeEnum;
 }
 export namespace Device {

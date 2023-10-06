@@ -9,12 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
+import { FetchDevice200Response } from './fetchDevice200Response';
 
 
 export interface DeviceGroupUpdate { 
     name?: string;
-    devices?: Array<FetchDevices200ResponseInner>;
+    devices?: Array<FetchDevice200Response>;
     /**
      * Die Gruppen Typen
      */

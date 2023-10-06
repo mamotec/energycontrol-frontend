@@ -89,4 +89,5 @@ export class DeviceComponent implements OnInit {
     }
   }
 
+  protected readonly Device = Device;
 }

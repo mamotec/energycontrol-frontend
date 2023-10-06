@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import { PlantDeviceGroupUpdate } from './plantDeviceGroupUpdate';
-import { FetchDevices200ResponseInner } from './fetchDevices200ResponseInner';
+import { FetchDevice200Response } from './fetchDevice200Response';
 import { DeviceGroupUpdate } from './deviceGroupUpdate';
 
 

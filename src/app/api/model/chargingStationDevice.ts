@@ -27,9 +27,12 @@ export interface ChargingStationDevice {
     unitId?: number;
     host?: string;
     port?: string;
+    priority?: number;
     deviceType?: ChargingStationDevice.DeviceTypeEnum;
     deviceIdCharger?: number;
+    uuid?: string;
     ocppAvailable?: boolean;
+    chargePointStatus?: ChargingStationDevice.ChargePointStatusEnum;
 }
 export namespace ChargingStationDevice {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
@@ -39,6 +42,18 @@ export namespace ChargingStationDevice {
         ChargingStation: 'CHARGING_STATION' as DeviceTypeEnum,
         HeatPump: 'HEAT_PUMP' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
+    };
+    export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';
+    export const ChargePointStatusEnum = {
+        Available: 'Available' as ChargePointStatusEnum,
+        Preparing: 'Preparing' as ChargePointStatusEnum,
+        Charging: 'Charging' as ChargePointStatusEnum,
+        SuspendedEvse: 'SuspendedEVSE' as ChargePointStatusEnum,
+        SuspendedEv: 'SuspendedEV' as ChargePointStatusEnum,
+        Finishing: 'Finishing' as ChargePointStatusEnum,
+        Reserved: 'Reserved' as ChargePointStatusEnum,
+        Unavailable: 'Unavailable' as ChargePointStatusEnum,
+        Faulted: 'Faulted' as ChargePointStatusEnum
     };
 }
 

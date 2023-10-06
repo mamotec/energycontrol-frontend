@@ -15,6 +15,7 @@ model/authenticationRequest.ts
 model/authenticationResponse.ts
 model/biDirectionalEnergy.ts
 model/chargingStationCreateRequest.ts
+model/chargingStationCreateRequestAllOf.ts
 model/chargingStationDevice.ts
 model/chargingStationDeviceAllOf.ts
 model/createDeviceRequest.ts
@@ -27,11 +28,12 @@ model/deviceGroupRepresentation.ts
 model/deviceGroupUpdate.ts
 model/deviceLinkRequest.ts
 model/deviceTypeResponse.ts
+model/deviceUpdateRequest.ts
 model/deviceYaml.ts
 model/energyDeviceGroupCreate.ts
 model/energyDeviceGroupCreateAllOf.ts
+model/fetchDevice200Response.ts
 model/fetchDeviceGroupData200Response.ts
-model/fetchDevices200ResponseInner.ts
 model/getAllGroups200ResponseInner.ts
 model/homeDataRepresentation.ts
 model/homeDataRepresentationAllOf.ts
