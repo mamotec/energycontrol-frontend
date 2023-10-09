@@ -15,6 +15,7 @@ export interface DeviceUpdateRequest {
     priority?: number;
     name?: string;
     deviceType?: DeviceUpdateRequest.DeviceTypeEnum;
+    energyDistributionEvent?: DeviceUpdateRequest.EnergyDistributionEventEnum;
 }
 export namespace DeviceUpdateRequest {
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
@@ -24,6 +25,11 @@ export namespace DeviceUpdateRequest {
         ChargingStation: 'CHARGING_STATION' as DeviceTypeEnum,
         HeatPump: 'HEAT_PUMP' as DeviceTypeEnum,
         Battery: 'BATTERY' as DeviceTypeEnum
+    };
+    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED';
+    export const EnergyDistributionEventEnum = {
+        RenewableEnergy: 'RENEWABLE_ENERGY' as EnergyDistributionEventEnum,
+        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum
     };
 }
 

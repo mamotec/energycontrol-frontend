@@ -1,0 +1,6 @@
+<div class="flex flex-column gap-3">
+  <div *ngFor="let event of events" class="field-checkbox">
+    <p-radioButton [inputId]="event.event" name="event" [value]="event.event" [(ngModel)]="selectedEvent" (onClick)="this.update()"></p-radioButton>
+    <label [for]="event.event" class="ml-2">{{ event.name }}</label>
+  </div>
+</div>

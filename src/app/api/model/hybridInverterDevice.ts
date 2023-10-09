@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { EnergyDistributionResponse } from './energyDistributionResponse';
 import { InterfaceConfig } from './interfaceConfig';
 
 
@@ -19,8 +20,6 @@ export interface HybridInverterDevice {
     name?: string;
     interfaceConfig?: InterfaceConfig;
     active: boolean;
-    groupId?: number;
-    model?: string;
     manufacturerId?: number;
     deviceId?: number;
     deleted?: boolean;
@@ -28,9 +27,20 @@ export interface HybridInverterDevice {
     host?: string;
     port?: string;
     priority?: number;
+    energyDistributionEvent?: HybridInverterDevice.EnergyDistributionEventEnum;
+    groupId?: number;
+    model?: string;
+    eventName?: string;
+    eventDescription?: string;
+    validEnergyDistributionEvents?: Array<EnergyDistributionResponse>;
     deviceType?: HybridInverterDevice.DeviceTypeEnum;
 }
 export namespace HybridInverterDevice {
+    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED';
+    export const EnergyDistributionEventEnum = {
+        RenewableEnergy: 'RENEWABLE_ENERGY' as EnergyDistributionEventEnum,
+        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum
+    };
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
     export const DeviceTypeEnum = {
         Inverter: 'INVERTER' as DeviceTypeEnum,

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { EnergyDistributionResponse } from './energyDistributionResponse';
 import { InterfaceConfig } from './interfaceConfig';
 import { HybridInverterDevice } from './hybridInverterDevice';
 import { ChargingStationDevice } from './chargingStationDevice';

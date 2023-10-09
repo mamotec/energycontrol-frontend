@@ -57,7 +57,6 @@ export class DeviceComponent implements OnInit {
         }
       }
     })
-
   }
 
   createDevice(deviceType: DeviceTypeResponse) {

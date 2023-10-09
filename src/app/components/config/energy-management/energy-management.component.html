@@ -15,10 +15,10 @@
         </div>
       </div>
       <div class="card w-full">
-        <div class="flex ">
+        <div class="flex">
           <div class="flex flex-column">
             <div>
-              <span id="priority" class="text-500">Priorität {{ i + 1}}</span>
+              <span id="priority" class="text-500">Prio {{ i + 1}}</span>
             </div>
             <div class="mt-2">
               <img *ngIf="device.deviceType === Device.DeviceTypeEnum.HybridInverter" class="cursor-pointer" src="assets/svg/battery.svg" width="60vh" height="60vh" alt="battery">
@@ -28,12 +28,24 @@
 
             </div>
           </div>
-          <div class="md:ml-5 ml-3">
+          <div class="md:ml-5 ml-3 col-3">
             <div *ngIf="device.deviceType !== Device.DeviceTypeEnum.HybridInverter">
               <div class="col">
-                <span id="name" class="text-500">{{device ? device.name : ''}}</span>
+                <span id="name">{{device ? device.name : ''}}</span>
+              </div>
+
+              <div class="col">
+                <span class="link-like" (click)="updateEnergyDistributionEvent(device)">{{ device.eventName }}</span>
               </div>
             </div>
+          </div>
+          <div class="grid w-full" *ngIf="isScreenLarge">
+            <div class="col-offset-3 col text-500"
+                 style="border-left: 1px solid var(--surface-border);
+                 text-align: center;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;">{{ device.eventDescription }}</div>
           </div>
 
         </div>

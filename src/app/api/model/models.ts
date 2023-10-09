@@ -19,6 +19,7 @@ export * from './deviceUpdateRequest';
 export * from './deviceYaml';
 export * from './energyDeviceGroupCreate';
 export * from './energyDeviceGroupCreateAllOf';
+export * from './energyDistributionResponse';
 export * from './fetchDevice200Response';
 export * from './fetchDeviceGroupData200Response';
 export * from './getAllGroups200ResponseInner';

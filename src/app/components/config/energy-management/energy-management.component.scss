@@ -1,0 +1,9 @@
+.link-like {
+  cursor: pointer;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.link-like:hover {
+  text-decoration: none;
+}

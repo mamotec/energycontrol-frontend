@@ -32,6 +32,7 @@ model/deviceUpdateRequest.ts
 model/deviceYaml.ts
 model/energyDeviceGroupCreate.ts
 model/energyDeviceGroupCreateAllOf.ts
+model/energyDistributionResponse.ts
 model/fetchDevice200Response.ts
 model/fetchDeviceGroupData200Response.ts
 model/getAllGroups200ResponseInner.ts
