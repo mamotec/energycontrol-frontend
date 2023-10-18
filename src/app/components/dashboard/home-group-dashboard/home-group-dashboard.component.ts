@@ -103,14 +103,14 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '12vw')
         .attr('y', '30vh')
         .text('PV')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
         .attr('x', '6vw')
         .attr('y', '30vh')
         .text(this.homeData?.peakKilowatt + ' kWp')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#555956');
 
       this.svg.append('text')
@@ -118,7 +118,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '35vh')
         .attr('id', 'activePower')
         .text(this.homeData?.activePower + ' W')
-        .style('font-size', '2vw')
+        .style('font-size', 'calc(1.1vw + 1.1vh)')
         .style('fill', '#53c271');
 
     })
@@ -151,7 +151,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '13.3vw')
         .attr('y', '60vh')
         .text('Batterie')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
@@ -159,7 +159,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '60vh')
         .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', this.getBatteryColor());
 
       this.svg.append('text')
@@ -167,7 +167,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '57vh')
         .attr('id', 'batteryPower')
         .text(this.homeData?.batteryPower.value + ' W')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
     })
     d3.xml('assets/svg/arrowhead-down.svg').then(data => {
@@ -236,7 +236,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '46.5vw')
         .attr('y', '16.5vh')
         .text('Wärmepumpe')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
@@ -244,7 +244,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '11.5vh')
         .attr('id', 'heatPump')
         .text(this.homeData?.heatPumpActive ? 'Ein' : 'Aus')
-        .style('font-size', '2vw')
+        .style('font-size', 'calc(1.1vw + 1.1vh)')
         .style('fill', '#9c9898');
     })
   }
@@ -287,7 +287,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '46.5vw')
         .attr('y', '38.5vh')
         .text('Haushaltsverbrauch')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
@@ -295,7 +295,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '33.5vh')
         .attr('id', 'houseHoldPower')
         .text(this.homeData?.houseHoldPower + ' W')
-        .style('font-size', '2vw')
+        .style('font-size', 'calc(1.1vw + 1.1vh)')
         .style('fill', '#9c9898');
     })
   }
@@ -338,7 +338,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '46.5vw')
         .attr('y', '58.5vh')
         .text('Ladestation')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
@@ -346,7 +346,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '54vh')
         .attr('id', 'chargingStationPower')
         .text(this.homeData?.chargingStation.value + ' W')
-        .style('font-size', '2vw')
+        .style('font-size', 'calc(1.1vw + 1.1vh)')
         .style('fill', '#9c9898');
     })
   }
@@ -375,7 +375,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('x', '15.5vw')
         .attr('y', '12vh')
         .text('Netzeinspeisung')
-        .style('font-size', '1vw')
+        .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
@@ -383,7 +383,7 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .attr('y', '7vh')
         .attr('id', 'gridPower')
         .text(this.homeData?.grid.value + ' W')
-        .style('font-size', '2vw')
+        .style('font-size', 'calc(1.1vw + 1.1vh)')
         .style('fill', '#9c9898');
 
       this.svg.node().appendChild(importedNode);
