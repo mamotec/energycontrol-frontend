@@ -1,2 +1,7 @@
-<app-home-group-dashboard *ngIf="applicationMode === 'HOME'"/>
-<app-plant-group-dashboard *ngIf="applicationMode === 'PLANT'"/>
+<div class="card" style="padding: 10px !important;">
+  <app-dashboard-top-bar/>
+</div>
+<div class="card" style="height: calc(100vh - 19rem)">
+  <app-home-group-dashboard *ngIf="applicationMode === 'HOME'"/>
+  <app-plant-group-dashboard *ngIf="applicationMode === 'PLANT'"/>
+</div>

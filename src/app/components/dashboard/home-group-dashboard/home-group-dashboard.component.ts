@@ -107,14 +107,14 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
         .style('fill', '#9c9898');
 
       this.svg.append('text')
-        .attr('x', '6vw')
+        .attr('x', '2vw')
         .attr('y', '30vh')
         .text(this.homeData?.peakKilowatt + ' kWp')
         .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#555956');
 
       this.svg.append('text')
-        .attr('x', '6vw')
+        .attr('x', '2vw')
         .attr('y', '35vh')
         .attr('id', 'activePower')
         .text(this.homeData?.activePower + ' W')
@@ -142,21 +142,21 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
       importedSVG
         .attr('x', '13.5vw')
         .attr('y', '55vh')
-        .attr('width', '3.5vw')
-        .attr('height', '3.5vh');
+        .attr('width', '5vw')
+        .attr('height', '5vh');
 
       this.svg.node().appendChild(importedNode);
 
       this.svg.append('text')
         .attr('x', '13.3vw')
-        .attr('y', '60vh')
+        .attr('y', '61vh')
         .text('Batterie')
         .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
         .attr('x', '23vw')
-        .attr('y', '60vh')
+        .attr('y', '61vh')
         .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
         .style('font-size', 'calc(0.75vw + 0.75vh)')
