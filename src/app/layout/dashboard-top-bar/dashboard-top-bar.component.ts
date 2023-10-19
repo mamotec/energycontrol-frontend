@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import * as moment from 'moment-timezone';
-import {Device} from "../../../../api";
+import {Device} from "../../api";
 
 @Component({
     selector: 'app-dashboard-top-bar',

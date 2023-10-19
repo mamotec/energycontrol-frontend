@@ -66,7 +66,6 @@ import { ChargingStationDetailsComponent } from './components/config/device/devi
 import { EnergyManagementComponent } from './components/config/energy-management/energy-management.component';
 import { UpdateEnergyDistributionEventComponent } from './components/config/energy-management/update-energy-distribution-event/update-energy-distribution-event.component';
 import {RadioButtonModule} from "primeng/radiobutton";
-import { DashboardTopBarComponent } from './components/dashboard/group-dashboard/dashboard-top-bar/dashboard-top-bar.component';
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {StyleClassModule} from "primeng/styleclass";
 
@@ -100,7 +99,6 @@ import {StyleClassModule} from "primeng/styleclass";
     ChargingStationDetailsComponent,
     EnergyManagementComponent,
     UpdateEnergyDistributionEventComponent,
-    DashboardTopBarComponent,
   ],
     imports: [
         ApiModule,

@@ -149,14 +149,14 @@ export class HomeGroupDashboardComponent implements AfterViewInit, OnDestroy {
 
       this.svg.append('text')
         .attr('x', '13.3vw')
-        .attr('y', '61vh')
+        .attr('y', '61.5vh')
         .text('Batterie')
         .style('font-size', 'calc(0.75vw + 0.75vh)')
         .style('fill', '#9c9898');
 
       this.svg.append('text')
         .attr('x', '23vw')
-        .attr('y', '61vh')
+        .attr('y', '61.5vh')
         .attr('id', 'batterySoc')
         .text(this.homeData?.batterySoc + ' %')
         .style('font-size', 'calc(0.75vw + 0.75vh)')

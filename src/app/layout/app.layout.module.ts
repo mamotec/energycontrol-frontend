@@ -16,16 +16,19 @@ import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
+import {AppModule} from "../app.module";
+import {DashboardTopBarComponent} from "./dashboard-top-bar/dashboard-top-bar.component";
 
 @NgModule({
-    declarations: [
-        AppMenuitemComponent,
-        AppTopBarComponent,
-        AppFooterComponent,
-        AppMenuComponent,
-        AppSidebarComponent,
-        AppLayoutComponent,
-    ],
+  declarations: [
+    AppMenuitemComponent,
+    AppTopBarComponent,
+    AppFooterComponent,
+    AppMenuComponent,
+    AppSidebarComponent,
+    AppLayoutComponent,
+    DashboardTopBarComponent,
+  ],
     imports: [
         BrowserModule,
         FormsModule,
