@@ -1,5 +1,5 @@
 # Basisimage für den Build
-FROM node:latest AS build
+FROM node:20.8.1 AS build
 
 # Arbeitsverzeichnis
 WORKDIR /app
