@@ -20,7 +20,7 @@ export class DashboardTopBarComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.getLocation()
+        //this.getLocation()
         this.updateTime()
     }
 
