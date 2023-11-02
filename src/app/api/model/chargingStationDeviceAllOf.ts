@@ -12,10 +12,13 @@
 
 
 export interface ChargingStationDeviceAllOf { 
-    deviceIdCharger?: number;
+    deviceIdCharger?: string;
     uuid?: string;
     ocppAvailable?: boolean;
     chargePointStatus?: ChargingStationDeviceAllOf.ChargePointStatusEnum;
+    transactionId?: number;
+    transactionActive?: boolean;
+    managedStrength?: number;
 }
 export namespace ChargingStationDeviceAllOf {
     export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';

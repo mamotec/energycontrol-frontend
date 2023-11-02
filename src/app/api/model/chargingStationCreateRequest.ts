@@ -14,10 +14,12 @@ import { DeviceCreateRequest } from './deviceCreateRequest';
 
 
 export interface ChargingStationCreateRequest extends DeviceCreateRequest { 
-    deviceIdCharger?: number;
+    deviceIdCharger?: string;
     ocppAvailable?: boolean;
     uuid?: string;
     chargePointStatus?: ChargingStationCreateRequest.ChargePointStatusEnum;
+    transactionId?: number;
+    transactionActive?: boolean;
 }
 export namespace ChargingStationCreateRequest {
     export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';

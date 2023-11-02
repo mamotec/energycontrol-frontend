@@ -19,9 +19,6 @@ export interface DeviceGroup {
     name?: string;
     devices?: Array<FetchDevice200Response>;
     deleted?: boolean;
-    /**
-     * Die Gruppen Typen
-     */
     type?: DeviceGroup.TypeEnum;
 }
 export namespace DeviceGroup {

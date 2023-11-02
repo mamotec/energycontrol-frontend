@@ -1,10 +1,31 @@
 <div class="flex flex-column gap-3">
   <div *ngFor="let event of events" class="field-checkbox">
-    <p-radioButton [inputId]="event.event" name="event" [value]="event.event" [(ngModel)]="selectedEvent" (onClick)="this.update()"></p-radioButton>
+    <p-radioButton [inputId]="event.event" name="event" [value]="event.event" [(ngModel)]="selectedEvent" ></p-radioButton>
     <div class="flex flex-column">
       <label [for]="event.event" class="ml-3">{{ event.name }}</label>
       <label [for]="event.event" class="ml-3 text-500">{{event.description}}</label>
-    </div>
 
+    </div>
   </div>
+  <div class="grid">
+    <div class="col-12">
+      <div *ngIf="selectedEvent == Device.EnergyDistributionEventEnum.Managed" class="pl-3 ma-center">
+        <div class="mb-3">
+          {{ managedStrength }} A
+        </div>
+        <p-slider id="managedStrength" [(ngModel)]="managedStrength" [min]="1" [max]="16" ></p-slider>
+      </div>
+    </div>
+    <div class="col mt-5">
+
+      <div class="absolute bottom-0 right-0 align-items-center justify-content-center p-3">
+        <button pButton (click)="this.update()" label="Speichern" class="w-full"></button>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
+
+

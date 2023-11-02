@@ -13,10 +13,10 @@ import { DeviceGroupCreate } from './deviceGroupCreate';
 import { FetchDevice200Response } from './fetchDevice200Response';
 
 
-export interface PlantDeviceGroupCreate extends DeviceGroupCreate { 
+export interface HomeDeviceGroupCreate extends DeviceGroupCreate { 
     peakKilowatt?: number;
 }
-export namespace PlantDeviceGroupCreate {
+export namespace HomeDeviceGroupCreate {
 }
 
 

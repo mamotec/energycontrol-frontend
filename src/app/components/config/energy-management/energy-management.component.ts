@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Device, DeviceControllerService, DeviceUpdateRequest} from "../../../api";
+import {ChargingStationDevice, Device, DeviceControllerService, DeviceUpdateRequest} from "../../../api";
 import {MenuItem, MessageService} from "primeng/api";
 import {DialogService} from "primeng/dynamicdialog";
 import {UpdateEnergyDistributionEventComponent} from "./update-energy-distribution-event/update-energy-distribution-event.component";
@@ -64,5 +64,9 @@ export class EnergyManagementComponent implements OnInit {
     updateDialog.onClose.subscribe(() => {
       this.loadDevices();
     })
+  }
+
+  protected asChargingStation(device: Device): ChargingStationDevice {
+    return device as ChargingStationDevice;
   }
 }

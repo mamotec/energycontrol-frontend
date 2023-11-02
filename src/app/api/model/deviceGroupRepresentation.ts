@@ -12,9 +12,6 @@
 
 
 export interface DeviceGroupRepresentation { 
-    /**
-     * Die Gruppen Typen
-     */
     type?: DeviceGroupRepresentation.TypeEnum;
 }
 export namespace DeviceGroupRepresentation {

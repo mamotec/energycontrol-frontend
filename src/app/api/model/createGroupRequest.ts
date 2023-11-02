@@ -10,13 +10,14 @@
  * Do not edit the class manually.
  */
 import { DeviceGroupCreate } from './deviceGroupCreate';
+import { PlantDeviceGroupCreate } from './plantDeviceGroupCreate';
 import { FetchDevice200Response } from './fetchDevice200Response';
-import { EnergyDeviceGroupCreate } from './energyDeviceGroupCreate';
+import { HomeDeviceGroupCreate } from './homeDeviceGroupCreate';
 
 
 /**
  * @type CreateGroupRequest
  * @export
  */
-export type CreateGroupRequest = DeviceGroupCreate | EnergyDeviceGroupCreate;
+export type CreateGroupRequest = DeviceGroupCreate | HomeDeviceGroupCreate | PlantDeviceGroupCreate;
 

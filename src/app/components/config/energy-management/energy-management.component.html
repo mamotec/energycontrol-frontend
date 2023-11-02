@@ -36,6 +36,8 @@
 
               <div class="col">
                 <span class="link-like" (click)="updateEnergyDistributionEvent(device)">{{ device.eventName }}</span>
+                <span
+                  *ngIf="device.deviceType === Device.DeviceTypeEnum.ChargingStation && device.energyDistributionEvent == Device.EnergyDistributionEventEnum.Managed"> - {{asChargingStation(device).managedStrength}} A</span>
               </div>
             </div>
           </div>

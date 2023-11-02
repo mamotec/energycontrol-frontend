@@ -34,16 +34,20 @@ export interface ChargingStationDevice {
     eventDescription?: string;
     validEnergyDistributionEvents?: Array<EnergyDistributionResponse>;
     deviceType?: ChargingStationDevice.DeviceTypeEnum;
-    deviceIdCharger?: number;
+    deviceIdCharger?: string;
     uuid?: string;
     ocppAvailable?: boolean;
     chargePointStatus?: ChargingStationDevice.ChargePointStatusEnum;
+    transactionId?: number;
+    transactionActive?: boolean;
+    managedStrength?: number;
 }
 export namespace ChargingStationDevice {
-    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED';
+    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED' | 'MANAGED';
     export const EnergyDistributionEventEnum = {
         RenewableEnergy: 'RENEWABLE_ENERGY' as EnergyDistributionEventEnum,
-        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum
+        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum,
+        Managed: 'MANAGED' as EnergyDistributionEventEnum
     };
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
     export const DeviceTypeEnum = {

@@ -17,10 +17,11 @@ export interface EnergyDistributionResponse {
     name?: string;
 }
 export namespace EnergyDistributionResponse {
-    export type EventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED';
+    export type EventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED' | 'MANAGED';
     export const EventEnum = {
         RenewableEnergy: 'RENEWABLE_ENERGY' as EventEnum,
-        Unmanaged: 'UNMANAGED' as EventEnum
+        Unmanaged: 'UNMANAGED' as EventEnum,
+        Managed: 'MANAGED' as EventEnum
     };
 }
 

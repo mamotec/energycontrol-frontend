@@ -12,19 +12,17 @@
 import { FetchDevice200Response } from './fetchDevice200Response';
 
 
-export interface PlantDeviceGroup { 
+export interface HomeDeviceGroup { 
     id?: number;
     createdAt?: string;
     updatedAt?: string;
     name?: string;
     devices?: Array<FetchDevice200Response>;
     deleted?: boolean;
-    type?: PlantDeviceGroup.TypeEnum;
-    directMarketing?: boolean;
-    feedInManagement?: boolean;
+    type?: HomeDeviceGroup.TypeEnum;
     peakKilowatt?: number;
 }
-export namespace PlantDeviceGroup {
+export namespace HomeDeviceGroup {
     export type TypeEnum = 'PLANT' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY' | 'HOME';
     export const TypeEnum = {
         Plant: 'PLANT' as TypeEnum,

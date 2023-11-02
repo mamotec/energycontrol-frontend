@@ -30,14 +30,15 @@ model/deviceLinkRequest.ts
 model/deviceTypeResponse.ts
 model/deviceUpdateRequest.ts
 model/deviceYaml.ts
-model/energyDeviceGroupCreate.ts
-model/energyDeviceGroupCreateAllOf.ts
 model/energyDistributionResponse.ts
 model/fetchDevice200Response.ts
 model/fetchDeviceGroupData200Response.ts
 model/getAllGroups200ResponseInner.ts
 model/homeDataRepresentation.ts
 model/homeDataRepresentationAllOf.ts
+model/homeDeviceGroup.ts
+model/homeDeviceGroupAllOf.ts
+model/homeDeviceGroupCreate.ts
 model/hybridInverterCreateRequest.ts
 model/hybridInverterDevice.ts
 model/interfaceConfig.ts
@@ -51,6 +52,7 @@ model/plantDataRepresentation.ts
 model/plantDataRepresentationAllOf.ts
 model/plantDeviceGroup.ts
 model/plantDeviceGroupAllOf.ts
+model/plantDeviceGroupCreate.ts
 model/plantDeviceGroupUpdate.ts
 model/plantDeviceGroupUpdateAllOf.ts
 model/registerMapping.ts

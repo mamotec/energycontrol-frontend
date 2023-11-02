@@ -15,9 +15,6 @@ import { FetchDevice200Response } from './fetchDevice200Response';
 export interface DeviceGroupUpdate { 
     name?: string;
     devices?: Array<FetchDevice200Response>;
-    /**
-     * Die Gruppen Typen
-     */
     type?: DeviceGroupUpdate.TypeEnum;
     id?: number;
 }

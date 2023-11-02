@@ -12,10 +12,12 @@
 
 
 export interface ChargingStationCreateRequestAllOf { 
-    deviceIdCharger?: number;
+    deviceIdCharger?: string;
     ocppAvailable?: boolean;
     uuid?: string;
     chargePointStatus?: ChargingStationCreateRequestAllOf.ChargePointStatusEnum;
+    transactionId?: number;
+    transactionActive?: boolean;
 }
 export namespace ChargingStationCreateRequestAllOf {
     export type ChargePointStatusEnum = 'Available' | 'Preparing' | 'Charging' | 'SuspendedEVSE' | 'SuspendedEV' | 'Finishing' | 'Reserved' | 'Unavailable' | 'Faulted';

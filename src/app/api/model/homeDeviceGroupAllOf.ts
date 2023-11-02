@@ -9,14 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { DeviceGroupCreate } from './deviceGroupCreate';
-import { FetchDevice200Response } from './fetchDevice200Response';
 
 
-export interface PlantDeviceGroupCreate extends DeviceGroupCreate { 
+export interface HomeDeviceGroupAllOf { 
     peakKilowatt?: number;
 }
-export namespace PlantDeviceGroupCreate {
-}
-
 

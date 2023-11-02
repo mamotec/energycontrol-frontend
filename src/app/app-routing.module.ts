@@ -6,7 +6,6 @@ import {authGuard} from "./guard/auth.guard";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {InterfaceComponent} from "./components/config/interface/interface.component";
 import {DeviceComponent} from "./components/config/device/device/device.component";
-import {HealthCheckComponent} from "./components/health/health-check/health-check.component";
 import {DeviceGroupComponent} from "./components/config/deviceGroup/device-group/device-group.component";
 import {DirectMarketingComponent} from "./components/config/directMarketing/direct-marketing/direct-marketing.component";
 import {DataDashboardComponent} from "./components/dashboard/data-dashboard/data-dashboard.component";
@@ -65,11 +64,6 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
-      // Healtcheck
-      {
-        path: 'health',
-        component: HealthCheckComponent,
-      }
     ]
   },
 

@@ -11,11 +11,12 @@
  */
 import { PlantDeviceGroup } from './plantDeviceGroup';
 import { FetchDevice200Response } from './fetchDevice200Response';
+import { HomeDeviceGroup } from './homeDeviceGroup';
 
 
 /**
  * @type GetAllGroups200ResponseInner
  * @export
  */
-export type GetAllGroups200ResponseInner = PlantDeviceGroup;
+export type GetAllGroups200ResponseInner = HomeDeviceGroup | PlantDeviceGroup;
 

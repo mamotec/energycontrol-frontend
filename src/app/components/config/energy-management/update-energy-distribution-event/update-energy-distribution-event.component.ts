@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DeviceControllerService, DeviceUpdateRequest} from "../../../../api";
+import {Device, DeviceControllerService, DeviceUpdateRequest} from "../../../../api";
 import {DynamicDialogConfig} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
+import EnergyDistributionEventEnum = Device.EnergyDistributionEventEnum;
 
 @Component({
   selector: 'app-update-energy-distribution-event',
@@ -13,6 +14,8 @@ export class UpdateEnergyDistributionEventComponent implements OnInit {
   device: any;
   events: any[] = [];
   selectedEvent: any;
+  managedStrength!: number;
+
 
   constructor(private config: DynamicDialogConfig,
               private deviceService: DeviceControllerService,
@@ -25,6 +28,7 @@ export class UpdateEnergyDistributionEventComponent implements OnInit {
     this.deviceService.fetchEnergyDistributionEvents(this.device.deviceType).subscribe({
       next: (events) => {
         this.events = events;
+        this.managedStrength = this.device.managedStrength;
       }
     });
   }
@@ -34,7 +38,8 @@ export class UpdateEnergyDistributionEventComponent implements OnInit {
       energyDistributionEvent: this.selectedEvent,
       deviceType: this.device.deviceType,
       priority: this.device.priority,
-      name: this.device.name
+      name: this.device.name,
+      managedStrength: this.managedStrength
     }
 
     this.deviceService.updateDevice(this.device.id, req).subscribe(() => {
@@ -42,4 +47,5 @@ export class UpdateEnergyDistributionEventComponent implements OnInit {
     });
   }
 
+  protected readonly Device = Device;
 }

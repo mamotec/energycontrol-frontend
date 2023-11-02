@@ -36,10 +36,11 @@ export interface HybridInverterDevice {
     deviceType?: HybridInverterDevice.DeviceTypeEnum;
 }
 export namespace HybridInverterDevice {
-    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED';
+    export type EnergyDistributionEventEnum = 'RENEWABLE_ENERGY' | 'UNMANAGED' | 'MANAGED';
     export const EnergyDistributionEventEnum = {
         RenewableEnergy: 'RENEWABLE_ENERGY' as EnergyDistributionEventEnum,
-        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum
+        Unmanaged: 'UNMANAGED' as EnergyDistributionEventEnum,
+        Managed: 'MANAGED' as EnergyDistributionEventEnum
     };
     export type DeviceTypeEnum = 'INVERTER' | 'HYBRID_INVERTER' | 'CHARGING_STATION' | 'HEAT_PUMP' | 'BATTERY';
     export const DeviceTypeEnum = {

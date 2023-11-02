@@ -38,7 +38,6 @@ import { DeviceComponent } from './components/config/device/device/device.compon
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import { DeleteDialogComponent } from './components/utils/delete-dialog/delete-dialog.component';
 import {DialogService} from "primeng/dynamicdialog";
-import { HealthCheckComponent } from './components/health/health-check/health-check.component';
 import {ChipModule} from "primeng/chip";
 import { DeviceGroupComponent } from './components/config/deviceGroup/device-group/device-group.component';
 import { CreateDeviceGroupComponent } from './components/config/deviceGroup/create-device-group/create-device-group.component';
@@ -68,6 +67,7 @@ import { UpdateEnergyDistributionEventComponent } from './components/config/ener
 import {RadioButtonModule} from "primeng/radiobutton";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {StyleClassModule} from "primeng/styleclass";
+import {SliderModule} from "primeng/slider";
 
 @NgModule({
   declarations: [
@@ -81,7 +81,6 @@ import {StyleClassModule} from "primeng/styleclass";
     CreateDeviceComponent,
     DeviceComponent,
     DeleteDialogComponent,
-    HealthCheckComponent,
     DeviceGroupComponent,
     CreateDeviceGroupComponent,
     AddDeviceToGroupComponent,
@@ -100,44 +99,45 @@ import {StyleClassModule} from "primeng/styleclass";
     EnergyManagementComponent,
     UpdateEnergyDistributionEventComponent,
   ],
-    imports: [
-        ApiModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        InputTextModule,
-        FormsModule,
-        ButtonModule,
-        CheckboxModule,
-        RippleModule,
-        MegaMenuModule,
-        BrowserAnimationsModule,
-        MatSlideToggleModule,
-        MatSidenavModule,
-        MatMenuModule,
-        AppLayoutModule,
-        TableModule,
-        MatIconModule,
-        DropdownModule,
-        ToastModule,
-        AutoCompleteModule,
-        MessagesModule,
-        InputNumberModule,
-        ConfirmDialogModule,
-        ChipModule,
-        PickListModule,
-        SelectButtonModule,
-        DataViewModule,
-        ContextMenuModule,
-        BadgeModule,
-        MenuModule,
-        SplitButtonModule,
-        InputSwitchModule,
-        RadioButtonModule,
-        ProgressSpinnerModule,
-        StyleClassModule
-    ],
+  imports: [
+    ApiModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    FormsModule,
+    ButtonModule,
+    CheckboxModule,
+    RippleModule,
+    MegaMenuModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatMenuModule,
+    AppLayoutModule,
+    TableModule,
+    MatIconModule,
+    DropdownModule,
+    ToastModule,
+    AutoCompleteModule,
+    MessagesModule,
+    InputNumberModule,
+    ConfirmDialogModule,
+    ChipModule,
+    PickListModule,
+    SelectButtonModule,
+    DataViewModule,
+    ContextMenuModule,
+    BadgeModule,
+    MenuModule,
+    SplitButtonModule,
+    InputSwitchModule,
+    RadioButtonModule,
+    ProgressSpinnerModule,
+    StyleClassModule,
+    SliderModule
+  ],
   providers: [
     {
       provide: Configuration,

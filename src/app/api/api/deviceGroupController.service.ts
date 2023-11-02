@@ -27,13 +27,15 @@ import { DeviceGroupUpdate } from '../model/deviceGroupUpdate';
 // @ts-ignore
 import { DeviceLinkRequest } from '../model/deviceLinkRequest';
 // @ts-ignore
-import { EnergyDeviceGroupCreate } from '../model/energyDeviceGroupCreate';
-// @ts-ignore
 import { FetchDeviceGroupData200Response } from '../model/fetchDeviceGroupData200Response';
 // @ts-ignore
 import { GetAllGroups200ResponseInner } from '../model/getAllGroups200ResponseInner';
 // @ts-ignore
 import { HomeDataRepresentation } from '../model/homeDataRepresentation';
+// @ts-ignore
+import { HomeDeviceGroupCreate } from '../model/homeDeviceGroupCreate';
+// @ts-ignore
+import { PlantDeviceGroupCreate } from '../model/plantDeviceGroupCreate';
 // @ts-ignore
 import { PlantDeviceGroupUpdate } from '../model/plantDeviceGroupUpdate';
 // @ts-ignore
@@ -189,16 +191,16 @@ export class DeviceGroupControllerService {
 
     /**
      * Erstelle eine neue Gruppe
-     * @param deviceGroupCreateEnergyDeviceGroupCreate 
+     * @param deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createGroup(deviceGroupCreateEnergyDeviceGroupCreate: DeviceGroupCreate | EnergyDeviceGroupCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<GetAllGroups200ResponseInner>;
-    public createGroup(deviceGroupCreateEnergyDeviceGroupCreate: DeviceGroupCreate | EnergyDeviceGroupCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<GetAllGroups200ResponseInner>>;
-    public createGroup(deviceGroupCreateEnergyDeviceGroupCreate: DeviceGroupCreate | EnergyDeviceGroupCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<GetAllGroups200ResponseInner>>;
-    public createGroup(deviceGroupCreateEnergyDeviceGroupCreate: DeviceGroupCreate | EnergyDeviceGroupCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (deviceGroupCreateEnergyDeviceGroupCreate === null || deviceGroupCreateEnergyDeviceGroupCreate === undefined) {
-            throw new Error('Required parameter deviceGroupCreateEnergyDeviceGroupCreate was null or undefined when calling createGroup.');
+    public createGroup(deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | HomeDeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<GetAllGroups200ResponseInner>;
+    public createGroup(deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | HomeDeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<GetAllGroups200ResponseInner>>;
+    public createGroup(deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | HomeDeviceGroupCreate | PlantDeviceGroupCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<GetAllGroups200ResponseInner>>;
+    public createGroup(deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate: DeviceGroupCreate | HomeDeviceGroupCreate | PlantDeviceGroupCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate === null || deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate === undefined) {
+            throw new Error('Required parameter deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate was null or undefined when calling createGroup.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -252,7 +254,7 @@ export class DeviceGroupControllerService {
         return this.httpClient.request<GetAllGroups200ResponseInner>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deviceGroupCreateEnergyDeviceGroupCreate,
+                body: deviceGroupCreateHomeDeviceGroupCreatePlantDeviceGroupCreate,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

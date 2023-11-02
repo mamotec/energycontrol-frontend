@@ -18,5 +18,6 @@ export interface InterfaceMappingYaml {
     batteryPower?: RegisterMapping;
     powerReduction?: RegisterMapping;
     gridPower?: RegisterMapping;
+    genPower?: RegisterMapping;
 }
 
