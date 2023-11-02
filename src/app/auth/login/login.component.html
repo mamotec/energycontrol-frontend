@@ -1,10 +1,9 @@
-<div class="flex flex-wrap align-items-center justify-content-center pt-8">
-  <div class="p-4 w-full lg:w-3">
-    <div class="text-center mb-5">
-      <div class="text-900 text-3xl font-medium mb-3">Willkommen</div>
-    </div>
-
+<div class="flex flex-wrap align-items-center justify-content-center h-screen">
+  <div class="p-8 w-full lg:w-3 card flex flex-col justify-center">
     <div>
+      <div class="text-center mb-5">
+        <div class="text-900 text-3xl font-medium mb-3">Willkommen</div>
+      </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <label for="username" class="block text-900 font-medium mb-2">Benutzername</label>
         <div class="w-full mt-0 p-error"
